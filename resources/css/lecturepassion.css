@@ -1,0 +1,330 @@
+/* Réinitialisation de base */
+body {
+    margin: 0;
+}
+
+/* Typographie et style global */
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    color: black;
+}
+
+/* Liens */
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Conteneurs principaux */
+header {
+    height: 6em;
+    background-color: rgba(235, 235, 216, 1);
+    padding: 0 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer {
+    height: 20%;
+    background-color: rgba(235, 235, 216, 1);
+    padding: 0 20%;
+    margin-top: 5em;
+    display: flex;
+    justify-content: left;
+}
+
+#main {
+    padding: 0 20%;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    width: 45%;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permet un comportement responsive */
+    align-items: center;
+}
+
+/* Section des livres */
+#books {
+    display: flex; /* Affiche l'image et le texte côte à côte horizontalement */
+    align-items: center; /* Aligne verticalement au centre de chaque élément */
+    gap: 1em; /* Espace entre l'image et le texte */
+    padding: 1em 1em; /* Espacement interne vertical */
+    border-bottom: 1px solid #ddd; /* Ligne séparatrice */
+    width: 100%; /* Largeur du conteneur */
+    margin: 0 auto; /* Centrage horizontal */
+}
+
+#books:last-child {
+    border-bottom: none; /* Pas de ligne pour le dernier livre */
+}
+
+#book-format {
+    height: 15em; /* Taille initiale de l'image */
+    width: auto;
+    transition: all 0.3s ease-in-out; /* Animation fluide au hover */
+}
+
+#book-format:hover {
+    height: 25em; /* Taille agrandie au survol */
+    width: auto; /* Conserve les proportions */
+    cursor: pointer;
+}
+
+#books div {
+    font-size: 1.2rem; /* Taille du texte */
+    line-height: 1.5; /* Espacement des lignes pour une meilleure lisibilité */
+    word-wrap: break-word; /* Permet de couper le texte long sans déborder */
+    max-width: 250px; /* Limite la largeur du texte */
+    margin-left: 1em; /* Un léger espace entre l'image et le texte */
+}
+
+/* Pied de page */
+#footer-align {
+    width: 100%; /* Fluidité */
+    max-width: 30em; /* Largeur maximum */
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto; /* Centrage horizontal */
+}
+
+/* Formulaire d'ajout */
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em; /* Espacement entre la partie gauche et droite */
+    padding: 2em;
+}
+
+/* Formulaire à gauche */
+.form-left {
+    width: 60%;
+}
+
+.form-left label {
+    display: block;
+    margin: 1em 0 0.5em;
+    font-weight: bold;
+}
+
+.form-left input,
+.form-left textarea {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-left textarea {
+    resize: vertical;
+}
+
+/* Formulaire à droite (image) */
+.form-right {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.form-right label {
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.form-right input {
+    margin-bottom: 1em;
+}
+
+.form-right input[type="text"] {
+    padding: 1em;
+    text-align: center;
+    background-color: #e0e0e0;
+}
+
+.form-right button {
+    padding: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-right button:hover {
+    background-color: #45a049;
+}
+
+/* Formulaire de connexion - centré avec boîte */
+#login-container {
+    width: 100%;
+    max-width: 400px; /* Largeur maximale du formulaire */
+    margin: 5em auto; /* Centrer horizontalement */
+    background-color: #f9f9f9;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#login-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5em;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5em;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 1.1rem;
+    margin-bottom: 0.5em;
+}
+
+.form-group input {
+    padding: 0.8em;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    padding: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+.error-message {
+    color: red;
+    font-size: 1rem;
+    margin-bottom: 1em;
+}
+
+p {
+    font-size: 1rem;
+}
+
+p a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Filtre en haut de la page */
+#filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+/* Liste des catégories */
+#filter ul {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+}
+
+#filter ul li {
+    font-size: 1.2rem;
+}
+
+#filter ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+#filter input {
+    padding: 0.5em;
+    font-size: 1rem;
+    width: 200px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Liste des livres */
+#books-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    justify-content: center;
+}
+
+/* Élément de chaque livre */
+.book-item {
+    width: 300px;
+    background-color: #f9f9f9;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.book-item:hover {
+    transform: scale(1.05);
+}
+
+/* Image du livre (fond d'image) */
+.book-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+}
+
+/* Détails du livre */
+.book-details {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.book-details h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.book-details p {
+    font-size: 1rem;
+    margin-top: 0.5em;
+}
+
+.book-link {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 1em;
+}
+
+.book-link:hover {
+    background-color: #45a049;
+}
+
