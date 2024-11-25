@@ -1,4 +1,4 @@
-<?php 
+<?php
     include("Database.php");
 
     session_start();
@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PassionLecture - Accueil</title>
-    <link rel="stylesheet" href="../CSS/lecturepassion.css">
+    <link rel="stylesheet" href="../css/lecturepassion.css">
 </head>
 <body>
     <header>
