@@ -13,22 +13,7 @@ class Auteur extends Model
     public $timestamps = false;
 
     public function getAuthor($id){
-        // Requête pour récupérer l'utilisateur par nom d'utilisateur
-        $query = "SELECT * FROM t_auteur WHERE auteur_id = :id";
-
-        $binds = [':id' => $id];
-
-        // Préparer et exécuter la requête avec l'identifiant de l'enseignant
-        $req = $this->queryPrepareExecute($query, $binds);
-
-        // Récupérer l'utilisateur
-        $author = $this->formatData($req)[0];
-
-        // Libérer les ressources
-        $this->unsetData($req);
-
-        // Retourner l'utilisateur ou null s'il n'existe pas
-        return $author ? $author : null;
+        return DB::table('t_auteur')->whereRaw("auteur_id = $id");
     }
 
 }
