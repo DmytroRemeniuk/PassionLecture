@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Inclure la base de données
 include("Database.php");
 
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $image = $_POST['image'];
     $pages = intval($_POST['pages']);
     $summary = htmlspecialchars($_POST['summary']);
-    
+
     // Vérifier si l'auteur existe déjà
     $author_id = $db->getAuthorId($author_first_name, $author_last_name);
 
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un livre</title>
-    <link rel="stylesheet" href="../CSS/lecturepassion.css">
+    <link rel="stylesheet" href="../css/lecturepassion.css">
 </head>
 <body>
     <header>
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <div id="main">
         <h2>Ajouter un ouvrage</h2>
-        
+
         <!-- Formulaire d'ajout -->
         <form action="add_book.php" method="POST">
             <div class="form-container">
