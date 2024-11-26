@@ -1,10 +1,10 @@
 <?php
-    include("Database.php");
+    /*include("Database.php");
 
     session_start();
 
     $db = Database::getInstance();
-    $books = $db->getAllBooks();
+    $books = $db->getAllBooks();*/
 ?>
 
 <!DOCTYPE html>
@@ -17,14 +17,14 @@
 </head>
 <body>
     <header>
-        <?php include("header.php") ?>
+        @include("header");
     </header>
     <div id="main">
         <h2>Utilité du site</h2>
         <p>Ce site est conçu pour permettre aux passionnés de lecture de découvrir, partager et discuter des ouvrages récents ou classiques.</p>
         <h2>Cinq derniers ouvrages</h2>
         <?php
-        foreach ($books as $book) {
+        /*foreach ($books as $book) {
             $author = $db->getAuthor($book['auteur_id']);
         ?>
             <div id="books">
@@ -34,11 +34,11 @@
                     <?= htmlspecialchars($author['Prenom'] . ' ' . $author['Nom']); ?>
                 </div>
             </div>
-        <?php } ?>
+        <?php } */?>
 
     </div>
     <footer>
-        <?php include("footer.php") ?>
+        @include("footer");
     </footer>
 </body>
 </html>
