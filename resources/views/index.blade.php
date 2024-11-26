@@ -1,10 +1,10 @@
 <?php
-    include("Database.php");
+    //include("Database.php");
 
     session_start();
 
-    $db = Database::getInstance();
-    $books = $db->getAllBooks();
+    //$db = Database::getInstance();
+    //$books = $db->getAllBooks();
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
 </head>
 <body>
     <header>
-        <?php include("header.php") ?>
+        @include('header')
     </header>
     <div id="main">
         <h2>Utilité du site</h2>
@@ -38,7 +38,7 @@
 
     </div>
     <footer>
-        <?php include("footer.php") ?>
+       @include('footer')
     </footer>
 </body>
 </html>
