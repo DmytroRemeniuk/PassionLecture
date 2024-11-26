@@ -11,8 +11,8 @@ class BookController extends Controller
     {
         // Récupérer tous les livres
         $books = Ouvrage::all();
-
+        
         // Passer les livres à la vue 'books.index'
-        return view('index', compact('books'));
+        return view('index', ['books' => $books]);
     }
 }
