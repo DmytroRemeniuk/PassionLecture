@@ -16,4 +16,8 @@ class Auteur extends Model
         return DB::table('t_auteur')->whereRaw("auteur_id = $id");
     }
 
+    public function checkAuthor($firstname, $lastname)
+    {
+        return DB::table('t_auteur')->whereRaw("Prenom = $firstname and Nom = $lastname");
+    }
 }
