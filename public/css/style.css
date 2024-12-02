@@ -40,13 +40,20 @@ footer {
     padding: 0 20%;
 }
 
-/* Navigation */
-nav {
+#header{
+    font-size: large;
     display: flex;
     width: 45%;
     justify-content: space-between;
     flex-wrap: wrap; /* Permet un comportement responsive */
     align-items: center;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center; /* Centre le contenu */
+    width: 100%; /* Prend toute la largeur disponible */
 }
 
 /* Section des livres */
@@ -165,7 +172,7 @@ nav {
 #login-container {
     width: 100%;
     max-width: 400px; /* Largeur maximale du formulaire */
-    margin: 5em auto; /* Centrer horizontalement */
+    margin: 7em auto; /* Centrer horizontalement */
     background-color: #f9f9f9;
     padding: 2em;
     border-radius: 8px;
@@ -337,3 +344,33 @@ hr {
     border: none;
     margin: 1em 0;
 }
+
+hr:last-of-type {
+    display: none;
+}
+
+/*Pagination*/
+.pagination {
+    display: flex;
+    justify-content: center; /* Centre la pagination horizontalement */
+    margin-top: 1em; /* Ajoute un espace au-dessus de la pagination */
+}
+
+.pagination li {
+    list-style-type: none; /* Supprime les puces */
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color: black;
+    border-radius: 4px; /* Bords arrondis */
+}
+
+.pagination a:hover, .pagination .active {
+    background-color: #f0f0f0; /* Changement de couleur au survol */
+    color: #333; /* Changement de couleur du texte */
+}
+
+

@@ -11,7 +11,7 @@ class Ouvrage extends Model
     
     public function auteur()
     {
-        return $this->belongsTo(Auteur::class, 't_auteur');
+        return $this->belongsTo(Auteur::class, 'auteur');
     }
 
     //Désactive les champs par défault de date/Heure pour la modification et la création de la table

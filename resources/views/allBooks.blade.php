@@ -24,15 +24,21 @@
                     </div>
                     <div class="book-details">
                         <h3>{{ $ouvrage->titre }}</h3>
-                        <p><strong>Auteur :</strong> </p>
-                        <p><strong>Pseudo :</strong> </p>
+                        <p><strong>Auteur :</strong> {{ $ouvrage->auteur ? $ouvrage->auteur->prenom : 'Auteur inconnu' }}</p>
+                        <p><strong>Pseudo :</strong> {{ $ouvrage->pseudo ?? 'Pseudo non défini' }}</p>
                     </div>
                 </div>
                 <hr>
             @endforeach
         </div>
+        
+        <div class="pagination">
+            {{ $ouvrages->links('pagination::bootstrap-4') }}
+        </div>
+        <div class="pagination-info">
+            <p>Page {{ $ouvrages->currentPage() }} / {{ $ouvrages->lastPage() }}</p>
+        </div>
     </div>
-
     <footer>
         @include('footer')
     </footer>
