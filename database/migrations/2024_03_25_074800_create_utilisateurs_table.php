@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('utilisateur_id');
             $table->string('pseudo', 128);
             $table->date('dateEntree');
-            $table->boolean('isAdmin');
+            $table->boolean('estAdmin');
         });
     }
 
