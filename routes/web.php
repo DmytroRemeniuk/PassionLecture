@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/',[BookController::class, 'index']);
 
-Route::get('/main',[BookController::class, 'index']);
+/// page de login
+Route::get('/login',[BookController::class, 'formLogin'])->name('login');
+
+
+Route::post('/login', [BookController::class, 'checkin']);
 

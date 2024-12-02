@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('t_utilisateur', function (Blueprint $table) {
             $table->id('utilisateur_id');
             $table->string('pseudo', 128);
+            $table->string('motDePasse', 255);
             $table->date('dateEntree');
             $table->boolean('isAdmin');
         });

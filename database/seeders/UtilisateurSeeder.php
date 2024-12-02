@@ -16,18 +16,21 @@ class UtilisateurSeeder extends Seeder
         Utilisateur::insert([
             [
                 'pseudo' => 'admin',
+                'motDePasse' => '.Etml-',
                 'dateEntree' => '2024-05-01',  // Exemple de date d'entrée
-                'isAdmin' => true,
+                'isAdmin' => 1,
             ],
             [
-                'Pseudo' => 'user1',
+                'pseudo' => 'user1',
+                'motDePasse' => '.Etml-',
                 'dateEntree' => '2024-06-01',
-                'isAdmin' => false,
+                'isAdmin' => 0,
             ],
             [
                 'pseudo' => 'user2',
+                'motDePasse' => '.Etml-',
                 'dateEntree' => '2024-07-01',
-                'isAdmin' => false,
+                'isAdmin' => 0,
             ],
         ]);
     }

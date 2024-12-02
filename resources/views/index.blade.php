@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        @include("header");
+        @include("header")
     </header>
     <div id="main">
         <h2>Utilité du site</h2>
@@ -19,7 +19,7 @@
         @endforeach        
     </div>
     <footer>
-        @include("footer");
+        @include("footer")
     </footer>
 </body>
 </html>

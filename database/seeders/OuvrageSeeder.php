@@ -21,7 +21,7 @@ class OuvrageSeeder extends Seeder
                 'annee' => '1954-07-29',
                 'image' => 'seigneur_anneaux.jpg',
                 'nbPages' => 423,
-                'utilisateur_fk' => 1, // Utilisateur avec ID 1
+                'utilisateur_fk' => 3, // Utilisateur avec ID 1
                 'categorie_fk' => 2,    // Catégorie "Fantasy" (ID 2)
                 'editeur_fk' => 2,      // Editeur "Penguin Books" (ID 2)
                 'auteur_fk' => 2,       // Auteur "J.K. Rowling" (ID 2)
@@ -33,7 +33,7 @@ class OuvrageSeeder extends Seeder
                 'annee' => '1997-06-26',
                 'image' => 'harry_potter.jpg',
                 'nbPages' => 309,
-                'utilisateur_fk' => 2, // Utilisateur avec ID 2
+                'utilisateur_fk' => 1, // Utilisateur avec ID 2
                 'categorie_fk' => 1,    // Catégorie "Science Fiction" (ID 1)
                 'editeur_fk' => 1,      // Editeur "Éditions Gallimard" (ID 1)
                 'auteur_fk' => 3,       // Auteur "George R.R. Martin" (ID 3)
@@ -45,7 +45,7 @@ class OuvrageSeeder extends Seeder
                 'annee' => '1996-08-06',
                 'image' => 'trone_de_fer.jpg',
                 'nbPages' => 694,
-                'utilisateur_fk' => 3, // Utilisateur avec ID 3
+                'utilisateur_fk' => 2, // Utilisateur avec ID 3
                 'categorie_fk' => 3,    // Catégorie "Histoire" (ID 3)
                 'editeur_fk' => 3,      // Editeur "HarperCollins" (ID 3)
                 'auteur_fk' => 1,       // Auteur "John Doe" (ID 1)
@@ -57,7 +57,7 @@ class OuvrageSeeder extends Seeder
                 'annee' => '1947-06-10',
                 'image' => 'peste.jpg',
                 'nbPages' => 318,
-                'utilisateur_fk' => 4, // Utilisateur avec ID 4
+                'utilisateur_fk' => 2, // Utilisateur avec ID 4
                 'categorie_fk' => 4,    // Catégorie "Biographie" (ID 4)
                 'editeur_fk' => 4,      // Editeur "Flammarion" (ID 4)
                 'auteur_fk' => 4,       // Auteur "Françoise Sagan" (ID 4)
@@ -69,7 +69,7 @@ class OuvrageSeeder extends Seeder
                 'annee' => '1952-09-01',
                 'image' => 'vieil_homme_mer.jpg',
                 'nbPages' => 128,
-                'utilisateur_fk' => 5, // Utilisateur avec ID 5
+                'utilisateur_fk' => 1, // Utilisateur avec ID 5
                 'categorie_fk' => 5,    // Catégorie "Thriller" (ID 5)
                 'editeur_fk' => 5,      // Editeur "Éditions du Seuil" (ID 5)
                 'auteur_fk' => 5,       // Auteur "Ernest Hemingway" (ID 5)
@@ -81,7 +81,7 @@ class OuvrageSeeder extends Seeder
                 'annee' => '1813-01-28',
                 'image' => 'orgueil_prejuges.jpg',
                 'nbPages' => 279,
-                'utilisateur_fk' => 6, // Utilisateur avec ID 6
+                'utilisateur_fk' => 3, // Utilisateur avec ID 6
                 'categorie_fk' => 6,    // Catégorie "Romance" (ID 6)
                 'editeur_fk' => 1,      // Editeur "Éditions Gallimard" (ID 1)
                 'auteur_fk' => 6,       // Auteur "Jane Austen" (ID 6)
