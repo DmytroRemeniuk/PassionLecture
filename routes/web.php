@@ -2,11 +2,8 @@
 
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookController;
 
-Route::get('/', function () {
-    return view('index');
-})->name('homepage');
+Route::get('/', [BookController::class, 'showLastFiveBooks'])->name('homepage');
 
 Route::get('/books/view', function () {
     return view('allBooks');

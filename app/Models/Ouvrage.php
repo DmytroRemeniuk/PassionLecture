@@ -18,6 +18,7 @@ class Ouvrage extends Model
     public $timestamps = false;
 
 
+    //Récupère les 5 derniers livres de la base de données
     public static function getLastFiveBooks(){
 
         //Récupère les 5 derniers ouvrages de la DB

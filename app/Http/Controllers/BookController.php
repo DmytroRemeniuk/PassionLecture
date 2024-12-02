@@ -11,4 +11,11 @@ class BookController extends Controller
         $ouvrages = Ouvrage::paginate(10); // 10 ouvrages par page
         return view('allBooks', ['ouvrages' => $ouvrages]);
     }
+
+    public function showLastFiveBooks(){
+
+        $lastFiveBooks = Ouvrage::getLastFiveBooks();
+
+        return view('index', ['lastFiveBooks' => $lastFiveBooks]);
+    }
 }
