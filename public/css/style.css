@@ -273,6 +273,7 @@ p a:hover {
 
 /* Élément de chaque livre */
 .book-item {
+    cursor: pointer;
     background-color: #f9f9f9;
     padding: 1em;
     border-radius: 8px;
