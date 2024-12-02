@@ -7,14 +7,8 @@ use App\Models\Ouvrage;
 
 class BookController extends Controller
 {
-
-    //Récupère le résultat de la requete pour obtenir les 5 denrniers livres
-    public function showLastFiveBooks(){
-
-        //récupère les 5 derniers livres
-        $lastFiveBooks = Ouvrage::getLastFiveBooks();
-
-        //Passe les livres à la vue index
-        return view('index', ['lastFiveBooks' => $lastFiveBooks]);
+    public function allBooks(){
+        $ouvrages = Ouvrage::paginate(10); // 10 ouvrages par page
+        return view('allBooks', ['ouvrages' => $ouvrages]);
     }
 }
