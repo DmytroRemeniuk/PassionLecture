@@ -18,18 +18,20 @@
         <h2>Tous les ouvrages</h2>
 
         <div id="books-list">
-            @foreach($ouvrages as $ouvrage)
-                <div class="book-item">
-                    <div class="book-image" style="background-image: url('{{ asset($ouvrage->image) }}');">
-                    </div>
-                    <div class="book-details">
-                        <h3>{{ $ouvrage->titre }}</h3>
-                        <p><strong>Auteur :</strong> {{ $ouvrage->auteur ? $ouvrage->auteur->prenom : 'Auteur inconnu' }}</p>
-                        <p><strong>Pseudo :</strong> {{ $ouvrage->pseudo ?? 'Pseudo non défini' }}</p>
-                    </div>
+        @foreach($ouvrages as $ouvrage)
+        <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id]) }}" id="books-link">
+            <div class="book-item">
+                <div class="book-image" style="background-image: url('{{ asset('img/' . $ouvrage->image) }}');">
                 </div>
-                <hr>
-            @endforeach
+                <div class="book-details">
+                    <h3>{{ $ouvrage->titre }}</h3>
+                    <p><strong>Auteur :</strong> {{ $ouvrage->auteur ? $ouvrage->auteur->prenom . ' ' . $ouvrage->auteur->name : 'Auteur inconnu' }}</p>
+                    <p><strong>Pseudo :</strong> {{ $ouvrage->utilisateur ? $ouvrage->utilisateur->pseudo : 'Pseudo non défini' }}</p>
+                </div>
+            </div>
+        </a>
+        <hr>
+        @endforeach
         </div>
         
         <div class="pagination">

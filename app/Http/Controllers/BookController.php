@@ -18,4 +18,15 @@ class BookController extends Controller
 
         return view('index', ['lastFiveBooks' => $lastFiveBooks]);
     }
+
+    public function indexAllBooks(){
+        $ouvrages = Ouvrage::with('auteur')->get();
+        return view('allBooks', compact('ouvrages'));
+    }
+
+    public function indexDetails(Request $request){
+        $id = $request->query("idOuvrage");
+        $ouvrage = Ouvrage::with('auteur')->find($id);
+        return view('details', compact('ouvrage'));
+    }
 }
