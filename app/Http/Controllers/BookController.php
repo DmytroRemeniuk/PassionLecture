@@ -14,8 +14,10 @@ class BookController extends Controller
 
     public function showLastFiveBooks(){
 
+        //Récupère les 5 derniers ouvrage depuis la table t_ouvrage
         $lastFiveBooks = Ouvrage::getLastFiveBooks();
 
-        return view('index', ['lastFiveBooks' => $lastFiveBooks]);
+        return view('index', compact('lastFiveBooks'));
     }
+        
 }

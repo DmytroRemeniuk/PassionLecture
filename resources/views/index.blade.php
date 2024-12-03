@@ -26,16 +26,22 @@
         <h2>Cinq derniers ouvrages</h2>
         @foreach($lastFiveBooks as $book)
         <li>
-        <div id="books">
-                <!--<img id="book-format" src="{{ asset('images/' . $book->image)}}" alt="Couverture du livre . $book->titre">-->
+            <div id="books">
+                <a href="{{ route('details') }}">
+                    <img id="book-format" src="{{ asset('img/' . $book->image)}}" alt="{{ asset('Converture du livre' . ' ' . $book->titre)}}">
+                </a>
                 <div>
-                    <strong>{{ $book->titre }}</strong><br>
-                    Auteur:
+                    <strong>Titre: {{ $book->titre }}</strong><br>
+                    Auteur:<br>
+                    Pseudo:
                 </div>
             </div>
         </li>
         @endforeach
     </div>
+    <footer>
+        @include('footer')
+</footer>
 </body>
 </html>
 
