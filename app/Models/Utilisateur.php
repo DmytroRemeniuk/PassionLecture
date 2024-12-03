@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable;
 
-class Utilisateur extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class Utilisateur extends Authenticatable
 {
     //Renomme la table
     protected $table = 't_utilisateur';
