@@ -2,13 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Ouvrage extends Model
 {
+    /** @use HasFactory<\Database\Factories\OuvrageFactory> */
+    use HasFactory;
+
     //Renomme la table
     protected $table = 't_ouvrage';
-    
+
     public function auteur()
     {
         return $this->belongsTo(Auteur::class, 'auteur');
@@ -26,4 +30,6 @@ class Ouvrage extends Model
         //desc => pour décroissant
         return self::orderBy('ouvrage_id', 'desc')->take(5)->get();
     }
+
+    protected $guarded = [];
 }
