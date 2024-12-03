@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <link rel="stylesheet" href="../css/lecturepassion.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
     <header>
-        @include("header")
+        @include('header')
     </header>
 
     <div id="login-container">
         <h2>Se connecter</h2>
-
         <!-- Formulaire de connexion -->
-        <form method="POST" id="login-form" action="{{ route('login') }}">
+        <form action="login.php" method="POST" id="login-form">
             <div class="form-group">
-                <label for="pseudo">Nom d'utilisateur :</label>
-                <input type="text" name="pseudo" id="pseudo" required>
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" name="username" id="username" required>
             </div>
             <div class="form-group">
-                <label for="motDePasse">Mot de passe :</label>
-                <input type="password" name="motDePasse" id="motDePasse" required>
+                <label for="password">Mot de passe :</label>
+                <input type="password" name="password" id="password" required>
             </div>
             <button type="submit" class="submit-btn">Se connecter</button>
         </form>
@@ -31,7 +30,7 @@
     </div>
 
     <footer>
-        @include("footer")
+        @include('footer')
     </footer>
 </body>
 </html>

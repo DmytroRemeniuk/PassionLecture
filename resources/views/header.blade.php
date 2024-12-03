@@ -1,8 +1,8 @@
-<a href="./">
-    <img src="../images/logo.png" alt="logo de PassionLecture" height="40em">
+<a href="{{ route('homepage') }}">
+    <img src="{{ asset('img/logo.png') }}" alt="logo de PassionLecture" height="40em">
 </a>
-<nav>
-    <a href="./">Accueil</a>
-    <a href="./allBooks">Tous les ouvrages</a>
-    <a href="./login">Login</a>
-</nav>
+<div id="header">
+    <a href="{{ route('homepage') }}">Accueil</a>
+    <a href="{{ route('all-books') }}">Tous les ouvrages</a>
+    <a href="{{ route('login') }}">Login</a>
+</div>
