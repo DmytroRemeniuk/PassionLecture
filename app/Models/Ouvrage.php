@@ -8,46 +8,22 @@ class Ouvrage extends Model
 {
     //Renomme la table
     protected $table = 't_ouvrage';
+    
+    public function auteur()
+    {
+        return $this->belongsTo(Auteur::class, 'auteur');
+    }
 
     //Désactive les champs par défault de date/Heure pour la modification et la création de la table
     public $timestamps = false;
 
 
-    public function getAllBooks(){
+    //Récupère les 5 derniers livres de la base de données
+    public static function getLastFiveBooks(){
 
-        // Avoir la requète sql
-        $query = "SELECT * FROM t_ouvrage;";
-
-        // Appeler la méthode pour executer la requète
-        $req = $this->querySimpleExecute($query);
-
-        // Appeler la méthode pour avoir le résultat sous forme de tableau
-        $books = $this->formatData($req);
-
-        // Vider les ressources
-        $this->unsetData($req);
-
-        // Retour tous les enseignants
-        return $books;
-    }
-
-    public function getOneBook($id) {
-
-        // Requête SQL pour récupérer un enseignant en fonction de son id
-        $query = "SELECT * FROM t_ouvrage WHERE ouvrage_id = :id";
-
-        $binds = [':id' => $id];
-
-        // Préparer et exécuter la requête avec l'identifiant de l'enseignant
-        $req = $this->queryPrepareExecute($query, $binds);
-
-        // Formater le résultat sous forme de tableau associatif
-        $book = $this->formatData($req)[0];
-
-        // Libérer les ressources
-        $this->unsetData($req);
-
-        // Retourner l'enseignant
-        return $book;
+        //Récupère les 5 derniers ouvrages de la DB
+        //id => attribut à trier
+        //desc => pour décroissant
+        return self::orderBy('ouvrage_id', 'desc')->take(5)->get();
     }
 }
