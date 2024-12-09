@@ -14,7 +14,7 @@
     <div id="login-container">
         <h2>Se connecter</h2>
         <!-- Formulaire de connexion -->
-        <form action="login.php" method="POST" id="login-form">
+        <form action="{{ route('user.login') }}" method="POST" id="login-form">
             <div class="form-group">
                 <label for="username">Nom d'utilisateur :</label>
                 <input type="text" name="username" id="username" required>

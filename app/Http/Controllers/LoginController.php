@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Auth;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+
     // méthode pour checker le login de l'utilisateur
     public function checkin(){
         //dd(request()->isMethod('post'));
