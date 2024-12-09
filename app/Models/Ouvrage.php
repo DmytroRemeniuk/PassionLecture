@@ -38,7 +38,7 @@ class Ouvrage extends Model
     
     public function Categorie()
     {
-        return $this->belongsTo(Utilisateur::class, 'categorie_fk', 'categorie_id');
+        return $this->belongsTo(Categorie::class, 'categorie_fk', 'categorie_id');
     }
 
     public function fkAuteur()
