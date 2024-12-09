@@ -25,8 +25,6 @@ class Ouvrage extends Model
     //Récupère les 5 derniers livres de la base de données
     public static function getLastFiveBooks()
     {
-
-        //Récupère les 5 derniers ouvrages de la DB
         //id => attribut à trier
         //desc => pour décroissant
         return self::orderBy('ouvrage_id', 'desc')->take(5)->get();
