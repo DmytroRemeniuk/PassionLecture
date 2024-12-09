@@ -21,6 +21,7 @@ class Auteur extends Model
     protected $guarded = [];
 
     public function Ouvrages(){
+
         return $this->hasMany(Ouvrage::class, 'auteur_fk');
     }
 }

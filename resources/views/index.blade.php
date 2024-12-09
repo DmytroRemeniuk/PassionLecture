@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PassionLecture - Accueil</title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-=======
     @vite(['resources/css/app.css', 'resources/js/app.js'])
->>>>>>> main
 </head>
 <body>
     <header>
@@ -21,13 +17,13 @@
         @foreach($lastFiveBooks as $book)
         <li>
             <div id="books">
-                <a href="{{ route('details') }}">
-                    <img id="book-format" src="{{ asset('img/' . $book->image)}}" alt="{{ asset('Converture du livre' . ' ' . $book->titre)}}">
+                <a href="{{ route('details', ['idBook' => $book->ouvrage_id]) }}">
+                    <img id="book-format" src="{{ asset('img/' . $book->image)}}" alt="{{ asset('Couverture du livre' . ' ' . $book->titre)}}">
                 </a>
                 <div>
                     <strong>Titre: {{ $book->titre }}</strong><br>
-                    Auteur:<br>
-                    Pseudo:
+                    Auteur: {{ $book->fkAuteur->prenom}} {{ $book->fkAuteur->nom}}<br>
+                    Pseudo: {{ $book->fkUtilisateur->pseudo}}
                 </div>
             </div>
         </li>
