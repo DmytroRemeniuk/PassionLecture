@@ -32,7 +32,8 @@ class LogicController extends Controller
             'pages' => $request->input('pages'),
             'auteur_id' => $authorId,
             'editeur_id' => $publisherId,
-            'image' => $imageName, // Use the image path
+            'image' => $imageName,
+            'categorie_fk' => $request->input('category'),
         ];
         BookController::store($bookData);
         return Redirect::to('/');

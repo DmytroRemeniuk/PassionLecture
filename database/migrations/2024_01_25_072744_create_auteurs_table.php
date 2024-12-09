@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('t_auteur', function (Blueprint $table) {
             $table->id('auteur_id');
-            $table->string('name', 128);
+            $table->string('nom', 128);
             $table->string('prenom', 128);
         });
     }

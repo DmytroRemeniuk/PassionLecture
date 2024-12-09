@@ -17,7 +17,7 @@ class AuteurFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->lastName(),
+            'nom' => $this->faker->lastName(),
             'prenom' => $this->faker->firstName(),
         ];
     }

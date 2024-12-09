@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LogicController;
+use App\Http\Controllers\CategorieController;
 
 Route::get('/', [BookController::class, 'showLastFiveBooks'])->name('homepage');
 
@@ -18,9 +19,7 @@ Route::get('/books/view/detail', function(){
 
 
 
-Route::get('/book/add', function () {
-    return view('addBook');
-})->name('book.add');
+Route::get('/book/add', [CategorieController::class, 'index'])->name('book.add');
 
 Route::post('/book/add', [LogicController::class, 'addBook'])->name('logic.addBook');
 

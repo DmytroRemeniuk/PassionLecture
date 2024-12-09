@@ -43,7 +43,7 @@ class BookController extends Controller
             'image' => $bookData['image'],
             'nbPages' => $bookData['pages'],
             'utilisateur_fk' => 1,
-            'categorie_fk' => 1,
+            'categorie_fk' => $bookData['categorie_fk'],
             'editeur_fk' => $bookData['editeur_id'],
             'auteur_fk' => $bookData['auteur_id']
         ]);

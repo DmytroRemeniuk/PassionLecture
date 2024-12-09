@@ -30,8 +30,12 @@
                 <input type="text" name="author_last_name" id="author_last_name" required>
 
                 <label for="category">Catégorie :</label>
-                <input type="text" name="category" id="category" required>
-
+                <select name="category" id="category">
+                    <option value="">Catégorie</option>
+                    @foreach($categories as $category)
+                        <option value="{{$category->categorie_id}}">{{$category->nom}}</option>;
+                    @endforeach
+                </select>
                 <label for="publisher">Éditeur :</label>
                 <input type="text" name="publisher" id="publisher">
 
