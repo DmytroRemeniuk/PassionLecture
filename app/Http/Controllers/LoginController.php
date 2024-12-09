@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Auth;
+
+
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -24,13 +27,14 @@ class LoginController extends Controller
             'email' => $credentials["email"],
             'password' => $credentials["password"],
         ]);
-
+        
+        
 
         dd($result);
         dd(Auth::check());
         
         // Essaie de connecter un utilisateur et renvoie true en cas de succès
-        if($result === Auth::check()){
+        if($result){
             request()->session()->regenerate();
             return redirect()->route('homepage');
         }else {

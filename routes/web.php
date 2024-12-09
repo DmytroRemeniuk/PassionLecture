@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LogicController;
 use App\Http\Controllers\LoginController;
+use Illuminate\Auth\Events\Login;
 
 //Page d'accueil
 Route::get('/', [BookController::class, 'showLastFiveBooks'])->name('homepage');
@@ -17,6 +18,9 @@ Route::get('/login', function(){
     return view('login');
 
 })->name('login');
+
+Route::post('user.login', [LoginController::class, 'checkin'])->name('user.login');
+
 
 Route::get('/books/view/detail/{idOuvrage}', function ($idOuvrage) {
     // Recherchez les détails du livre dans la base de données (optionnel)
