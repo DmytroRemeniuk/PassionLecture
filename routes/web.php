@@ -17,11 +17,12 @@ Route::get('/login', function(){
 
 })->name('login');
 
-//Détails d'un ouvrage
-Route::get('/books/view/detail', function(){
+Route::get('/books/view/detail/{idOuvrage}', function ($idOuvrage) {
+    // Recherchez les détails du livre dans la base de données (optionnel)
+    $ouvrage = \App\Models\Ouvrage::findOrFail($idOuvrage);
 
-    return view('details');
-
+    // Passez l'ouvrage aux vues
+    return view('details', ['ouvrage' => $ouvrage]);
 })->name('details');
 
 Route::get('/book/add', function () {
