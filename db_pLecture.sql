@@ -177,7 +177,7 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 
 CREATE TABLE `t_auteur` (
   `auteur_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nom` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `prenom` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -185,7 +185,7 @@ CREATE TABLE `t_auteur` (
 -- Déchargement des données de la table `t_auteur`
 --
 
-INSERT INTO `t_auteur` (`auteur_id`, `name`, `prenom`) VALUES
+INSERT INTO `t_auteur` (`auteur_id`, `nom`, `prenom`) VALUES
 (1, 'Saint-Exupéry', 'Antoine de'),
 (2, 'Orwell', 'George'),
 (3, 'Tolkien', 'J.R.R.'),

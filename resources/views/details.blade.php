@@ -4,30 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails de l'ouvrage - {{ $ouvrage->titre }}</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 
     <header>
         @include('header')
     </header>
-    <main>
-        <section class="book-detail">
+    <div id="main">
+        <!--<section class="book-detail-detail">-->
             <h1>Détails de l'ouvrage</h1>
-            <div class="book-container">
-                <div class="book-image">
+            <div class="detail-container">
+                <div class="detail-image">
                     <img src="{{ asset('img/' . $ouvrage->image) }}" alt="Couverture de {{ $ouvrage->titre }}" />
                 </div>
-                <div class="book-info">
+                <div class="detail-info">
                     <h2>{{ $ouvrage->titre }}</h2>
-                    <p><strong>Auteur:</strong> {{ $ouvrage->auteur ? $ouvrage->auteur->prenom . ' ' . $ouvrage->auteur->name : 'Auteur inconnu' }}</p>
-                    <p><strong>Catégorie:</strong> {{ $ouvrage->categorie->nom }}</p>
-                    <p><strong>Description:</strong> {{ $ouvrage->resume }}</p>
-                    <p><strong>Année de publication:</strong> {{ $ouvrage->annee }}</p>
+                    <p><strong>Auteur</strong><br> {{ $ouvrage->auteur ? $ouvrage->auteur->prenom . ' ' . $ouvrage->auteur->name : 'Auteur inconnu' }}</p>
+                    <p><strong>Catégorie</strong><br> {{ $ouvrage->categorie->nom }}</p>
+                    <p><strong>Description</strong><br> {{ $ouvrage->resume }}</p>
+                    <p><strong>Année de publication</strong><br> {{ $ouvrage->annee }}</p>
                 </div>
             </div>
-        </section>
-    </main>
+        <!--</section>-->
+    </div>
 
     <footer>
         @include('footer')

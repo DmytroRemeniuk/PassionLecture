@@ -33,7 +33,7 @@
         <hr>
         @endforeach
         </div>
-
+        
         <div class="pagination">
             {{ $ouvrages->links('pagination::bootstrap-4') }}
         </div>
