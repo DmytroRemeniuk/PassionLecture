@@ -1,6 +1,7 @@
 /* Réinitialisation de base */
 body {
-    margin: 0;
+    margin: 4em 20%;
+    background-color: antiquewhite;
 }
 
 /* Typographie et style global */
@@ -20,28 +21,56 @@ a {
 /* Conteneurs principaux */
 header {
     height: 6em;
-    background-color: rgba(235, 235, 216, 1);
-    padding: 0 20%;
+    background-color:white;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    padding-top: 3em;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Pied de page */
 footer {
     height: 20%;
-    background-color: rgba(235, 235, 216, 1);
-    padding: 0 20%;
-    margin-top: 5em;
+    background-color: #1f1305;
+    padding: 1em 3%;
     display: flex;
     justify-content: left;
+    box-shadow: 0 4px 8px #0000001a;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#footer-align {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2em;
+}
+
+#footer-p{
+    color: #f0f0f0;
+    font-size: small;
+    margin: 5px 0;
+}
+
+#footer-year{
+    color: #f0f0f0;
+    font-size: small;
+    margin: 5px 0;
+    display: flex;
+    justify-content: center;
 }
 
 #main {
-    padding: 2% 20%;
+    padding: 2% 5%;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #main-index{
-    padding: 2% 10%;
+    padding: 2% 5%;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #header {
@@ -66,10 +95,11 @@ nav {
 /* Section des livres */
 #books {
     display: flex;
-    justify-content: space-between; /* Espace uniforme entre les livres */
-    align-items: center; /* Aligne les livres au centre verticalement */
-    padding: 1em 0; /* Un peu de padding pour aérer */
-    flex-wrap: nowrap; /* Empêche les livres de passer à la ligne suivante */
+    align-items: center;
+    padding: 1em 0;
+    gap: 0.5em;
+    flex-wrap: nowrap;
+    justify-content: center;
 }
 
 .book-item-index {
@@ -103,18 +133,6 @@ nav {
 .purpose h2,
 .purpose p{
     margin: 10px 0;
-}
-
-/* Pied de page */
-#footer-align {
-    width: 100%;
-    /* Fluidité */
-    max-width: 30em;
-    /* Largeur maximum */
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    /* Centrage horizontal */
 }
 
 /* Formulaire d'ajout */
@@ -246,7 +264,7 @@ nav {
 }
 
 p {
-    font-size: 1rem;
+    font-size: larger;
     text-align: justify;
 }
 
@@ -318,7 +336,7 @@ p a:hover {
     flex-direction: row;
     /* Si vous souhaitez que l'image et les détails soient sur la même ligne */
     align-items: center;
-    width: 100%;
+    width: auto;
     /* Prend toute la largeur du conteneur */
     transition: transform 0.3s ease;
     margin: 0;
