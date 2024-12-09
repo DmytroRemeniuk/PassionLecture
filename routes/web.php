@@ -8,13 +8,12 @@ use App\Http\Controllers\LogicController;
 Route::get('/', [BookController::class, 'showLastFiveBooks'])->name('homepage');
 
 //Liste des ouvrages
-Route::get('/books/view', [BookController::class, 'allBooks'])->name('all-books');
+Route::get('/books/view', [BookController::class, 'indexAllBooks'])->name('all-books');
 
 //Page de connexion
-Route::get('/login', function(){
+Route::get('/login', function () {
 
     return view('login');
-
 })->name('login');
 
 Route::get('/books/view/detail/{idOuvrage}', function ($idOuvrage) {

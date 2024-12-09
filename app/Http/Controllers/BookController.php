@@ -7,11 +7,6 @@ use App\Models\Ouvrage;
 
 class BookController extends Controller
 {
-    public function allBooks(){
-        $ouvrages = Ouvrage::paginate(10); // 10 ouvrages par page
-        return view('allBooks', ['ouvrages' => $ouvrages]);
-    }
-
     public function showLastFiveBooks(){
 
         //Récupère les 5 derniers ouvrage depuis la table t_ouvrage
@@ -76,13 +71,13 @@ class BookController extends Controller
     }
 
     public function indexAllBooks(){
-        $ouvrages = Ouvrage::with('auteur')->get();
+        $ouvrages = Ouvrage::with('fkAuteur')->paginate(10);
         return view('allBooks', compact('ouvrages'));
     }
 
     public function indexDetails(Request $request){
         $id = $request->query("idOuvrage");
-        $ouvrage = Ouvrage::with('auteur')->find($id);
+        $ouvrage = Ouvrage::with('fkAuteur')->find($id);
         return view('details', compact('ouvrage'));
     }
 }
