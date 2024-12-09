@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\LogicController;
 
 //Page d'accueil
 Route::get('/', [BookController::class, 'showLastFiveBooks'])->name('homepage');
@@ -23,3 +24,8 @@ Route::get('/books/view/detail', function(){
 
 })->name('details');
 
+Route::get('/book/add', function () {
+    return view('addBook');
+})->name('book.add');
+
+Route::post('/book/add', [LogicController::class, 'addBook'])->name('logic.addBook');

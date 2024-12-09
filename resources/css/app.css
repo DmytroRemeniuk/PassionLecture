@@ -278,6 +278,12 @@ p a:hover {
     align-items: flex-start; /* Aligne les éléments au début du conteneur */
 }
 
+#books-link{
+    text-decoration: none;
+    width: 100%;
+    color: black;
+}
+
 /* Élément de chaque livre */
 .book-item {
     background-color: #f9f9f9;
@@ -340,7 +346,7 @@ p a:hover {
 hr {
     width: 100%;
     height: 0.5px;
-    background-color: #252525;
+    background-color: #96969677;
     border: none;
     margin: 1em 0;
 }
