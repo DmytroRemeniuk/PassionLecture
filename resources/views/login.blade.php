@@ -10,6 +10,12 @@
     <header>
         @include('header')
     </header>
+    <!-- Afficher une alerte si une erreur de validation ou de connexion existe -->
+    @if ($errors->has('email'))
+    <div class="alert alert-danger">
+        <strong>{{ $errors->first('email') }}</strong>
+    </div>
+    @endif
 
     <div id="login-container">
         <h2>Se connecter</h2>

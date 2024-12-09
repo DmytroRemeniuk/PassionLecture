@@ -28,19 +28,23 @@ class LoginController extends Controller
             'password' => $credentials["password"],
         ]);
         
+        /*password_hash("test",PASSWORD_BCRYPT);*/
+        /*dd($result);
+        dd(Auth::check());*/
         
-
-        dd($result);
-        dd(Auth::check());
         
         // Essaie de connecter un utilisateur et renvoie true en cas de succès
-        if($result){
+        if($result === Auth::check()){
             request()->session()->regenerate();
             return redirect()->route('homepage');
-        }else {
-            print("ERREUR ! ");
+        } 
+        // Si l'email ou le mot de passe est incorrect
+        elseif(!Auth::attempt(['email' => $credentials["email"], 'password' => $credentials["password"]])) {
+            return back()->withErrors([
+                'email' => 'L\'adresse e-mail ou le mot de passe que vous avez entré est incorrect.',
+            ]);
         }
-        dd($result);
 
-    }
+    }     
+
 }

@@ -19,7 +19,7 @@ class UtilisateurFactory extends Factory
         return [
             'pseudo' => $this->faker->firstName(),
             'dateEntree' => $this->faker->date(),
-            'isAdmin' => $this->faker->boolean(),
+            'estAdmin' => $this->faker->boolean(),
         ];
     }
 }
