@@ -17,7 +17,7 @@
         @foreach($lastFiveBooks as $book)
         <li>
             <div id="books">
-                <a href="{{ route('details', ['idBook' => $book->ouvrage_id]) }}">
+                <a href="{{ route('details', ['idOuvrage' => $book->ouvrage_id]) }}">
                     <img id="book-format" src="{{ asset('img/' . $book->image)}}" alt="{{ asset('Couverture du livre' . ' ' . $book->titre)}}">
                 </a>
                 <div>
