@@ -15,7 +15,7 @@
     <h2>Ajouter un ouvrage</h2>
 
     <!-- Formulaire d'ajout -->
-    <form action="/addBook" method="POST">
+    <form action="/book/add" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-container">
             <!-- Section de gauche -->
@@ -51,7 +51,7 @@
             <!-- Section de droite (image de couverture) -->
             <div class="form-right">
                 <label for="image">Couverture :</label>
-                <input type="text" name="image" id="image" placeholder="Ajouter une image" required>
+                <input type="file" name="image" id="image" accept="image/*" required>
 
                 <button type="submit">Ajouter l'ouvrage</button>
             </div>

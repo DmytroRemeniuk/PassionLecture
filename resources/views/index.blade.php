@@ -17,7 +17,7 @@
         @foreach($lastFiveBooks as $book)
         <li>
         <div id="books">
-                <!--<img id="book-format" src="{{ asset('images/' . $book->image)}}" alt="Couverture du livre . $book->titre">-->
+                <img id="book-format" src="{{ asset('img/' . $book->image)}}" alt="Couverture du livre {{$book->titre}}">
                 <div>
                     <strong>{{ $book->titre }}</strong><br>
                     Auteur:

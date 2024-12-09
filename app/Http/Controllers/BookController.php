@@ -34,18 +34,18 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public static function store(Request $request)
+    public static function store($bookData)
     {
-        Ouvrage::create(['titre' => $request->input('title'),
-            'extrait' => $request->input('excerpt_link'),
-            'resume' => $request->input('summary'),
-            'annee' => $request->input('year'),
-            'image' => $request->input('image'),
-            'nbPages' => $request->input('pages'),
+        Ouvrage::create(['titre' => $bookData['title'],
+            'extrait' => $bookData['excerpt_link'],
+            'resume' => $bookData['summary'],
+            'annee' => $bookData['year'],
+            'image' => $bookData['image'],
+            'nbPages' => $bookData['pages'],
             'utilisateur_fk' => 1,
             'categorie_fk' => 1,
-            'editeur_fk' => $request->input('editeur_id'),
-            'auteur_fk' => $request->input('auteur_id')
+            'editeur_fk' => $bookData['editeur_id'],
+            'auteur_fk' => $bookData['auteur_id']
         ]);
     }
 
