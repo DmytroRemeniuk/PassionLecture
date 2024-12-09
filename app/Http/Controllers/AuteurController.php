@@ -20,7 +20,7 @@ class AuteurController extends Controller
      */
     public static function store(Request $request)
     {
-        return Auteur::firstOrCreate(['name' => $request->input('author_last_name'),
+        return Auteur::firstOrCreate(['nom' => $request->input('author_last_name'),
                 'prenom' => $request->input('author_first_name')]);
     }
 
