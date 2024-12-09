@@ -37,74 +37,75 @@ footer {
 }
 
 #main {
-    padding: 0 20%;
+    padding: 2% 20%;
 }
 
-#header{
+#header {
     font-size: large;
     display: flex;
     width: 45%;
     justify-content: space-between;
-    flex-wrap: wrap; /* Permet un comportement responsive */
+    flex-wrap: wrap;
+    /* Permet un comportement responsive */
     align-items: center;
 }
 
 /* Navigation */
 nav {
     display: flex;
-    justify-content: center; /* Centre le contenu */
-    width: 100%; /* Prend toute la largeur disponible */
+    justify-content: center;
+    /* Centre le contenu */
+    width: 100%;
+    /* Prend toute la largeur disponible */
 }
 
 /* Section des livres */
 #books {
-    display: flex; /* Affiche l'image et le texte côte à côte horizontalement */
-    align-items: center; /* Aligne verticalement au centre de chaque élément */
-    gap: 1em; /* Espace entre l'image et le texte */
-    padding: 1em 1em; /* Espacement interne vertical */
-    border-bottom: 1px solid #ddd; /* Ligne séparatrice */
-    width: 100%; /* Largeur du conteneur */
-    margin: 0 auto; /* Centrage horizontal */
+    display: flex;
+    justify-content: space-between; /* Espace entre les livres */
+    align-items: flex-start; /* Aligne les livres en haut */
+    gap: 1em; /* Espacement entre chaque livre */
+    padding: 1em 0; /* Un peu de padding pour aérer */
+    flex-wrap: nowrap; /* Empêche les livres de passer à la ligne suivante */
 }
 
-#books:last-child {
-    border-bottom: none; /* Pas de ligne pour le dernier livre */
-}
-
+/* Pour les images des livres */
 #book-format {
-    height: 15em; /* Taille initiale de l'image */
-    width: auto;
-    transition: all 0.3s ease-in-out; /* Animation fluide au hover */
+    height: 15em; /* Taille de l'image */
+    width: auto; /* Conserve les proportions de l'image */
 }
 
-#book-format:hover {
-    height: 25em; /* Taille agrandie au survol */
-    width: auto; /* Conserve les proportions */
-    cursor: pointer;
+.purpose{
+    background-color: #f7f6e1;
+    padding: 0 20%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-#books div {
-    font-size: 1.2rem; /* Taille du texte */
-    line-height: 1.5; /* Espacement des lignes pour une meilleure lisibilité */
-    word-wrap: break-word; /* Permet de couper le texte long sans déborder */
-    max-width: 250px; /* Limite la largeur du texte */
-    margin-left: 1em; /* Un léger espace entre l'image et le texte */
+.purpose h2,
+.purpose p{
+    margin: 10px 0;
 }
 
 /* Pied de page */
 #footer-align {
-    width: 100%; /* Fluidité */
-    max-width: 30em; /* Largeur maximum */
+    width: 100%;
+    /* Fluidité */
+    max-width: 30em;
+    /* Largeur maximum */
     display: flex;
     justify-content: space-between;
-    margin: 0 auto; /* Centrage horizontal */
+    margin: 0 auto;
+    /* Centrage horizontal */
 }
 
 /* Formulaire d'ajout */
 .form-container {
     display: flex;
     justify-content: space-between;
-    gap: 2em; /* Espacement entre la partie gauche et droite */
+    gap: 2em;
+    /* Espacement entre la partie gauche et droite */
     padding: 2em;
 }
 
@@ -171,8 +172,10 @@ nav {
 /* Formulaire de connexion - centré avec boîte */
 #login-container {
     width: 100%;
-    max-width: 400px; /* Largeur maximale du formulaire */
-    margin: 7em auto; /* Centrer horizontalement */
+    max-width: 400px;
+    /* Largeur maximale du formulaire */
+    margin: 7em auto;
+    /* Centrer horizontalement */
     background-color: #f9f9f9;
     padding: 2em;
     border-radius: 8px;
@@ -227,6 +230,7 @@ nav {
 
 p {
     font-size: 1rem;
+    text-align: justify;
 }
 
 p a {
@@ -273,12 +277,15 @@ p a:hover {
 /* Liste des livres */
 #books-list {
     display: flex;
-    gap: 0.5em; /* Espace entre les éléments */
-    flex-direction: column; /* Affiche les livres verticalement */
-    align-items: flex-start; /* Aligne les éléments au début du conteneur */
+    gap: 0.5em;
+    /* Espace entre les éléments */
+    flex-direction: column;
+    /* Affiche les livres verticalement */
+    align-items: flex-start;
+    /* Aligne les éléments au début du conteneur */
 }
 
-#books-link{
+#books-link {
     text-decoration: none;
     width: 100%;
     color: black;
@@ -291,31 +298,38 @@ p a:hover {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: row; /* Si vous souhaitez que l'image et les détails soient sur la même ligne */
+    flex-direction: row;
+    /* Si vous souhaitez que l'image et les détails soient sur la même ligne */
     align-items: center;
-    width: 100%; /* Prend toute la largeur du conteneur */
+    width: 100%;
+    /* Prend toute la largeur du conteneur */
     transition: transform 0.3s ease;
-    margin: 0; /* Pas de marge externe pour une meilleure alignement */
+    margin: 0;
+    /* Pas de marge externe pour une meilleure alignement */
 }
 
 .book-item:hover {
-    transform: scale(1.05); /* Agrandit l'élément au survol */
+    transform: scale(1.05);
+    /* Agrandit l'élément au survol */
 }
 
 /* Image du livre */
 .book-image {
-    width: 150px; /* Ajustez la largeur selon vos besoins */
-    height: 200px;
+    width: 10em;
+    /* Ajustez la largeur selon vos besoins */
+    height: 15em;
     background-size: cover;
     background-position: center;
     border-radius: 8px;
-    margin-right: 1em; /* Espace entre l'image et les détails */
+    margin-right: 1em;
+    /* Espace entre l'image et les détails */
 }
 
 /* Détails du livre */
 .book-details {
     text-align: left;
-    flex: 1; /* Permet à la section des détails de s'étendre */
+    flex: 1;
+    /* Permet à la section des détails de s'étendre */
 }
 
 .book-details h3 {
@@ -358,25 +372,59 @@ hr:last-of-type {
 /*Pagination*/
 .pagination {
     display: flex;
-    justify-content: center; /* Centre la pagination horizontalement */
-    margin-top: 1em; /* Ajoute un espace au-dessus de la pagination */
+    justify-content: center;
+    /* Centre la pagination horizontalement */
+    margin-top: 1em;
+    /* Ajoute un espace au-dessus de la pagination */
 }
 
 .pagination li {
-    list-style-type: none; /* Supprime les puces */
+    list-style-type: none;
+    /* Supprime les puces */
 }
 
-.pagination a, .pagination span {
+.pagination a,
+.pagination span {
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
     color: black;
-    border-radius: 4px; /* Bords arrondis */
+    border-radius: 4px;
+    /* Bords arrondis */
 }
 
-.pagination a:hover, .pagination .active {
-    background-color: #f0f0f0; /* Changement de couleur au survol */
-    color: #333; /* Changement de couleur du texte */
+.pagination a:hover,
+.pagination .active {
+    background-color: #f0f0f0;
+    /* Changement de couleur au survol */
+    color: #333;
+    /* Changement de couleur du texte */
 }
 
+/*Page details*/
+.detail-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1em;
+}
 
+.detail-image {
+    display: flex;
+    justify-content: flex-start;
+    /* Centre l'image horizontalement */
+}
+
+.detail-image img {
+    max-width: 100%;
+    /* S'assure que l'image ne dépasse pas la largeur de son conteneur */
+    height: 32em;
+    /* Garde les proportions de l'image */
+}
+
+.detail-info {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    height: 32em;
+}
