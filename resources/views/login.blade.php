@@ -10,14 +10,20 @@
     <header>
         @include('header')
     </header>
+    <!-- Afficher une alerte si une erreur de validation ou de connexion existe -->
+    @if ($errors->has('email'))
+    <div class="alert alert-danger">
+        <strong>{{ $errors->first('email') }}</strong>
+    </div>
+    @endif
 
     <div id="login-container">
         <h2>Se connecter</h2>
         <!-- Formulaire de connexion -->
-        <form action="login.php" method="POST" id="login-form">
+        <form action="{{ route('user.login') }}" method="POST" id="login-form">
             <div class="form-group">
-                <label for="username">Nom d'utilisateur :</label>
-                <input type="text" name="username" id="username" required>
+                <label for="email">Nom d'utilisateur :</label>
+                <input type="text" name="email" id="email" required>
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe :</label>

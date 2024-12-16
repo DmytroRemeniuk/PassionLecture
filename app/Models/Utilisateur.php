@@ -21,6 +21,6 @@ class Utilisateur extends Model
 
     public function Ouvrages()
     {
-        return $this->hasMany(Ouvrage::class, 'utilisateur_fk');
+        return $this->hasMany(Ouvrage::class, 'utilisateur_fk', 'utilisateur_id');
     }
 }
