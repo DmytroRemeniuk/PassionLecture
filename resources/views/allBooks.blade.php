@@ -26,7 +26,7 @@
                 <div class="book-details">
                     <h3>{{ $ouvrage->titre }}</h3>
                     <p><strong>Auteur :</strong> {{ $ouvrage->fkAuteur ? $ouvrage->fkAuteur->prenom . ' ' . $ouvrage->fkAuteur->nom : 'Auteur inconnu' }}</p>
-                    <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->pseudo : 'Pseudo non défini' }}</p>
+                    <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->name : 'Pseudo non défini' }}</p>
                 </div>
             </div>
         </a>

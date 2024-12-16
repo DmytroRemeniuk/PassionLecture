@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('ouvrage_fk');
 
 
-            $table->foreign('utilisateur_fk')->references('utilisateur_id')->on('t_utilisateur')->onDelete('cascade');
+            $table->foreign('utilisateur_fk')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('ouvrage_fk')->references('ouvrage_id')->on('t_ouvrage')->onDelete('cascade');
 
             //Clef primaire composite

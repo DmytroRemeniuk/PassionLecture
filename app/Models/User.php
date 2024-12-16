@@ -12,6 +12,16 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    //Désactive les champs par défault de date/Heure pour la modification et la création de la table
+    public $timestamps = false;
+
+    protected $guarded = [];
+
+    public function Ouvrages()
+    {
+        return $this->hasMany(Ouvrage::class, 'utilisateur_fk', 'id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

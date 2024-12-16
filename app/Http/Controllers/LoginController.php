@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -23,21 +24,47 @@ class LoginController extends Controller
             'email' => ['required', 'string'],
             'password' => ['required', 'string'],
         ]);
-        // dd($credentials);
+
         $result = Auth::attempt([
             'email' => $credentials["email"],
             'password' => $credentials["password"],
+            
         ]);
 
         // Essaie de connecter un utilisateur et renvoie true en cas de succès
-        if ($result === Auth::check()) {
+        if($result === Auth::check()){
+
+            // Recuperer les users 
+            $users = User::all();
+            //stocker le status
+            $isAdmin = "";
+            // Parrcourir les users 
+            foreach($users as $user){
+                // Tableau avec les valeurs de la db selon l'user 
+                $user->attributesToArray();
+                // Verifier si il est admin 
+                if($user['estAdmin'] == 0){
+                    $isAdmin = false;
+                }else {
+                    $isAdmin = true;
+                }
+            }
+
+            // creation d'une nouvelle session 
             request()->session()->regenerate();
+            // ajouter les infos de l'utilisateur dans la session 
+            request()->session()->put('name','isAdmin');
+            // stocker les infos dans la session 
+            session(['name' => $credentials["email"]]);
+            session(['isAdmin' => $isAdmin]);
+
+            // redirection 
             return redirect()->route('homepage');
         }
         // Si l'email ou le mot de passe est incorrect
         elseif (!Auth::attempt(['email' => $credentials["email"], 'password' => $credentials["password"]])) {
             return back()->withErrors([
-                'email' => 'L\'adresse e-mail ou le mot de passe que vous avez entré est incorrect.',
+                'email' => 'Le pseudo ou le mot de passe que vous avez entré est incorrect.',
             ]);
         }
     }

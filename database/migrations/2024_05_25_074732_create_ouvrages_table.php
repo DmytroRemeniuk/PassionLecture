@@ -26,7 +26,7 @@ return new class extends Migration
 
 
             //Clefs étrangères
-            $table->foreign('utilisateur_fk')->references('utilisateur_id')->on('t_utilisateur')->onDelete('cascade');
+            $table->foreign('utilisateur_fk')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('categorie_fk')->references('categorie_id')->on('t_categorie')->onDelete('cascade');
             $table->foreign('editeur_fk')->references('editeur_id')->on('t_editeur')->onDelete('cascade');
             $table->foreign('auteur_fk')->references('auteur_id')->on('t_auteur')->onDelete('cascade');
