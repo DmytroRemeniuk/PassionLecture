@@ -23,11 +23,9 @@
                 <a href="{{ route('details', ['idOuvrage' => $book->ouvrage_id]) }}">
                     <img id="book-format" src="{{ asset('img/' . $book->image)}}" alt="{{ asset('Couverture du livre' . ' ' . $book->titre)}}">
                 </a>
-                <div>
-                    <strong>Titre: {{ $book->titre }}</strong><br>
-                    Auteur: {{ $book->fkAuteur->prenom}} {{ $book->fkAuteur->nom}}<br>
-                    Pseudo: {{ $book->fkUtilisateur->pseudo}}
-                </div>
+                <strong>Titre: {{ $book->titre }}</strong><br>
+                Auteur: {{ $book->fkAuteur->prenom}} {{ $book->fkAuteur->nom}}<br>
+                Pseudo: {{ $book->fkUtilisateur->pseudo}}
             </div>
             @endforeach
         </div>
