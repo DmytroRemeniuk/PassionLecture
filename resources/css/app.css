@@ -95,7 +95,7 @@ nav {
 /* Section des livres */
 #books {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: 1em 0;
     gap: 0.5em;
     flex-wrap: nowrap;
@@ -128,11 +128,6 @@ nav {
     height: auto;
     display: flex;
     flex-direction: column;
-}
-
-.purpose h2,
-.purpose p{
-    margin: 10px 0;
 }
 
 /* Formulaire d'ajout */
