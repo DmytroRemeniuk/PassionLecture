@@ -8,18 +8,17 @@
     </div>
 </div>
 <div id="header-right">
-    <a class="header-right" href="{{ route('login') }}">Login</a>
-    <a href="{{ route('homepage') }}">
-        <img src="{{ asset('img/logo.png') }}" alt="logo de PassionLecture" height="40em">
-    </a>
+    <div id="icon-align">
+    <img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="30px">
     <div id="header">
-        <a href="{{ route('homepage') }}">Accueil</a>
-
-        <a href="{{ route('all-books') }}">Tous les ouvrages</a>
-
         @if(session()->has('name'))
-        <a href="{{ route('profil') }}">Profil</a>
+        <a class="header-right" href="{{ route('profil') }}">{{session('name')}}</a>
         @else
-        <a href="{{ route('login') }}">Login</a>
+        <a class="header-right" href="{{ route('login') }}">Se connecter</a>
         @endif
+    </div>
+</div>
+<div id="icon-align">
+<img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="30px">
+    <a class="header-right" href="{{ route('book.add') }}">Ajouter un livre</a>
     </div>

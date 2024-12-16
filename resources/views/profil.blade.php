@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PassionLecture - Accueil</title>
+    <title>PassionLecture - Profil</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
@@ -11,9 +11,8 @@
         @include('header')
     </header>
     <hr>
-    <div class="purpose">
-        <h2>Bienvenue {{session('name')}}</h2>
-        
+    <div id="main">
+        <h2>Bienvenue {{session('name')}}</h2>        
     </div>
 
     <footer>

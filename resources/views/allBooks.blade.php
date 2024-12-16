@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tous les ouvrages</title>
+    <title>PassionLecture - Tous les ouvrages</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -28,6 +28,8 @@
             </ul>
         </div>
 
+        <textbox name="textbox" id="textbox">Recherche</textbox>
+
         <h2>{{ $selectedCategory ? $selectedCategory->nom : 'Tous les ouvrages' }}</h2>
 
 
@@ -46,7 +48,7 @@
                         <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->name : 'Pseudo non défini' }}</p>
                     </div>
                     <div class="MD">
-                        <a href="">Modifier</a>
+                        <a href="/books/edit/{{$ouvrage->ouvrage_id}}">Modifier</a>
                         <a href=""> | Supprimer</a>
                     </div>
                 </div>
