@@ -10,19 +10,25 @@ class CategorieController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function indexAdd()
     {
-        // Récupérer toutes les catégories
+        // Récupérer toutes les catégories    
         $categories = Categorie::all();
-
-        // Passer les catégories à la vue 'addBook'
+        // Passer les catégories à la vue 'addBook'    
         return view('addBook', compact('categories'));
     }
-
     public static function index()
     {
-        // Retourner toutes les catégories
+        // Retourner toutes les catégories    
         return Categorie::all();
+    }
+    public function allBooksIndex()
+    {
+        // Récupérer toutes les catégories    
+        $categories = Categorie::all();
+        // Passer les catégories à la vue 'addBook'    
+        return view('allBooks', compact('categories'));
     }
 
     /**
