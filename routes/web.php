@@ -12,12 +12,7 @@ Route::get('/', [BookController::class, 'showLastFiveBooks'])->name('homepage');
 Route::get('/books/view', [BookController::class, 'indexAllBooks'])->name('all-books');
 
 //Page de connexion
-<<<<<<< HEAD
-Route::get('/login', function () {
-
-=======
 Route::get('/login', function(){
->>>>>>> 77fc14f1c7ca9bc37714695e749fcacfee2ada13
     return view('login');
 })->name('login');
 

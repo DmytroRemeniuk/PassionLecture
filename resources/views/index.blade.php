@@ -16,16 +16,10 @@
     </div>
     <div id="main-index">
         <h2>Cinq derniers ouvrages</h2>
-<<<<<<< HEAD
         <div id="books">
             @foreach($lastFiveBooks as $book)
             <div class="book-item-index">
                 <a href="{{ route('details', ['idOuvrage' => $book->ouvrage_id]) }}">
-=======
-        @foreach($lastFiveBooks as $book)
-            <div id="books">
-                <a href="{{ route('details', ['idBook' => $book->ouvrage_id]) }}">
->>>>>>> 77fc14f1c7ca9bc37714695e749fcacfee2ada13
                     <img id="book-format" src="{{ asset('img/' . $book->image)}}" alt="{{ asset('Couverture du livre' . ' ' . $book->titre)}}">
                 </a>
                 <strong>Titre: {{ $book->titre }}</strong><br>
