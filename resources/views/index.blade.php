@@ -10,14 +10,16 @@
     <header>
         @include('header')
     </header>
+    <hr>
     <div class="purpose">
         <h2>Utilité du site</h2>
         <p>Ce site a été conçu pour les passionnés de lecture qui souhaitent découvrir de nouveaux livres et partager leurs impressions. Que vous aimiez les romans contemporains, les classiques ou des genres plus rares, notre plateforme vous permet de trouver des ouvrages, de publier des critiques et d'échanger avec d'autres lecteurs. Nous croyons que la lecture est un voyage à partager. C'est pourquoi nous avons intégré des fonctionnalités pour faciliter les discussions et les recommandations personnalisées. Vous pourrez aussi accéder à des articles, des interviews et des analyses littéraires pour enrichir vos connaissances. Rejoindre notre site, c’est faire partie d’une communauté où la lecture devient un échange sans frontières.</p>
     </div>
-    <div id="main">
+    <div id="main-index">
         <h2>Cinq derniers ouvrages</h2>
-        @foreach($lastFiveBooks as $book)
-            <div id="books">
+        <div id="books">
+            @foreach($lastFiveBooks as $book)
+            <div class="book-item-index">
                 <a href="{{ route('details', ['idOuvrage' => $book->ouvrage_id]) }}">
                     <img id="book-format" src="{{ asset('img/' . $book->image)}}" alt="{{ asset('Couverture du livre' . ' ' . $book->titre)}}">
                 </a>

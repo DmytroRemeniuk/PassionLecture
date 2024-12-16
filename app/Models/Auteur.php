@@ -22,6 +22,6 @@ class Auteur extends Model
 
     public function Ouvrages(){
 
-        return $this->hasMany(Ouvrage::class, 'auteur_fk');
+        return $this->hasMany(Ouvrage::class, 'auteur_fk', 'auteur_id');
     }
 }
