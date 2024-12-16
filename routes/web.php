@@ -18,6 +18,11 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+//Page de connexion
+Route::get('/profil', function () {
+    return view('profil');
+})->name('profil');
+
 Route::post('user.login', [LoginController::class, 'checkin'])->name('user.login');
 
 
