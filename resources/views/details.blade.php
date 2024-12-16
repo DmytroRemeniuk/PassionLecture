@@ -20,7 +20,7 @@
                 </div>
                 <div class="detail-info">
                     <h2>{{ $ouvrage->titre }}</h2>
-                    <p><strong>Auteur</strong><br> {{ $ouvrage->auteur ? $ouvrage->auteur->prenom . ' ' . $ouvrage->auteur->name : 'Auteur inconnu' }}</p>
+                    <p><strong>Auteur</strong><br> {{ $ouvrage->auteur ? $ouvrage->fkAuteurauteur->prenom . ' ' . $ouvrage->auteur->name : 'Auteur inconnu' }}</p>
                     <p><strong>Catégorie</strong><br> {{ $ouvrage->categorie->nom }}</p>
                     <p><strong>Description</strong><br> {{ $ouvrage->resume }}</p>
                     <p><strong>Année de publication</strong><br> {{ $ouvrage->annee }}</p>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers;
+use App\Models\Ouvrage;
 use Illuminate\Support\Facades\Redirect;
 
 class LogicController extends Controller
@@ -39,3 +40,4 @@ class LogicController extends Controller
         return Redirect::to('/');
     }
 }
+

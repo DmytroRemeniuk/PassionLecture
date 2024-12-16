@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ouvrage;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 
 class BookController extends Controller
 {
@@ -65,9 +67,23 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ouvrage $ouvrage)
+    public function destroy($idOuvrage):RedirectResponse
     {
-        //
+        //Récupère le livre selon son id
+        $book = Ouvrage::find($idOuvrage);
+
+        // Supprime l'image associée au livre si elle existe
+        if (file_exists(public_path('img/' . $book->image))) {
+
+            unlink(public_path('img/' . $book->image));
+        }
+
+        // Supprime le livre de la base de données
+        $book->delete();
+
+        //Redirige sur la page d'accueil
+        return redirect()->route('homepage');
+
     }
 
     public function indexAllBooks(){

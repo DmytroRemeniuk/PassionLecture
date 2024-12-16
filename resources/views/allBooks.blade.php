@@ -27,6 +27,9 @@
                     <h3>{{ $ouvrage->titre }}</h3>
                     <p><strong>Auteur :</strong> {{ $ouvrage->fkAuteur ? $ouvrage->fkAuteur->prenom . ' ' . $ouvrage->fkAuteur->nom : 'Auteur inconnu' }}</p>
                     <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->pseudo : 'Pseudo non défini' }}</p>
+                    <form action="{{ route('logic.deleteBook', ['idOuvrage' => $ouvrage->ouvrage_id]) }}" method="get">
+                        <input type="submit" value="Supprimer">
+                    </form>
                 </div>
             </div>
         </a>
