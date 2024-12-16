@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         Auteur::factory(10)->create();
         Categorie::factory(10)->create();
         Editeur::factory(10)->create();
-        Utilisateur::factory(10)->create();
+        User::factory(10)->create();
         Ouvrage::factory(10)->create();
     }
 }
