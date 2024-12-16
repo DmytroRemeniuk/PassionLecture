@@ -26,7 +26,7 @@
                 <div>
                     <strong>Titre: {{ $book->titre }}</strong><br>
                     Auteur: {{ $book->fkAuteur->prenom}} {{ $book->fkAuteur->nom}}<br>
-                    Pseudo: {{ $book->fkUtilisateur->pseudo}}
+                    Pseudo: {{ $book->fkUtilisateur->name}}
                 </div>
             </div>
             @endforeach
