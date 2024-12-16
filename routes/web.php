@@ -11,10 +11,11 @@ use Illuminate\Auth\Events\Login;
 Route::get('/', [BookController::class, 'showLastFiveBooks'])->name('homepage');
 
 //Liste des ouvrages
-Route::get('/books/view', [BookController::class, 'indexAllBooks'])->name('all-books');
+Route::get('/books', [BookController::class, 'allBooks'])->name('all-books');
 
-//Page de connexion
-Route::get('/login', function () {
+//Route::get('/books', [BookController::class, 'index'])->name('books.index');
+
+Route::get('/login', function(){
     return view('login');
 })->name('login');
 
@@ -26,7 +27,7 @@ Route::get('/profil', function () {
 Route::post('user.login', [LoginController::class, 'checkin'])->name('user.login');
 
 
-Route::get('/books/view/detail/{idOuvrage}', function ($idOuvrage) {
+Route::get('/books/detail/{idOuvrage}', function ($idOuvrage) {
     // Recherchez les détails du livre dans la base de données (optionnel)
     $ouvrage = \App\Models\Ouvrage::findOrFail($idOuvrage);
 
@@ -34,10 +35,16 @@ Route::get('/books/view/detail/{idOuvrage}', function ($idOuvrage) {
     return view('details', ['ouvrage' => $ouvrage]);
 })->name('details');
 
+Route::get('/books/add', [CategorieController::class, 'indexAdd'])->name('book.add');
 
 
-Route::get('/book/add', [CategorieController::class, 'index'])->name('book.add');
+Route::get('/books/add', [CategorieController::class, 'indexAdd'])->name('book.add');
 
-Route::post('/book/add', [LogicController::class, 'addBook'])->name('logic.addBook');
+Route::post('/books/add', [LogicController::class, 'addBook'])->name('logic.addBook');
+
+
+Route::get('/books/edit/{idOuvrage}', [LogicController::class, 'editBookShow'])->name('book.edit');
+
+Route::post('/books/edit/{idOuvrage}', [LogicController::class, 'editBook'])->name('logic.editBook');
 
 

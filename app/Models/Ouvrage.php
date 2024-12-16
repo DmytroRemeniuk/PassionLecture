@@ -36,7 +36,7 @@ class Ouvrage extends Model
         return $this->belongsTo(User::class, 'utilisateur_fk', 'id');
     }
 
-    public function Categorie()
+    public function fkCategorie()
     {
         return $this->belongsTo(Categorie::class, 'categorie_fk', 'categorie_id');
     }
@@ -44,5 +44,10 @@ class Ouvrage extends Model
     public function fkAuteur()
     {
         return $this->belongsTo(Auteur::class, 'auteur_fk', 'auteur_id');
+    }
+
+    public function fkEditeur()
+    {
+        return $this->belongsTo(Editeur::class, 'editeur_fk', 'editeur_id');
     }
 }

@@ -12,7 +12,8 @@ class LoginController extends Controller
 {
 
     // méthode pour checker le login de l'utilisateur
-    public function checkin(){
+    public function checkin()
+    {
         //dd(request()->isMethod('post'));
         request()->isMethod('post');
 
@@ -20,12 +21,12 @@ class LoginController extends Controller
         /// Si la validation échoue, Laravel redirige automatiquement l'utilisateur vers la page précédente avec les messages d'erreur générés.
         /// Si la validation passe, le code continue normalement.
         $credentials = request()->validate([
-            'email' => ['required', 'string'],
-            'password' => ['required','string'], 
+            'name' => ['required', 'string'],
+            'password' => ['required', 'string'],
         ]);
 
         $result = Auth::attempt([
-            'email' => $credentials["email"],
+            'name' => $credentials["name"],
             'password' => $credentials["password"],
             
         ]);
@@ -54,20 +55,17 @@ class LoginController extends Controller
             // ajouter les infos de l'utilisateur dans la session 
             request()->session()->put('name','isAdmin');
             // stocker les infos dans la session 
-            session(['name' => $credentials["email"]]);
+            session(['name' => $credentials["name"]]);
             session(['isAdmin' => $isAdmin]);
 
             // redirection 
             return redirect()->route('homepage');
-        } 
+        }
         // Si l'email ou le mot de passe est incorrect
-        elseif(!Auth::attempt(['email' => $credentials["email"], 'password' => $credentials["password"]])) {
+        elseif (!Auth::attempt(['name' => $credentials["name"], 'password' => $credentials["password"]])) {
             return back()->withErrors([
-                'email' => 'Le pseudo ou le mot de passe que vous avez entré est incorrect.',
+                'name' => 'Le pseudo ou le mot de passe que vous avez entré est incorrect.',
             ]);
         }
-
-    }     
-    
-
+    }
 }

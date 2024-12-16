@@ -15,10 +15,11 @@ class Categorie extends Model
 
     protected $primaryKey = 'categorie_id';
 
-    //Désactive les champs par défault de date/Heure pour la modification et la création de la table
-    public $timestamps = false;
-
-    public function Ouvrages(){
+    public function Ouvrage()
+    {
         return $this->hasMany(Ouvrage::class, 'categorie_fk');
     }
+
+    //Désactive les champs par défault de date/Heure pour la modification et la création de la table
+    public $timestamps = false;
 }
