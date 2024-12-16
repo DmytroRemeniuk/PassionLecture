@@ -16,14 +16,14 @@ return new class extends Migration
             $table->string('titre', 128);
             $table->string('extrait', 255);
             $table->text('resume');
-            $table->date('annee');
+            $table->integer('annee');
             $table->string('image');
             $table->smallInteger('nbPages');
             $table->unsignedBigInteger('utilisateur_fk');
             $table->unsignedBigInteger('categorie_fk');
             $table->unsignedBigInteger('editeur_fk');
             $table->unsignedBigInteger('auteur_fk');
-            
+
 
             //Clefs étrangères
             $table->foreign('utilisateur_fk')->references('utilisateur_id')->on('t_utilisateur')->onDelete('cascade');
