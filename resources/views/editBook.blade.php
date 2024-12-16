@@ -15,7 +15,7 @@
     <h2>Ajouter un ouvrage</h2>
 
     <!-- Formulaire d'ajout -->
-    <form action="/book/edit/{{$ouvrage->ouvrage_id}}" method="POST" enctype="multipart/form-data">
+    <form action="/books/edit/{{$ouvrage->ouvrage_id}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-container">
             <!-- Section de gauche -->

@@ -31,13 +31,13 @@ Route::get('/books/view/detail/{idOuvrage}', function ($idOuvrage) {
 
 
 
-Route::get('/book/add', [CategorieController::class, 'indexAdd'])->name('book.add');
+Route::get('/books/add', [CategorieController::class, 'indexAdd'])->name('book.add');
 
-Route::post('/book/add', [LogicController::class, 'addBook'])->name('logic.addBook');
+Route::post('/books/add', [LogicController::class, 'addBook'])->name('logic.addBook');
 
 
-Route::get('/book/edit/{idOuvrage}', [LogicController::class, 'editBookShow'])->name('book.edit');
+Route::get('/books/edit/{idOuvrage}', [LogicController::class, 'editBookShow'])->name('book.edit');
 
-Route::post('/book/edit/{idOuvrage}', [LogicController::class, 'editBook'])->name('logic.editBook');
+Route::post('/books/edit/{idOuvrage}', [LogicController::class, 'editBook'])->name('logic.editBook');
 
 
