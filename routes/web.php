@@ -26,6 +26,7 @@ Route::get('/profil', function () {
 
 Route::post('user.login', [LoginController::class, 'checkin'])->name('user.login');
 
+Route::get('user.deconnexion', [LoginController::class, 'deconnexion'])->name('user.deconnexion');
 
 Route::get('/books/detail/{idOuvrage}', function ($idOuvrage) {
     // Recherchez les détails du livre dans la base de données (optionnel)

@@ -13,7 +13,10 @@
     <hr>
     <div class="purpose">
         <h2>Bienvenue {{session('name')}}</h2>
-        
+    </div>
+
+    <div id="main-index">
+        <h2>Mes ouvrages</h2>
     </div>
 
     <footer>

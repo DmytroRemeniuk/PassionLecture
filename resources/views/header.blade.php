@@ -8,6 +8,7 @@
     </div>
 </div>
 <div id="header-right">
+    <a class="header-right" href="{{ route('user.deconnexion') }}">Deconnexion</a>
     @if(session()->has('name'))
     <a class="header-right" href="{{ route('profil') }}">Profil</a>
     @else
