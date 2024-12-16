@@ -71,9 +71,27 @@ class BookController extends Controller
         //
     }
 
-    public function allBooks(){
-        $ouvrages = Ouvrage::with('fkAuteur')->paginate(10);
-        return view('allBooks', compact('ouvrages'));
+    public function allBooks(Request $request)
+    {
+        // Récupérer toutes les catégories
+        $categories = Categorie::all();
+    
+        // Récupérer l'ID de la catégorie sélectionnée (si spécifié dans la requête)
+        $category_id = $request->query('category_id');
+    
+        // Si une catégorie est sélectionnée, récupérer les ouvrages associés à cette catégorie
+        if ($category_id) {
+            $ouvrages = Ouvrage::where('categorie_fk', $category_id)->with('fkAuteur')->paginate(10);
+            // Récupérer la catégorie pour afficher son nom
+            $selectedCategory = Categorie::find($category_id);
+        } else {
+            // Si aucune catégorie n'est sélectionnée, afficher tous les ouvrages
+            $ouvrages = Ouvrage::with('fkAuteur')->paginate(10);
+            $selectedCategory = null;  // Pas de catégorie sélectionnée
+        }
+    
+        // Retourner la vue avec les ouvrages, les catégories et la catégorie sélectionnée
+        return view('allBooks', compact('ouvrages', 'categories', 'selectedCategory'));
     }
 
     public function indexDetails(Request $request){
