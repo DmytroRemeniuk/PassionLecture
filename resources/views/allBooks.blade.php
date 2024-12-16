@@ -25,15 +25,15 @@
                 </div>
                 <div class="book-details">
                     <h3>{{ $ouvrage->titre }}</h3>
-                    <p><strong>Auteur :</strong> {{ $ouvrage->auteur ? $ouvrage->auteur->prenom . ' ' . $ouvrage->auteur->name : 'Auteur inconnu' }}</p>
-                    <p><strong>Pseudo :</strong> {{ $ouvrage->utilisateur ? $ouvrage->utilisateur->pseudo : 'Pseudo non défini' }}</p>
+                    <p><strong>Auteur :</strong> {{ $ouvrage->fkAuteur ? $ouvrage->fkAuteur->prenom . ' ' . $ouvrage->fkAuteur->nom : 'Auteur inconnu' }}</p>
+                    <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->pseudo : 'Pseudo non défini' }}</p>
                 </div>
             </div>
         </a>
         <hr>
         @endforeach
         </div>
-        
+
         <div class="pagination">
             {{ $ouvrages->links('pagination::bootstrap-4') }}
         </div>
