@@ -1,7 +1,7 @@
 /* Réinitialisation de base */
 body {
-    margin: 4em 20%;
-    background-color: antiquewhite;
+    margin: 0 15%;
+    background-color: rgb(255, 255, 255);
 }
 
 /* Typographie et style global */
@@ -21,7 +21,7 @@ a {
 /* Conteneurs principaux */
 header {
     height: 6em;
-    background-color:white;
+    background-color:rgb(201, 178, 147);
     display: flex;
     align-items: center;
     padding-top: 3em;
@@ -128,11 +128,6 @@ nav {
     height: auto;
     display: flex;
     flex-direction: column;
-}
-
-.purpose h2,
-.purpose p{
-    margin: 10px 0;
 }
 
 /* Formulaire d'ajout */

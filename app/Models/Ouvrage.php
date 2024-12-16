@@ -17,11 +17,6 @@ class Ouvrage extends Model
     //Clé primaire de la table
     protected $primaryKey = 'ouvrage_id';
 
-    public function categorie()
-    {
-        return $this->belongsTo(Categorie::class, 'categorie_fk');
-    }
-
     //Désactive les champs par défault de date/Heure pour la modification et la création de la table
     public $timestamps = false;
 

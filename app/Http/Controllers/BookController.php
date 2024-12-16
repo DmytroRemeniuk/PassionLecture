@@ -71,7 +71,7 @@ class BookController extends Controller
         //
     }
 
-    public function indexAllBooks(){
+    public function allBooks(){
         $ouvrages = Ouvrage::with('fkAuteur')->paginate(10);
         return view('allBooks', compact('ouvrages'));
     }
@@ -82,9 +82,9 @@ class BookController extends Controller
         return view('details', compact('ouvrage'));
     }
 
-    public function index()
+    /*public function index()
     {
         $categories = Categorie::with('livres')->get(); // Récupère toutes les catégories avec les livres associés
         return view('livres.index', compact('categories'));
-    }
+    }*/
 }

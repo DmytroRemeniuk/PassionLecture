@@ -22,8 +22,4 @@ class Categorie extends Model
 
     //Désactive les champs par défault de date/Heure pour la modification et la création de la table
     public $timestamps = false;
-
-    public function Ouvrages(){
-        return $this->hasMany(Ouvrage::class, 'categorie_fk');
-    }
 }
