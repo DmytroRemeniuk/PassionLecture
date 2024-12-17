@@ -11,14 +11,14 @@
     <div id="icon-align">
     <img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="30px">
     <div id="header">
-        @if(session()->has('name'))
-        <a class="header-right" href="{{ route('profil') }}">{{session('name')}}</a>
+        <!-- vérifier les infos de l'utilisateur -->
+        @if(Auth::user())
+        <a class="header-right" href="{{ route('profil') }}">{{Auth::user()->name}}</a>
+        <img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="30px">
+        <a class="header-right" href="{{ route('book.add') }}">Ajouter un livre</a>
+        <a class="header-right" href="{{ route('user.deconnexion') }}">Deconnexion</a>
         @else
         <a class="header-right" href="{{ route('login') }}">Se connecter</a>
         @endif
     </div>
 </div>
-<div id="icon-align">
-<img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="30px">
-    <a class="header-right" href="{{ route('book.add') }}">Ajouter un livre</a>
-    </div>

@@ -14,7 +14,7 @@ class LoginController extends Controller
     // méthode pour checker le login de l'utilisateur
     public function checkin()
     {
-        //dd(request()->isMethod('post'));
+        // vérifier l'accion du formulaire
         request()->isMethod('post');
 
         /// La méthode validate() est utilisée pour valider les données de la requête entrantes selon les règles spécifiées. 
@@ -24,48 +24,37 @@ class LoginController extends Controller
             'email' => ['required', 'string'],
             'password' => ['required', 'string'],
         ]);
-
+        
         $result = Auth::attempt([
-            'email' => $credentials["email"],
+            'name' => $credentials["email"],
             'password' => $credentials["password"],
             
         ]);
 
-        // Essaie de connecter un utilisateur et renvoie true en cas de succès
-        if($result === Auth::check()){
-
-            // Recuperer les users 
-            $users = User::all();
-            //stocker le status
-            $isAdmin = "";
-            // Parrcourir les users 
-            foreach($users as $user){
-                // Tableau avec les valeurs de la db selon l'user 
-                $user->attributesToArray();
-                // Verifier si il est admin 
-                if($user['estAdmin'] == 0){
-                    $isAdmin = false;
-                }else {
-                    $isAdmin = true;
-                }
-            }
-
+        //vérifier les identifiants 
+        if($result){
             // creation d'une nouvelle session 
             request()->session()->regenerate();
-            // ajouter les infos de l'utilisateur dans la session 
-            request()->session()->put('name','isAdmin');
-            // stocker les infos dans la session 
-            session(['name' => $credentials["email"]]);
-            session(['isAdmin' => $isAdmin]);
-
+            
             // redirection 
             return redirect()->route('homepage');
         }
-        // Si l'email ou le mot de passe est incorrect
-        elseif (!Auth::attempt(['email' => $credentials["email"], 'password' => $credentials["password"]])) {
+        // Si pas de connexion redirection d'erreures
+        else {
             return back()->withErrors([
                 'email' => 'Le pseudo ou le mot de passe que vous avez entré est incorrect.',
             ]);
         }
     }
+    // méthode de deconnexion 
+    public function deconnexion(){
+        // Déconnecte l'utilisateur
+        Auth::logout();
+        // vider les donnes de la session 
+        session()->flush();
+        
+        // redirection 
+        return redirect()->route('homepage');
+    }
+
 }
