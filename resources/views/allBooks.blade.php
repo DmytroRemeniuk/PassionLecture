@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PassionLecture - Tous les ouvrages</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="{{ asset('js/confirmDelete.js') }}"></script>
 </head>
 
 <body>
@@ -49,7 +50,7 @@
                     <div class="MD">
                         @if(Auth::user()->name === $ouvrage->fkUtilisateur->name || Auth::user()->estAdmin === 1)
                         <a href="/books/edit/{{$ouvrage->ouvrage_id}}">Modifier</a>
-                        <a href="{{ route('logic.deleteBook', ['idOuvrage' => $ouvrage->ouvrage_id]) }}"> | Supprimer</a>
+                        <a onclick="return confirmDelete('Êtes-vous sûr de vouloir supprimer l\'ouvrage ?');" href="{{ route('logic.deleteBook', ['idOuvrage' => $ouvrage->ouvrage_id]) }}"> | Supprimer</a>
                         @endif
                     </div>
                 </div>

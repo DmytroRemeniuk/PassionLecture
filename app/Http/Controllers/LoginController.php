@@ -33,9 +33,6 @@ class LoginController extends Controller
 
         //vérifier les identifiants 
         if($result){
-            // Auth::user()
-            //dd(request()->user());
-
             // creation d'une nouvelle session 
             request()->session()->regenerate();
             
@@ -53,13 +50,11 @@ class LoginController extends Controller
     public function deconnexion(){
         // Déconnecte l'utilisateur
         Auth::logout();
-        //vider les donnes de la session 
+        // vider les donnes de la session 
         session()->flush();
         
         // redirection 
         return redirect()->route('homepage');
     }
-
-
 
 }
