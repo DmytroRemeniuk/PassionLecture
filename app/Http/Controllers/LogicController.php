@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers;
-use App\Models\Ouvrage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
-use Symfony\Component\Console\Input\Input;
 
 class LogicController extends Controller
 {

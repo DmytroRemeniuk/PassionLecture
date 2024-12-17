@@ -24,9 +24,15 @@ Route::get('/profil', function () {
 
 Route::post('user.login', [LoginController::class, 'checkin'])->name('user.login');
 
-Route::get('/books/detail/{idOuvrage}', function ($idOuvrage) {
+Route::get('/books/detail/{idOuvrage}/{vote?}', function ($idOuvrage, $vote = null) {
     // Recherchez les détails du livre dans la base de données (optionnel)
     $ouvrage = \App\Models\Ouvrage::findOrFail($idOuvrage);
+
+    if($vote != null)
+    {
+        $a = Auth::user()->id;
+        dd($a);
+    }
 
     // Passez l'ouvrage aux vues
     return view('details', ['ouvrage' => $ouvrage]);
