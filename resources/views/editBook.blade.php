@@ -40,10 +40,10 @@
                     @endforeach
                 </select>
                 <label for="publisher">Éditeur :</label>
-                <input type="text" name="publisher" id="publisher" value="{{$ouvrage->fkEditeur->nom}}">
+                <input type="text" name="publisher" id="publisher" value="{{$ouvrage->fkEditeur->nom}}" required>
 
                 <label for="excerpt_link">Extrait (lien vers le PDF) :</label>
-                <input type="url" name="excerpt_link" id="excerpt_link" value="{{$ouvrage->extrait}}">
+                <input type="url" name="excerpt_link" id="excerpt_link" value="{{$ouvrage->extrait}}" required>
 
                 <label for="pages">Nombre de pages :</label>
                 <input type="number" name="pages" id="pages" value="{{$ouvrage->nbPages}}" required>

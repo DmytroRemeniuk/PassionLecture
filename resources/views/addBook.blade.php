@@ -36,10 +36,10 @@
                     @endforeach
                 </select>
                 <label for="publisher">Éditeur :</label>
-                <input type="text" name="publisher" id="publisher">
+                <input type="text" name="publisher" id="publisher" required>
 
                 <label for="excerpt_link">Extrait (lien vers le PDF) :</label>
-                <input type="url" name="excerpt_link" id="excerpt_link">
+                <input type="url" name="excerpt_link" id="excerpt_link" required>
 
                 <label for="pages">Nombre de pages :</label>
                 <input type="number" name="pages" id="pages" required>
