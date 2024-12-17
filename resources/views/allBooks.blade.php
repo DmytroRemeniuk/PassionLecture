@@ -46,7 +46,7 @@
                         <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->name : 'Pseudo non défini' }}</p>
                     </div>
                     <div class="MD">
-                        <a href="">Modifier</a>
+                        <a href="/books/edit/{{$ouvrage->ouvrage_id}}">Modifier</a>
                         <a href=""> | Supprimer</a>
                     </div>
                 </div>

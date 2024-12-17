@@ -84,7 +84,7 @@ class LogicController extends Controller
             'categorie_fk' => $request->input('category'),
         ];
         BookController::update($bookData, $request->__get('idOuvrage'));
-        return Redirect::to('/books/view');
+        return Redirect::to('/books');
     }
 
     public function editBookShow(Request $request)

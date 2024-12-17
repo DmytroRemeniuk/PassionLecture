@@ -13,8 +13,6 @@ Route::get('/', [BookController::class, 'showLastFiveBooks'])->name('homepage');
 //Liste des ouvrages
 Route::get('/books', [BookController::class, 'allBooks'])->name('all-books');
 
-//Route::get('/books', [BookController::class, 'index'])->name('books.index');
-
 Route::get('/login', function(){
     return view('login');
 })->name('login');
