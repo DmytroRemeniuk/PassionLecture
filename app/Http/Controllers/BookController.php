@@ -93,7 +93,7 @@ class BookController extends Controller
         $book->delete();
 
         //Redirige sur la page d'accueil
-        return redirect()->route('homepage');
+        return redirect()->route('all-books');
 
     }
 
@@ -115,6 +115,8 @@ class BookController extends Controller
             $ouvrages = Ouvrage::with('fkAuteur')->paginate(10);
             $selectedCategory = null;  // Pas de catégorie sélectionnée
         }
+
+        //dd(session()->all());
     
         // Retourner la vue avec les ouvrages, les catégories et la catégorie sélectionnée
         return view('allBooks', compact('ouvrages', 'categories', 'selectedCategory'));
