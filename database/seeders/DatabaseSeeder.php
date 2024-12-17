@@ -7,8 +7,6 @@ use App\Models\Categorie;
 use App\Models\Editeur;
 use App\Models\Ouvrage;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Utilisateur;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

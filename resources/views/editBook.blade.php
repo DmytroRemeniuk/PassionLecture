@@ -31,7 +31,6 @@
 
                 <label for="category">Catégorie :</label>
                 <select name="category" id="category">
-                    <option value="">Catégorie</option>
                     @foreach($categories as $category)
                         <option value="{{$category->categorie_id}}"
                         @if ($category->categorie_id == $ouvrage->fkCategorie->categorie_id)
