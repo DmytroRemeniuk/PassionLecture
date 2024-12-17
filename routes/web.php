@@ -24,13 +24,13 @@ Route::get('/profil', function () {
 
 Route::post('user.login', [LoginController::class, 'checkin'])->name('user.login');
 
-
 Route::get('/books/detail/{idOuvrage}', function ($idOuvrage) {
     // Recherchez les détails du livre dans la base de données (optionnel)
     $ouvrage = \App\Models\Ouvrage::findOrFail($idOuvrage);
 
     // Passez l'ouvrage aux vues
     return view('details', ['ouvrage' => $ouvrage]);
+
 })->name('details');
 
 Route::get('/books/add', [CategorieController::class, 'indexAdd'])->name('book.add');
@@ -45,4 +45,5 @@ Route::get('/books/edit/{idOuvrage}', [LogicController::class, 'editBookShow'])-
 
 Route::post('/books/edit/{idOuvrage}', [LogicController::class, 'editBook'])->name('logic.editBook');
 
+Route::get('/book/delete/{idOuvrage}', [BookController::class, 'destroy'])->name('logic.deleteBook');
 

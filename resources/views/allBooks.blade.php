@@ -34,6 +34,23 @@
 
 
         <div id="books-list">
+        @foreach($ouvrages as $ouvrage)
+        <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id]) }}" id="books-link">
+            <div class="book-item">
+                <div class="book-image" style="background-image: url('{{ asset('img/' . $ouvrage->image) }}');">
+                </div>
+                <div class="book-details">
+                    <h3>{{ $ouvrage->titre }}</h3>
+                    <p><strong>Auteur :</strong> {{ $ouvrage->fkAuteur ? $ouvrage->fkAuteur->prenom . ' ' . $ouvrage->fkAuteur->nom : 'Auteur inconnu' }}</p>
+                    <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->pseudo : 'Pseudo non défini' }}</p>
+                    <form action="{{ route('logic.deleteBook', ['idOuvrage' => $ouvrage->ouvrage_id]) }}" method="get">
+                        <input type="submit" value="Supprimer">
+                    </form>
+                </div>
+            </div>
+        </a>
+        <hr>
+        @endforeach
             @if($ouvrages->isEmpty())
             <p>Aucun ouvrage dans cette catégorie</p>
             @else

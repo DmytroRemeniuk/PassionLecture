@@ -12,6 +12,7 @@
         @include('header')
     </header>
     <div id="main">
+        <!--</section>-->
         <h1>Détails de l'ouvrage</h1>
         <div class="detail-container">
             <div class="detail-image">
