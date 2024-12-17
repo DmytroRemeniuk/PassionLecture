@@ -12,7 +12,6 @@
     <header>
         @include('header')
     </header>
-
     <div id="main">
         <div id="filter">
             <ul>
@@ -34,23 +33,6 @@
 
 
         <div id="books-list">
-        @foreach($ouvrages as $ouvrage)
-        <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id]) }}" id="books-link">
-            <div class="book-item">
-                <div class="book-image" style="background-image: url('{{ asset('img/' . $ouvrage->image) }}');">
-                </div>
-                <div class="book-details">
-                    <h3>{{ $ouvrage->titre }}</h3>
-                    <p><strong>Auteur :</strong> {{ $ouvrage->fkAuteur ? $ouvrage->fkAuteur->prenom . ' ' . $ouvrage->fkAuteur->nom : 'Auteur inconnu' }}</p>
-                    <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->pseudo : 'Pseudo non défini' }}</p>
-                    <form action="{{ route('logic.deleteBook', ['idOuvrage' => $ouvrage->ouvrage_id]) }}" method="get">
-                        <input type="submit" value="Supprimer">
-                    </form>
-                </div>
-            </div>
-        </a>
-        <hr>
-        @endforeach
             @if($ouvrages->isEmpty())
             <p>Aucun ouvrage dans cette catégorie</p>
             @else
@@ -65,8 +47,10 @@
                         <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->name : 'Pseudo non défini' }}</p>
                     </div>
                     <div class="MD">
+                        @if(Auth::user()->name === $ouvrage->fkUtilisateur->name || Auth::user()->estAdmin === 1)
                         <a href="/books/edit/{{$ouvrage->ouvrage_id}}">Modifier</a>
-                        <a href=""> | Supprimer</a>
+                        <a href="{{ route('logic.deleteBook', ['idOuvrage' => $ouvrage->ouvrage_id]) }}"> | Supprimer</a>
+                        @endif
                     </div>
                 </div>
             </a>

@@ -33,30 +33,12 @@ class LoginController extends Controller
 
         //vérifier les identifiants 
         if($result){
-            // Recuperer les users 
-            $users = User::all();
-            //stocker le status
-            $isAdmin = "";
-            // Parrcourir les users 
-            foreach($users as $user){
-                // Tableau avec les valeurs de la db selon l'user 
-                $user->attributesToArray();
-                // Verifier si il est admin 
-                if($user['estAdmin'] == 0){
-                    $isAdmin = false;
-                }else {
-                    $isAdmin = true;
-                }
-            }
+            // Auth::user()
+            //dd(request()->user());
 
             // creation d'une nouvelle session 
             request()->session()->regenerate();
-            // ajouter les infos de l'utilisateur dans la session 
-            request()->session()->put('name','isAdmin');
-            // stocker les infos dans la session 
-            session(['name' => $credentials["email"]]);
-            session(['isAdmin' => $isAdmin]);
-
+            
             // redirection 
             return redirect()->route('homepage');
         }
