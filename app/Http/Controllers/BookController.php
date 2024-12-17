@@ -93,7 +93,7 @@ class BookController extends Controller
         $book->delete();
 
         //Redirige sur la page d'accueil
-        return redirect()->route('homepage');
+        return redirect()->route('all-books');
 
     }
 
