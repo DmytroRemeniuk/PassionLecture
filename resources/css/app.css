@@ -19,7 +19,7 @@ a {
 }
 
 a.header:hover {
-    color: rgb(196, 162, 112);
+    color: rgb(196, 162, 112);;
 }
 
 a.header-right{
@@ -36,13 +36,13 @@ a.filter:hover {
 
 /* Conteneurs principaux */
 header {
-    height: 6em;
-    background-color: rgb(255, 255, 255);
+    height: 4em;
+    background-color: #fff;
     display: flex;
-    padding: 1em 0 1em 5%;
+    padding: 1em 0 0em 5%;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px #0000001a;
 }
 
 .links{
@@ -51,6 +51,7 @@ header {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    padding-bottom: 0.5em;
 }
 
 .header-active {
@@ -113,16 +114,25 @@ footer {
 }
 
 #header-right {
-    background-color:#a39277;
+    background-color: #a39277;
     font-size: large;
     display: flex;
-    height: 7em;
+    gap: .5em;
+    height: 2em;
+    padding: 2em 0 .5em;
+    margin: 0 0 2em;
     width: 40%;
     justify-content: center;
+    flex-wrap: nowrap;
     align-items: center;
-    flex-wrap: wrap;
+    box-shadow: inset 5px 0 8px #0000001a;
+    flex-direction: row;
+}
+
+#icon-align{
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    box-shadow: inset 5px 0 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Navigation */
@@ -167,9 +177,11 @@ nav {
 
 #book-format {
     height: 20em;
-    /* Taille de l'image */
     width: auto;
-    /* Conserve les proportions de l'image */
+}
+
+#book-format:hover{
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .purpose {
@@ -239,7 +251,7 @@ nav {
 
 .form-right button {
     padding: 1em;
-    background-color: #4CAF50;
+    background-color:  #a39277;
     color: white;
     border: none;
     border-radius: 4px;
@@ -247,7 +259,7 @@ nav {
 }
 
 .form-right button:hover {
-    background-color: #45a049;
+    background-color:  #80725e;
 }
 
 /* Formulaire de connexion - centré avec boîte */
@@ -290,7 +302,7 @@ nav {
 
 .submit-btn {
     padding: 1em;
-    background-color: #4CAF50;
+    background-color:  #a39277;
     color: white;
     border: none;
     border-radius: 4px;
@@ -300,7 +312,7 @@ nav {
 }
 
 .submit-btn:hover {
-    background-color: #45a049;
+    background-color: #80725e;
 }
 
 .error-message {
@@ -315,7 +327,7 @@ p {
 }
 
 p a {
-    color: #4CAF50;
+    color: #a39277;
     text-decoration: none;
 }
 
@@ -391,7 +403,7 @@ p a:hover {
 }
 
 .book-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     /* Agrandit l'élément au survol */
 }
 
@@ -426,7 +438,7 @@ p a:hover {
 
 .book-link {
     display: inline-block;
-    background-color: #4CAF50;
+    background-color:  #a39277;
     color: white;
     padding: 0.5em 1em;
     border-radius: 4px;
@@ -436,7 +448,7 @@ p a:hover {
 }
 
 .book-link:hover {
-    background-color: #45a049;
+    background-color: #80725e;
 }
 
 hr {
@@ -489,6 +501,10 @@ hr:last-of-type {
     flex-wrap: wrap;
     align-items: center;
     gap: 1em;
+}
+
+img{
+    max-width: 15em;
 }
 
 .detail-image {

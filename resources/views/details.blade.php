@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails de l'ouvrage - {{ $ouvrage->titre }}</title>
+    <title>PassionLecture - Détails de l'ouvrage - {{ $ouvrage->titre }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
@@ -12,6 +12,7 @@
         @include('header')
     </header>
     <div id="main">
+        <!--</section>-->
         <h1>Détails de l'ouvrage</h1>
         <div class="detail-container">
             <div class="detail-image">

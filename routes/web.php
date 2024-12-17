@@ -13,8 +13,6 @@ Route::get('/', [BookController::class, 'showLastFiveBooks'])->name('homepage');
 //Liste des ouvrages
 Route::get('/books', [BookController::class, 'allBooks'])->name('all-books');
 
-//Route::get('/books', [BookController::class, 'index'])->name('books.index');
-
 Route::get('/login', function(){
     return view('login');
 })->name('login');
@@ -34,6 +32,7 @@ Route::get('/books/detail/{idOuvrage}', function ($idOuvrage) {
 
     // Passez l'ouvrage aux vues
     return view('details', ['ouvrage' => $ouvrage]);
+
 })->name('details');
 
 Route::get('/books/add', [CategorieController::class, 'indexAdd'])->name('book.add');
@@ -48,4 +47,5 @@ Route::get('/books/edit/{idOuvrage}', [LogicController::class, 'editBookShow'])-
 
 Route::post('/books/edit/{idOuvrage}', [LogicController::class, 'editBook'])->name('logic.editBook');
 
+Route::get('/book/delete/{idOuvrage}', [BookController::class, 'destroy'])->name('logic.deleteBook');
 

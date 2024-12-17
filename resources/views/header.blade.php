@@ -8,10 +8,16 @@
     </div>
 </div>
 <div id="header-right">
-    <a class="header-right" href="{{ route('user.deconnexion') }}">Deconnexion</a>
-    @if(session()->has('name'))
-    <a class="header-right" href="{{ route('profil') }}">Profil</a>
-    @else
-    <a class="header-right" href="{{ route('login') }}">Login</a>
-    @endif
+    <div id="icon-align">
+    <img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="30px">
+    <div id="header">
+        @if(session()->has('name'))
+        <a class="header-right" href="{{ route('profil') }}">{{session('name')}}</a>
+        <img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="30px">
+        <a class="header-right" href="{{ route('book.add') }}">Ajouter un livre</a>
+        <a class="header-right" href="{{ route('user.deconnexion') }}">Deconnexion</a>
+        @else
+        <a class="header-right" href="{{ route('login') }}">Se connecter</a>
+        @endif
+    </div>
 </div>

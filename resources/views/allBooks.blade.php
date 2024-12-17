@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tous les ouvrages</title>
+    <title>PassionLecture - Tous les ouvrages</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -28,10 +28,29 @@
             </ul>
         </div>
 
+        <textbox name="textbox" id="textbox">Recherche</textbox>
+
         <h2>{{ $selectedCategory ? $selectedCategory->nom : 'Tous les ouvrages' }}</h2>
 
 
         <div id="books-list">
+        @foreach($ouvrages as $ouvrage)
+        <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id]) }}" id="books-link">
+            <div class="book-item">
+                <div class="book-image" style="background-image: url('{{ asset('img/' . $ouvrage->image) }}');">
+                </div>
+                <div class="book-details">
+                    <h3>{{ $ouvrage->titre }}</h3>
+                    <p><strong>Auteur :</strong> {{ $ouvrage->fkAuteur ? $ouvrage->fkAuteur->prenom . ' ' . $ouvrage->fkAuteur->nom : 'Auteur inconnu' }}</p>
+                    <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->pseudo : 'Pseudo non défini' }}</p>
+                    <form action="{{ route('logic.deleteBook', ['idOuvrage' => $ouvrage->ouvrage_id]) }}" method="get">
+                        <input type="submit" value="Supprimer">
+                    </form>
+                </div>
+            </div>
+        </a>
+        <hr>
+        @endforeach
             @if($ouvrages->isEmpty())
             <p>Aucun ouvrage dans cette catégorie</p>
             @else
@@ -46,7 +65,7 @@
                         <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->name : 'Pseudo non défini' }}</p>
                     </div>
                     <div class="MD">
-                        <a href="">Modifier</a>
+                        <a href="/books/edit/{{$ouvrage->ouvrage_id}}">Modifier</a>
                         <a href=""> | Supprimer</a>
                     </div>
                 </div>
