@@ -14,7 +14,7 @@ class LoginController extends Controller
     // méthode pour checker le login de l'utilisateur
     public function checkin()
     {
-        //dd(request()->isMethod('post'));
+        // vérifier l'accion du formulaire
         request()->isMethod('post');
 
         /// La méthode validate() est utilisée pour valider les données de la requête entrantes selon les règles spécifiées. 
@@ -31,7 +31,8 @@ class LoginController extends Controller
             
         ]);
 
-        if($result == true){
+        //vérifier les identifiants 
+        if($result){
             // Recuperer les users 
             $users = User::all();
             //stocker le status
@@ -58,13 +59,15 @@ class LoginController extends Controller
 
             // redirection 
             return redirect()->route('homepage');
-        }else {
+        }
+        // Si pas de connexion redirection d'erreures
+        else {
             return back()->withErrors([
                 'email' => 'Le pseudo ou le mot de passe que vous avez entré est incorrect.',
             ]);
         }
     }
-
+    // méthode de deconnexion 
     public function deconnexion(){
         // Déconnecte l'utilisateur
         Auth::logout();
