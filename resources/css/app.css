@@ -507,6 +507,13 @@ img{
     max-width: 15em;
 }
 
+img.search{
+    height: 10px;
+    border: none;
+    background-color: none;
+    cursor: pointer;
+}
+
 .detail-image {
     display: flex;
     justify-content: flex-start;
@@ -531,11 +538,64 @@ img{
     height: 15em;
 }
 
-#filter ul {
-    padding: 0;
-    justify-content: space-between;
-    list-style: none;
+/* Conteneur du filtre */
+#filter {
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
     display: flex;
-    gap: 3em;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+/* Label pour la liste déroulante */
+#filter label {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Liste déroulante */
+#category-select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 10em;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+/* Style pour la liste déroulante en focus */
+#category-select:focus {
+    outline: none;
+    border-color: #a39277;
+    background-color: #fff;
+}
+
+/* Radio buttons styling */
+input[type="radio"].filter {
+    display: none; /* Cache l'entrée par défaut */
+}
+
+input[type="radio"].filter + label {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: all 0.2s ease-in-out;
+}
+
+input[type="radio"].filter:hover + label {
+    border-color: black;
+    background-color: #a39277;
+    color: white;
+}
+
+input[type="radio"].filter:checked + label {
+    border-color: black;
+    background-color: #a39277;
+    color: white;
 }
