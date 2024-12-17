@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\LogicController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ApprecierController;
 use Illuminate\Auth\Events\Login;
 
 //Page d'accueil
@@ -32,8 +33,7 @@ Route::get('/books/detail/{idOuvrage}/{vote?}', function ($idOuvrage, $vote = nu
 
     if($vote != null)
     {
-        $a = Auth::user()->id;
-        dd($a);
+        ApprecierController::store($idOuvrage, Auth::user()->id, $vote);
     }
 
     // Passez l'ouvrage aux vues
