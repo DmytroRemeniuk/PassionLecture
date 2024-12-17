@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\LogicController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ApprecierController;
 use Illuminate\Auth\Events\Login;
 
 //Page d'accueil
@@ -26,9 +27,14 @@ Route::post('user.login', [LoginController::class, 'checkin'])->name('user.login
 
 Route::get('user.deconnexion', [LoginController::class, 'deconnexion'])->name('user.deconnexion');
 
-Route::get('/books/detail/{idOuvrage}', function ($idOuvrage) {
+Route::get('/books/detail/{idOuvrage}/{vote?}', function ($idOuvrage, $vote = null) {
     // Recherchez les détails du livre dans la base de données (optionnel)
     $ouvrage = \App\Models\Ouvrage::findOrFail($idOuvrage);
+
+    if($vote != null)
+    {
+        ApprecierController::store($idOuvrage, Auth::user()->id, $vote);
+    }
 
     // Passez l'ouvrage aux vues
     return view('details', ['ouvrage' => $ouvrage]);

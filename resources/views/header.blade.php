@@ -21,4 +21,5 @@
         <a class="header-right" href="{{ route('login') }}">Se connecter</a>
         @endif
     </div>
+    </div>
 </div>

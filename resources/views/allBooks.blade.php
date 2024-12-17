@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PassionLecture - Tous les ouvrages</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="{{ asset('js/confirmDelete.js') }}"></script>
 </head>
 
 <body>
     <header>
         @include('header')
     </header>
+
     <div id="main">
         <div id="filter">
             <ul>
@@ -27,8 +27,6 @@
                 @endforeach
             </ul>
         </div>
-
-        <textbox name="textbox" id="textbox">Recherche</textbox>
 
         <h2>{{ $selectedCategory ? $selectedCategory->nom : 'Tous les ouvrages' }}</h2>
 
