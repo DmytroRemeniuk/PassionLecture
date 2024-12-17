@@ -599,3 +599,22 @@ input[type="radio"].filter:checked + label {
     background-color: #a39277;
     color: white;
 }
+
+.stars {
+    display: flex; /* Align buttons in a row */
+    gap: 0; /* Remove any space between buttons */
+}
+
+.star {
+    font-size: 24px; /* Adjust size as needed */
+    color: gray; /* Default color */
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+.star.highlight {
+    color: gold; /* Highlight stars */
+}
