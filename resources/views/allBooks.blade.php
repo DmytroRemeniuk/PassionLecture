@@ -34,11 +34,11 @@
                         {{ $category->nom }}
                     </a>
                 </li>
-                @endforeach
+
             </ul>
         </div>
                     </option>
-                    @endforeach
+                @endforeach
                 </select>
             </div>
 

@@ -618,3 +618,5 @@ input[type="radio"].filter:checked + label {
 .star.highlight {
     color: gold; /* Highlight stars */
 }
+
+

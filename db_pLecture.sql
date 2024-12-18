@@ -296,26 +296,26 @@ CREATE TABLE `t_ouvrage` (
 --
 
 INSERT INTO `t_ouvrage` (`ouvrage_id`, `titre`, `extrait`, `resume`, `annee`, `image`, `nbPages`, `utilisateur_fk`, `categorie_fk`, `editeur_fk`, `auteur_fk`) VALUES
-(41, 'Le Petit Prince', 'Un conte poétique...', 'Histoire d’un petit garçon...', 1943, 'petitprince.jpg', 96, 4, 1, 1, 1),
-(42, '1984', 'Un roman dystopique...', 'Histoire de la vie de Winston Smith...', 1949, '1984.jpg', 328, 4, 2, 2, 2),
-(43, 'Le Seigneur des Anneaux', 'Une épopée fantastique...', 'L’histoire de la quête pour détruire l’anneau...', 1954, 'Le_Seigneur_des_Anneaux.jpg', 1216, 1, 3, 3, 3),
-(44, 'À la recherche du temps perdu', 'Un roman de la mémoire...', 'Marcel Proust raconte l’histoire...', 1913, 'temps.png', 1400, 3, 4, 4, 4),
-(45, 'Le Comte de Monte-Cristo', 'Un roman d’aventure...', 'L’histoire de vengeance d’Edmond Dantès...', 1844, 'comte.jpg', 1240, 4, 5, 5, 5),
-(46, 'Les Misérables', 'Une épopée de la misère...', 'L’histoire de Jean Valjean et de la rédemption...', 1862, 'miserables.jpg', 1464, 4, 1, 2, 1),
-(47, 'L’Alchimiste', 'Un conte philosophique...', 'L’histoire de Santiago et sa quête de trésor...', 1988, 'alchimiste.jpg', 208, 3, 2, 3, 2),
-(48, 'Le Vieil Homme et la Mer', 'Une fable sur la persévérance...', 'Le combat entre un vieil homme et un marlin...', 1952, 'Le_Vieil_Homme_et_la_Mer.jpg', 127, 1, 3, 4, 3),
-(49, 'La Peste', 'Une épidémie qui bouleverse...', 'Le récit de l’épidémie dans une ville...', 1947, 'peste.jpg', 288, 4, 4, 5, 4),
-(50, 'Les Fleurs du mal', 'Un recueil de poèmes...', 'La lutte contre l’angoisse et la recherche de beauté...', 1857, 'fleurs_du_mal.jpg', 140, 3, 5, 1, 5),
-(51, 'Le Da Vinci Code', 'Un thriller mystérieux...', 'La quête de Robert Langdon...', 2003, 'davinci.jpg', 489, 1, 1, 2, 1),
-(52, 'Orgueil et Préjugés', 'Une romance classique...', 'Histoire d’Elizabeth Bennet et Mr Darcy...', 1813, 'orgueil.jpg', 432, 4, 2, 3, 2),
-(53, 'Le Journal d’Anne Frank', 'Un témoignage de guerre...', 'Les mémoires d’Anne Frank durant la guerre...', 1947, 'journal_anne_frank.jpg', 283, 4, 3, 4, 3),
-(54, 'Le Horla', 'Une nouvelle fantastique...', 'L’histoire d’un homme hanté par un être invisible...', 1887, 'le_horla.jpg', 55, 4, 4, 5, 4),
-(55, 'L’Étranger', 'Un roman philosophique...', 'L’histoire de Meursault et de l’absurde...', 1942, 'etranger.jpg', 123, 4, 5, 1, 5),
-(56, 'Crime et Châtiment', 'Un roman psychologique...', 'L’histoire de Raskolnikov et de son crime...', 1866, 'crime_et_chatiment.jpg', 430, 3, 1, 2, 1),
-(57, 'Le Petit Nicolas', 'Une série de récits humoristiques...', 'Les aventures du Petit Nicolas...', 1959, 'petit_nicolas.jpg', 192, 4, 2, 3, 2),
-(58, 'Dracula', 'Un roman gothique...', 'L’histoire du comte vampire et de ses victimes...', 1897, 'dracula.jpg', 418, 1, 3, 4, 3),
-(59, 'Le Parfum', 'Un roman sur le pouvoir des odeurs...', 'L’histoire de Grenouille et de son parfum...', 1985, 'parfum.jpg', 263, 1, 4, 5, 4),
-(60, 'Mémoires d’une Geisha', 'Une histoire fascinante...', 'La vie d’une geisha au Japon...', 1997, 'memoires_geisha.jpg', 434, 1, 5, 1, 5);
+(1, 'Le Petit Prince', 'Un conte poétique...', 'Histoire d’un petit garçon...', 1943, 'petitprince.jpg', 96, 1, 1, 1, 1),
+(2, '1984', 'Un roman dystopique...', 'Histoire de la vie de Winston Smith...', 1949, '1984.jpg', 328, 1, 2, 2, 2),
+(3, 'Le Seigneur des Anneaux', 'Une épopée fantastique...', 'L’histoire de la quête pour détruire l’anneau...', 1954, 'Le_Seigneur_des_Anneaux.jpg', 1216, 1, 3, 3, 3),
+(4, 'À la recherche du temps perdu', 'Un roman de la mémoire...', 'Marcel Proust raconte l’histoire...', 1913, 'temps.png', 1400, 1, 4, 4, 4),
+(5, 'Le Comte de Monte-Cristo', 'Un roman d’aventure...', 'L’histoire de vengeance d’Edmond Dantès...', 1844, 'comte.jpg', 1240, 1, 5, 5, 5),
+(6, 'Les Misérables', 'Une épopée de la misère...', 'L’histoire de Jean Valjean et de la rédemption...', 1862, 'miserables.jpg', 1464, 1, 1, 2, 1),
+(7, 'L’Alchimiste', 'Un conte philosophique...', 'L’histoire de Santiago et sa quête de trésor...', 1988, 'alchimiste.jpg', 208, 1, 2, 3, 2),
+(8, 'Le Vieil Homme et la Mer', 'Une fable sur la persévérance...', 'Le combat entre un vieil homme et un marlin...', 1952, 'Le_Vieil_Homme_et_la_Mer.jpg', 127, 1, 3, 4, 3),
+(9, 'La Peste', 'Une épidémie qui bouleverse...', 'Le récit de l’épidémie dans une ville...', 1947, 'peste.jpg', 288, 1, 4, 5, 4),
+(10, 'Les Fleurs du mal', 'Un recueil de poèmes...', 'La lutte contre l’angoisse et la recherche de beauté...', 1857, 'fleurs_du_mal.jpg', 140, 1, 5, 1, 5),
+(11, 'Le Da Vinci Code', 'Un thriller mystérieux...', 'La quête de Robert Langdon...', 2003, 'davinci.jpg', 489, 1, 1, 2, 1),
+(12, 'Orgueil et Préjugés', 'Une romance classique...', 'Histoire d’Elizabeth Bennet et Mr Darcy...', 1813, 'orgueil.jpg', 432, 1, 2, 3, 2),
+(13, 'Le Journal d’Anne Frank', 'Un témoignage de guerre...', 'Les mémoires d’Anne Frank durant la guerre...', 1947, 'journal_anne_frank.jpg', 283, 1, 3, 4, 3),
+(14, 'Le Horla', 'Une nouvelle fantastique...', 'L’histoire d’un homme hanté par un être invisible...', 1887, 'le_horla.jpg', 55, 1, 4, 5, 4),
+(15, 'L’Étranger', 'Un roman philosophique...', 'L’histoire de Meursault et de l’absurde...', 1942, 'etranger.jpg', 123, 1, 5, 1, 5),
+(16, 'Crime et Châtiment', 'Un roman psychologique...', 'L’histoire de Raskolnikov et de son crime...', 1866, 'crime_et_chatiment.jpg', 430, 1, 1, 2, 1),
+(17, 'Le Petit Nicolas', 'Une série de récits humoristiques...', 'Les aventures du Petit Nicolas...', 1959, 'petit_nicolas.jpg', 192, 1, 2, 3, 2),
+(18, 'Dracula', 'Un roman gothique...', 'L’histoire du comte vampire et de ses victimes...', 1897, 'dracula.jpg', 418, 1, 3, 4, 3),
+(19, 'Le Parfum', 'Un roman sur le pouvoir des odeurs...', 'L’histoire de Grenouille et de son parfum...', 1985, 'parfum.jpg', 263, 1, 4, 5, 4),
+(20, 'Mémoires d’une Geisha', 'Une histoire fascinante...', 'La vie d’une geisha au Japon...', 1997, 'memoires_geisha.jpg', 434, 1, 5, 1, 5);
 
 
 -- --------------------------------------------------------
