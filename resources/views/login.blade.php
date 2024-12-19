@@ -13,14 +13,13 @@
         @include('header')
     </header>
     <!-- Afficher une alerte si une erreur de validation ou de connexion existe -->
-     <div class="main">
     @if ($errors->has('email'))
     <div class="alert alert-danger">
         <strong>{{ $errors->first('email') }}</strong>
     </div>
     @endif
-    <div id="main">
-    <div id="login-container">
+    <div class="main">
+    <div class="login-container">
         <h2>Se connecter</h2>
         <!-- Formulaire de connexion -->
         <form action="{{ route('user.login') }}" method="POST" id="login-form">
@@ -37,7 +36,7 @@
 
         <p>Pas encore de compte ? <a href="register.php">Inscrivez-vous ici</a>.</p>
     </div>
-    </div>
+</div>
 
     <footer>
         @include('footer')

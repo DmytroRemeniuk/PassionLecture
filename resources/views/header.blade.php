@@ -1,4 +1,4 @@
-<div id="header-left">
+<div class="header-left">
     <a href="{{ route('homepage') }}">
         <img src="{{ asset('logo.png') }}" alt="logo de PassionLecture" height="50em">
     </a>
@@ -7,8 +7,8 @@
         <a class="{{ request()->routeIs('all-books') ? 'header-active' : 'header' }}" href="{{ route('all-books') }}">Tous les ouvrages</a>
     </div>
 </div>
-<div id="header-right">
-    <div id="icon-align">
+<div class="header-right">
+    <div class="icon-align">
             <!-- vérifier les infos de l'utilisateur -->
             @if(Auth::user())
             <div class="icone">

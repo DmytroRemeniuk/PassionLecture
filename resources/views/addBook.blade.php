@@ -11,7 +11,7 @@
     @include('header')
 </header>
 
-<div id="main">
+<div class="main">
     <h2>Ajouter un ouvrage</h2>
 
     <!-- Formulaire d'ajout -->

@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PassionLecture - Tous les ouvrages</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="{{ asset('js/confirmDelete.js') }}"></script>
 </head>
 
 <body>
     <header>
         @include('header')
     </header>
-
-    <div id="main">
+    <div class="main">
         <form action="{{ route('all-books') }}" method="GET">
             <!-- Barre de recherche -->
             <input type="text" name="searchbox" id="searchbox" placeholder="Recherche" value="{{ old('searchbox', $request->get('searchbox')) }}">
@@ -24,7 +24,7 @@
             </button>
 
             <!-- Sélecteur de catégorie -->
-            <div id="filter">
+            <div class="filter">
                 <label for="category-select">Catégorie :</label>
                 <select id="category-select" name="category_id">
                     <option value="">Tous les ouvrages</option>
@@ -43,7 +43,7 @@
             </div>
 
             <!-- Filtres (Titre, Auteur, etc.) -->
-            <div id="filter-options">
+            <div class="filter-options">
                 <input type="radio" name="filter" id="title" class="filter" value="title"
                     {{ request('filter') == 'title' ? 'checked' : '' }}>
                 <label for="title">Titre</label>
@@ -73,12 +73,12 @@
 
         <h2>{{ $selectedCategory ? $selectedCategory->nom : 'Tous les ouvrages' }}</h2>
 
-        <div id="books-list">
+        <div class="books-list">
             @if($ouvrages->isEmpty())
             <p>Aucun ouvrage trouvé</p>
             @else
             @foreach($ouvrages as $ouvrage)
-            <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id]) }}" id="books-link">
+            <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id]) }}" class="books-link">
                 <div class="book-item">
                     <div class="book-image"
                         style="background-image: url('{{ asset('img/' . ($ouvrage->image ?: 'default-image.jpg')) }}');">

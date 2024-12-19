@@ -13,7 +13,7 @@
         @include('header')
     </header>
 
-    <div id="main">
+    <div class="main">
         <h2>Modifier un ouvrage</h2>
 
         <!-- Formulaire d'ajout -->
@@ -31,30 +31,12 @@
                     <label for="author_last_name">Nom de l'auteur :</label>
                     <input type="text" name="author_last_name" id="author_last_name" value="{{$ouvrage->fkAuteur->nom}}" required>
 
-<<<<<<< HEAD
-                    <label for="category">Catégorie :</label>
-                    <select name="category" id="category">
-                        <option value="">Catégorie</option>
-                        @foreach($categories as $category)
-=======
                 <label for="category">Catégorie :</label>
                 <select name="category" id="category">
                     @foreach($categories as $category)
->>>>>>> a3cb97e4a6c3c9b4c0bbfe1d1ee6c7542653b115
                         <option value="{{$category->categorie_id}}"
                             @if ($category->categorie_id == $ouvrage->fkCategorie->categorie_id)
                             selected
-<<<<<<< HEAD
-                            @endif
-                            >{{$category->nom}}</option>;
-                        @endforeach
-                    </select>
-                    <label for="publisher">Éditeur :</label>
-                    <input type="text" name="publisher" id="publisher" value="{{$ouvrage->fkEditeur->nom}}">
-
-                    <label for="excerpt_link">Extrait (lien vers le PDF) :</label>
-                    <input type="url" name="excerpt_link" id="excerpt_link" value="{{$ouvrage->extrait}}">
-=======
                         @endif
                         >{{$category->nom}}</option>;
                     @endforeach
@@ -64,7 +46,6 @@
 
                 <label for="excerpt_link">Extrait (lien vers le PDF) :</label>
                 <input type="url" name="excerpt_link" id="excerpt_link" value="{{$ouvrage->extrait}}" required>
->>>>>>> a3cb97e4a6c3c9b4c0bbfe1d1ee6c7542653b115
 
                     <label for="pages">Nombre de pages :</label>
                     <input type="number" name="pages" id="pages" value="{{$ouvrage->nbPages}}" required>

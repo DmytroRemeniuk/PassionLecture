@@ -19,13 +19,13 @@
             <br><br>Nous croyons que la lecture est un voyage à partager. C'est pourquoi nous avons intégré des fonctionnalités pour faciliter les discussions et les recommandations personnalisées. Vous pourrez aussi accéder à des articles, des interviews et des analyses littéraires pour enrichir vos connaissances. Rejoindre notre site, c’est faire partie d’une communauté où la lecture devient un échange sans frontières.
         </p>
     </div>
-    <div id="main-index">
+    <div class="main-index">
         <h2>Cinq derniers ouvrages</h2>
-        <div id="books">
+        <div class="books">
             @foreach($lastFiveBooks as $book)
             <div class="book-item-index">
                 <a href="{{ route('details', ['idOuvrage' => $book->ouvrage_id]) }}">
-                    <img id="book-format" src="{{ asset('img/' . $book->image)}}" alt="{{ asset('Couverture du livre' . ' ' . $book->titre)}}">
+                    <img class="book-format" src="{{ asset('img/' . $book->image)}}" alt="{{ asset('Couverture du livre' . ' ' . $book->titre)}}">
                 </a>
                 <strong>Titre: {{ $book->titre }}</strong><br>
                 Auteur: {{ $book->fkAuteur->prenom}} {{ $book->fkAuteur->nom}}<br>
