@@ -7,6 +7,7 @@
     <title>PassionLecture - Tous les ouvrages</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ asset('js/confirmDelete.js') }}"></script>
+    <script src="{{ asset('js/confirmDelete.js') }}"></script>
 </head>
 
 <body>
@@ -87,6 +88,12 @@
                         <h3>{{ $ouvrage->titre }}</h3>
                         <p><strong>Auteur :</strong> {{ $ouvrage->fkAuteur ? $ouvrage->fkAuteur->prenom . ' ' . $ouvrage->fkAuteur->nom : 'Auteur inconnu' }}</p>
                         <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->name : 'Pseudo non défini' }}</p>
+                    </div>
+                    <div class="MD">
+                        @if(Auth::user()->name === $ouvrage->fkUtilisateur->name || Auth::user()->estAdmin === 1)
+                        <a href="/books/edit/{{$ouvrage->ouvrage_id}}">Modifier</a>
+                        <a onclick="return confirmDelete('Êtes-vous sûr de vouloir supprimer l\'ouvrage ?');" href="{{ route('logic.deleteBook', ['idOuvrage' => $ouvrage->ouvrage_id]) }}"> | Supprimer</a>
+                        @endif
                     </div>
                     <div class="MD">
                         @if(Auth::user()->name === $ouvrage->fkUtilisateur->name || Auth::user()->estAdmin === 1)
