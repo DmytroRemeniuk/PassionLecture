@@ -138,44 +138,61 @@ class BookController extends Controller
     public function index(Request $request)
     {
         $query = Ouvrage::query();
-
+    
         // Filtrer par catégorie
-        if ($request->has('category_id') && $request->category_id) {
-            $query->where('category_id', $request->category_id);
+        if ($request->filled('category_id')) {
+            $query->where('categorie_fk', $request->category_id);
         }
-
-        // Filtrer par le terme de recherche (titre, auteur, etc.)
-        if ($request->has('searchbox') && $request->searchbox) {
+    
+        // Recherche par le terme saisi dans la barre de recherche
+        if ($request->filled('searchbox')) {
             $searchTerm = $request->searchbox;
-            $filter = $request->input('filter', 'title'); // Valeur par défaut = 'title'
-
-            // Appliquer le filtre selon la valeur sélectionnée
-            if ($filter == 'title') {
-                $query->where('title', 'like', "%$searchTerm%");
-            } elseif ($filter == 'author') {
-                $query->whereHas('author', function ($query) use ($searchTerm) {
-                    $query->where('name', 'like', "%$searchTerm%");
-                });
-            } elseif ($filter == 'user') {
-                $query->whereHas('user', function ($query) use ($searchTerm) {
-                    $query->where('name', 'like', "%$searchTerm%");
-                });
-            } elseif ($filter == 'editor') {
-                $query->where('editor', 'like', "%$searchTerm%");
-            } elseif ($filter == 'year') {
-                $query->where('year', $searchTerm);
-            } elseif ($filter == 'pages') {
-                $query->where('pages', $searchTerm);
+            $filter = $request->input('filter', 'titre'); // 'titre' par défaut
+    
+            switch ($filter) {
+                case 'titre':
+                    $query->where('titre', 'like', "%$searchTerm%");
+                    break;
+    
+                case 'annee':
+                    $query->where('annee', $searchTerm);
+                    break;
+    
+                case 'pages':
+                    $query->where('nbPages', $searchTerm);
+                    break;
+    
+                case 'auteur':
+                    $query->whereHas('auteur', function ($q) use ($searchTerm) {
+                        $q->where('name', 'like', "%$searchTerm%");
+                    });
+                    break;
+    
+                case 'editeur':
+                    $query->whereHas('editeur', function ($q) use ($searchTerm) {
+                        $q->where('name', 'like', "%$searchTerm%");
+                    });
+                    break;
+    
+                case 'utilisateur':
+                    $query->whereHas('utilisateur', function ($q) use ($searchTerm) {
+                        $q->where('name', 'like', "%$searchTerm%");
+                    });
+                    break;
+    
+                default:
+                    $query->where('titre', 'like', "%$searchTerm%");
+                    break;
             }
         }
-
-        // Récupérer les ouvrages filtrés
+    
+        // Paginer les résultats
         $ouvrages = $query->paginate(10);
-
-        // Passer les catégories et les ouvrages à la vue
+    
+        // Récupérer les catégories pour le filtre
         $categories = Categorie::all();
-        $selectedCategory = Categorie::find($request->category_id);
-
-        return view('all-books', compact('ouvrages', 'categories', 'selectedCategory'));
+    
+        return view('all-books', compact('ouvrages', 'categories'));
     }
+    
 }
