@@ -99,29 +99,6 @@ class BookController extends Controller
         return redirect()->route('all-books');
     }
 
-    public function allBooks(Request $request)
-    {
-        // Récupérer toutes les catégories
-        $categories = Categorie::all();
-
-        // Récupérer l'ID de la catégorie sélectionnée (si spécifié dans la requête)
-        $category_id = $request->query('category_id');
-
-        // Si une catégorie est sélectionnée, récupérer les ouvrages associés à cette catégorie
-        if ($category_id) {
-            $ouvrages = Ouvrage::where('categorie_fk', $category_id)->with('fkAuteur')->paginate(10);
-            // Récupérer la catégorie pour afficher son nom
-            $selectedCategory = Categorie::find($category_id);
-        } else {
-            // Si aucune catégorie n'est sélectionnée, afficher tous les ouvrages
-            $ouvrages = Ouvrage::with('fkAuteur')->paginate(10);
-            $selectedCategory = null;  // Pas de catégorie sélectionnée
-        }
-
-        // Retourner la vue avec les ouvrages, les catégories et la catégorie sélectionnée
-        return view('allBooks', compact('ouvrages', 'categories', 'selectedCategory', 'request'));
-    }
-
     public function indexDetails(Request $request)
     {
         $id = $request->query("idOuvrage");
@@ -135,64 +112,82 @@ class BookController extends Controller
         return $ouvrage;
     }
 
-    public function index(Request $request)
+    public function allBooks(Request $request)
     {
-        $query = Ouvrage::query();
+        // Récupérer toutes les catégories
+        $categories = Categorie::all();
     
-        // Filtrer par catégorie
-        if ($request->filled('category_id')) {
-            $query->where('categorie_fk', $request->category_id);
+        // Récupérer l'ID de la catégorie sélectionnée (si spécifié dans la requête)
+        $category_id = $request->query('category_id');
+    
+        // Récupérer la valeur de la recherche (s'il y en a)
+        $search = $request->query('searchbox');
+    
+        // Initialiser la requête sur la table Ouvrage
+        $query = Ouvrage::with('fkAuteur'); // Charger également les auteurs (assurez-vous que la relation est correcte)
+    
+        // Appliquer le filtre par catégorie si une catégorie est sélectionnée
+        if ($category_id) {
+            $query->where('categorie_fk', $category_id);
         }
     
-        // Recherche par le terme saisi dans la barre de recherche
-        if ($request->filled('searchbox')) {
-            $searchTerm = $request->searchbox;
-            $filter = $request->input('filter', 'titre'); // 'titre' par défaut
-    
+        // Appliquer le filtre de recherche si un terme de recherche est fourni
+        if ($search) {
+            $filter = $request->query('filter'); // Récupérer le critère de filtre (title, author, etc.)
+            
             switch ($filter) {
-                case 'titre':
-                    $query->where('titre', 'like', "%$searchTerm%");
+                case 'title':
+                    $query->where('titre', 'like', '%' . $search . '%'); // Rechercher dans le titre
                     break;
     
-                case 'annee':
-                    $query->where('annee', $searchTerm);
+                case 'author':
+                    $query->whereHas('fkAuteur', function ($q) use ($search) {
+                        $q->where('nom', 'like', '%' . $search . '%')
+                          ->orWhere('prenom', 'like', '%' . $search . '%'); // Rechercher par auteur (nom ou prénom)
+                    });
+                    break;
+    
+                case 'editor':
+                    $query->whereHas('fkEditeur', function ($q) use ($search) {
+                        $q->where('nom', 'like', '%' . $search . '%'); // Assurez-vous que la relation fkEditeur existe
+                    });
+                    break;
+    
+                case 'year':
+                    if (!is_numeric($search)) {
+                        // Si l'année n'est pas un nombre valide, rediriger avec un message d'erreur
+                        return redirect()->back()->withErrors(['searchbox' => 'Veuillez entrer une année valide.']);
+                    }
+                    $query->whereBetween('annee', [$search - 10, $search + 10]); // Rechercher par intervalle d'années
                     break;
     
                 case 'pages':
-                    $query->where('nbPages', $searchTerm);
-                    break;
-    
-                case 'auteur':
-                    $query->whereHas('auteur', function ($q) use ($searchTerm) {
-                        $q->where('name', 'like', "%$searchTerm%");
-                    });
-                    break;
-    
-                case 'editeur':
-                    $query->whereHas('editeur', function ($q) use ($searchTerm) {
-                        $q->where('name', 'like', "%$searchTerm%");
-                    });
-                    break;
-    
-                case 'utilisateur':
-                    $query->whereHas('utilisateur', function ($q) use ($searchTerm) {
-                        $q->where('name', 'like', "%$searchTerm%");
-                    });
+                    if (!is_numeric($search)) {
+                        // Si le nombre de pages n'est pas un nombre valide, rediriger avec un message d'erreur
+                        return redirect()->back()->withErrors(['searchbox' => 'Veuillez entrer un nombre de pages valide.']);
+                    }
+                    $query->whereBetween('nbPages', [$search - 20, $search + 20]); // Rechercher par intervalle de pages
                     break;
     
                 default:
-                    $query->where('titre', 'like', "%$searchTerm%");
+                    // Si aucun critère n'est spécifié, effectuer une recherche par titre par défaut
+                    $query->where('titre', 'like', '%' . $search . '%');
                     break;
             }
         }
     
-        // Paginer les résultats
+        // Récupérer les résultats avec pagination
         $ouvrages = $query->paginate(10);
     
-        // Récupérer les catégories pour le filtre
-        $categories = Categorie::all();
+        // Récupérer la catégorie sélectionnée pour l'affichage dans la vue
+        $selectedCategory = $category_id ? Categorie::find($category_id) : null;
     
-        return view('all-books', compact('ouvrages', 'categories'));
-    }
-    
+        // Retourner la vue avec les ouvrages, les catégories, la catégorie sélectionnée, et la requête
+        return view('allBooks', [
+            'ouvrages' => $ouvrages,
+            'categories' => $categories,
+            'selectedCategory' => $selectedCategory,
+            'request' => $request
+        ]);
+    }    
 }

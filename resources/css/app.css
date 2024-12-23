@@ -1,15 +1,15 @@
 /* Réinitialisation de base */
 body {
     margin: 0 15%;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(235, 235, 235);
 }
 
 /* Typographie et style global */
 * {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: fangsong;
     font-style: normal;
     text-decoration: none;
-    color: black;
+    color: #000;
 }
 
 /* Liens */
@@ -24,9 +24,10 @@ a.header:hover {
 
 a.header-right {
     color: #fff;
-    font-size: small;
+    font-size: smaller;
     line-height: 1em;
     text-align: center;
+    box-shadow: 0 0 #0000;
 }
 
 a.active {
@@ -134,12 +135,11 @@ div.main-index {
 
 .icon-align {
     display: flex;
-    height: -webkit-fill-available;
-    flex-direction: row;
+    height: 6em;
     gap: 10%;
     width: -webkit-fill-available;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
 }
 
 /* Navigation */
@@ -267,15 +267,12 @@ nav {
 
 /* Formulaire de connexion - centré avec boîte */
 .login-container {
-    width: 100%;
     max-width: 400px;
-    /* Largeur maximale du formulaire */
-    margin: 7em auto;
-    /* Centrer horizontalement */
+    margin: 5em auto 10em auto;
     background-color: #f9f9f9;
     padding: 2em;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px #0000001a;
     text-align: center;
 }
 
@@ -370,6 +367,15 @@ p a:hover {
     border: 1px solid #ccc;
 }
 
+.filter-options {
+    display: flex;
+    gap: .5em;
+    flex-wrap: wrap;
+    width: 50%;
+    justify-content: flex-start;
+    text-align: center;
+}
+
 /* Liste des livres */
 .books-list {
     display: flex;
@@ -381,7 +387,7 @@ p a:hover {
 .books-link {
     display: flex;
     text-decoration: none;
-    width: 85%;
+    width: 100%;
     color: #000;
     align-items: center;
 }
@@ -389,17 +395,13 @@ p a:hover {
 /* Élément de chaque livre */
 .book-item {
     cursor: pointer;
+    display: flex;
     background-color: #f9f9f9;
-    padding: 1em;
+    padding: .5em;
     border-radius: 8px;
     box-shadow: 0 4px 8px #0000001a;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
     width: -webkit-fill-available;
     transition: transform .3s ease;
-    margin: 0;
 }
 
 .book-item:hover {
@@ -486,17 +488,14 @@ hr:last-of-type {
 .pagination a:hover,
 .pagination .active {
     background-color: #f0f0f0;
-    /* Changement de couleur au survol */
     color: #333;
-    /* Changement de couleur du texte */
 }
 
 /*Page details*/
 .detail-container {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     gap: 1em;
+    flex-wrap: wrap;
 }
 
 img {
@@ -529,8 +528,10 @@ img.search {
 }
 
 .MD {
-    height: 15em;
-    width: 17%;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 /* Conteneur du filtre */
@@ -598,16 +599,12 @@ input[type="radio"].filter:checked+label {
 
 .stars {
     display: flex;
-    /* Align buttons in a row */
-    gap: 0;
-    /* Remove any space between buttons */
+    justify-content: flex-end;
 }
 
 .star {
-    font-size: 24px;
-    /* Adjust size as needed */
+    font-size: 40pt;
     color: gray;
-    /* Default color */
     border: none;
     background: none;
     cursor: pointer;
@@ -620,8 +617,17 @@ input[type="radio"].filter:checked+label {
     /* Highlight stars */
 }
 
+.rate {
+    display: flex;
+    height: 3.5em;
+    width: 2.5em;
+    font-size: 40pt;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
 /* Média pour les téléphones */
-@media (max-width: 400px) {
+@media (max-width: 800px) {
     div.main {
         display: block;
         /* Affichage en colonne */
@@ -653,11 +659,11 @@ input[type="radio"].filter:checked+label {
     }
 
     header {
-        height: 10em;
+        height: 13em;
         background-color: #fff;
         display: flex;
         align-items: center;
-        padding-top: 2em;
+        padding: 2em 0 0 0;
         box-shadow: 0 4px 8px #0000001a;
         flex-direction: column;
     }
@@ -670,6 +676,7 @@ input[type="radio"].filter:checked+label {
         box-shadow: inset 5px 0 8px #0000001a;
         justify-content: space-around;
         align-items: flex-start;
+        padding: 1em 0 0 0;
     }
 
     .header-left {
@@ -677,5 +684,81 @@ input[type="radio"].filter:checked+label {
         width: -webkit-fill-available;
         align-items: center;
         flex-direction: column;
+        gap: 1em;
+    }
+
+    .book-item {
+        background-color: #f9f9f9;
+        padding: 1em;
+        box-shadow: 0 4px 8px #0000001a;
+        display: flex;
+        flex-direction: column;
+        width: -webkit-fill-available;
+        transition: transform .3s ease;
+        margin: 0;
+        align-items: center;
+    }
+
+    .book-item:hover {
+        transform: scale(1.01);
+    }
+
+    /* Image du livre */
+    .book-image {
+        width: -webkit-fill-available;
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+    }
+
+    /* Liste des livres */
+    .books-list {
+        display: flex;
+        gap: 0.5em;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .books-link {
+        display: flex;
+        text-decoration: none;
+        width: 100%;
+        color: #000;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .icon-align {
+        display: flex;
+        height: 6em;
+        gap: 10%;
+        width: -webkit-fill-available;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .MD {
+        display: flex;
+        height: 1em;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .filter-options {
+        display: flex;
+        gap: .5em;
+        flex-wrap: wrap;
+        width: auto;
+        justify-content: flex-start;
+    }
+
+    .filter-options label {
+        width: 20%;
+        height: 2em;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
