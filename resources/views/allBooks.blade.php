@@ -97,13 +97,13 @@
                                 </p>
                             </div>
                             <div class="MD">
-                        @if(isset(Auth::user()->name) && isset($ouvrage->fkUtilisateur->name) && (Auth::user()->name === $ouvrage->fkUtilisateur->name || Auth::user()->estAdmin === 1))
-                        <a href="/books/edit/{{$ouvrage->ouvrage_id}}">Modifier</a> |
-                        <a onclick="return confirmDelete('Êtes-vous sûr de vouloir supprimer l\'ouvrage ?');" href="{{ route('logic.deleteBook', ['idOuvrage' => $ouvrage->ouvrage_id]) }}">Supprimer</a>
-                        @else
-                        @endif
-                        <div class="rate">4.8★</div>
-                    </div>
+                                @if(isset(Auth::user()->name) && isset($ouvrage->fkUtilisateur->name) && (Auth::user()->name === $ouvrage->fkUtilisateur->name || Auth::user()->estAdmin === 1))
+                                <a href="/books/edit/{{$ouvrage->ouvrage_id}}">Modifier</a> |
+                                <a onclick="return confirmDelete('Êtes-vous sûr de vouloir supprimer l\'ouvrage ?');" href="{{ route('logic.deleteBook', ['idOuvrage' => $ouvrage->ouvrage_id]) }}">Supprimer</a>
+                                @else
+                                @endif
+                                <div class="rate">4.8★</div>
+                            </div>
                         </div>
                     </a>
                 @endforeach

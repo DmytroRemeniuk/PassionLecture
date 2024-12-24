@@ -24,6 +24,8 @@ Route::get('/profil', function () {
     return view('profil');
 })->name('profil');
 
+Route::get('/profil/{idUser}', [BookController::class, 'getBooksByUser'])->name('profil');
+
 Route::post('user.login', [LoginController::class, 'checkin'])->name('user.login');
 
 Route::get('user.deconnexion', [LoginController::class, 'deconnexion'])->name('user.deconnexion');

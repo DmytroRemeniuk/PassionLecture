@@ -12,25 +12,21 @@ class BookController extends Controller
 {
     public function showLastFiveBooks()
     {
-
         //Récupère les 5 derniers ouvrage depuis la table t_ouvrage
         $lastFiveBooks = Ouvrage::getLastFiveBooks()->load('fkAuteur', 'fkUtilisateur');
 
         return view('index', compact('lastFiveBooks'));
     }
 
-
-    /**
-     * Display a listing of the resource.
-     */
-    /**public function index()
+    public function getBooksByUser($idUser)
     {
-        // Récupérer tous les livres
-        $books = Ouvrage::all();
-
-        // Passer les livres à la vue 'index'
-        return view('index', ['books' => $books]);
-    }*/
+        // Récupérer les livres de l'utilisateur via la méthode `getBooksByUser`
+        $books = Ouvrage::getBooksByUser($idUser);
+    
+        // Passer la variable `$books` à la vue `profil.blade.php`
+        return view('profil', compact('books'));
+    }
+    
 
     /**
      * Store a newly created resource in storage.
