@@ -19,14 +19,17 @@
         <!-- Formulaire de connexion -->
         <form action="{{ route('user.login') }}" method="POST" id="login-form">
             <div class="form-group">
-                <label for="email">Nom d'utilisateur :</label>
-                <input type="text" name="email" id="email" required>
+                <label for="nickName">Nom d'utilisateur :</label>
+                <input type="text" name="nickName" id="nickName" required>
 
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe :</label>
                 <input type="password" name="password" id="password" required>
-                <strong>{{ $errors->first('email') }}</strong>
+                @error('failed')
+                    <strong> {{ $message }}</strong>
+                @enderror
+                
             </div>
             <button type="submit" class="submit-btn">Se connecter</button>
         </form>
