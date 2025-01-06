@@ -174,6 +174,12 @@ class BookController extends Controller
     
         // Récupérer les résultats avec pagination
         $ouvrages = $query->paginate(10);
+        
+        // Ajouter la moyenne des notes pour chaque livre
+        foreach($ouvrages as $ouvrage)
+        {
+            $ouvrage['avg'] = ApprecierController::avg($ouvrage['ouvrage_id']);
+        }
     
         // Récupérer la catégorie sélectionnée pour l'affichage dans la vue
         $selectedCategory = $category_id ? Categorie::find($category_id) : null;

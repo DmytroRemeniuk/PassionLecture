@@ -106,7 +106,7 @@
                                 <a onclick="return confirmDelete('Êtes-vous sûr de vouloir supprimer l\'ouvrage ?');" href="{{ route('logic.deleteBook', ['idOuvrage' => $ouvrage->ouvrage_id]) }}">Supprimer</a>
                                 @else
                                 @endif
-                                <div class="rate">4.8★</div>
+                                <div class="rate">{{$ouvrage->avg . '★'}}</div>
                             </div>
                         </div>
                     </a>

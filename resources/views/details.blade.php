@@ -12,7 +12,6 @@
         @include('header')
     </header>
     <div class="main">
-        <!--</section>-->
         <h1>Détails de l'ouvrage</h1>
         <div class="detail-container">
             <div class="detail-image">
@@ -24,12 +23,17 @@
                 <p><strong>Catégorie</strong><br> {{ $ouvrage->fkCategorie->nom }}</p>
                 <p><strong>Description</strong><br> {{ $ouvrage->resume }}</p>
                 <p><strong>Année de publication</strong><br> {{ $ouvrage->annee }}</p>
+                <div class="stars" id="stars" data-user-vote="{{ $userVote ?? 0 }}">
+                    @for ($i = 1; $i <= 5; $i++)
+                        <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id, 'vote' => $i]) }}"
+                        id="star{{ $i }}"
+                        class="star">
+                            ★
+                        </a>
+                    @endfor
+                </div>
                 <div class="stars">
-                    <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id, 'vote' => 1]) }}" id="star1" class="star">★</a>
-                    <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id, 'vote' => 2]) }}" id="star2" class="star">★</a>
-                    <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id, 'vote' => 3]) }}" id="star3" class="star">★</a>
-                    <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id, 'vote' => 4]) }}" id="star4" class="star">★</a>
-                    <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id, 'vote' => 5]) }}" id="star5" class="star">★</a>
+                    {{$avgAppreciation . '★(' . $nbAppreciations . ')'}}
                 </div>
             </div>
         </div>
