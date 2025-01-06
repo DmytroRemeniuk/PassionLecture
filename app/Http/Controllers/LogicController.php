@@ -8,6 +8,7 @@ use App\Http\Controllers;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\Console\Input\Input;
+use Illuminate\Support\Facades\Auth;
 
 class LogicController extends Controller
 {
@@ -36,6 +37,7 @@ class LogicController extends Controller
             'editeur_id' => $publisherId,
             'image' => $imageName,
             'categorie_fk' => $request->input('category'),
+            'utilisateur_fk' => Auth::id()
         ];
         BookController::store($bookData);
         return Redirect::to('/');

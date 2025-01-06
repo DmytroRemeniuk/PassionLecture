@@ -40,7 +40,7 @@ class BookController extends Controller
             'annee' => $bookData['year'],
             'image' => $bookData['image'],
             'nbPages' => $bookData['pages'],
-            'utilisateur_fk' => Auth::id(),
+            'utilisateur_fk' => $bookData['utilisateur_fk'],
             'categorie_fk' => $bookData['categorie_fk'],
             'editeur_fk' => $bookData['editeur_id'],
             'auteur_fk' => $bookData['auteur_id']
