@@ -48,6 +48,7 @@
                         <p><strong>Pseudo :</strong> {{ $ouvrage->fkUtilisateur ? $ouvrage->fkUtilisateur->name : 'Pseudo non défini' }}</p>
                     </div>
                     <div class="MD">
+                        <!-- Vérifier la personne connecté pour attribuer les droits -->
                         @if(Auth::user()->name === $ouvrage->fkUtilisateur->name || Auth::user()->estAdmin === 1)
                         <a href="/books/edit/{{$ouvrage->ouvrage_id}}">Modifier</a>
                         <a onclick="return confirmDelete('Êtes-vous sûr de vouloir supprimer l\'ouvrage ?');" href="{{ route('logic.deleteBook', ['idOuvrage' => $ouvrage->ouvrage_id]) }}"> | Supprimer</a>
