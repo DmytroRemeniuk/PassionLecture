@@ -11,7 +11,7 @@
     <header>
         @include('header')
     </header>
-    <div id="main">
+    <div class="main">
         <!--</section>-->
         <h1>Détails de l'ouvrage</h1>
         <div class="detail-container">
@@ -24,6 +24,13 @@
                 <p><strong>Catégorie</strong><br> {{ $ouvrage->fkCategorie->nom }}</p>
                 <p><strong>Description</strong><br> {{ $ouvrage->resume }}</p>
                 <p><strong>Année de publication</strong><br> {{ $ouvrage->annee }}</p>
+                <div class="stars">
+                    <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id, 'vote' => 1]) }}" id="star1" class="star">★</a>
+                    <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id, 'vote' => 2]) }}" id="star2" class="star">★</a>
+                    <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id, 'vote' => 3]) }}" id="star3" class="star">★</a>
+                    <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id, 'vote' => 4]) }}" id="star4" class="star">★</a>
+                    <a href="{{ route('details', ['idOuvrage' => $ouvrage->ouvrage_id, 'vote' => 5]) }}" id="star5" class="star">★</a>
+                </div>
             </div>
         </div>
     </div>

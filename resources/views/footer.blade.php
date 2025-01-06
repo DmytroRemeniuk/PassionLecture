@@ -1,19 +1,23 @@
-<div id="footer-align">
+<div class="footer-align">
     <div>
-        <h3 id="footer-p">Auteurs</h3>
-        <p id="footer-p">Iglesias Rodrigez Yago</p>
-        <p id="footer-p">Pittet Joël</p>
-        <p id="footer-p">Remeniuk Dmytro</p>
-        <p id="footer-p">Sierro Félix</p>
+        <h3 class="footer-p">Auteurs</h3>
+        <p class="footer-p">
+            Iglesias Rodriguez Yago<br>
+            Pittet Joël<br>
+            Remeniuk Dmytro<br>
+            Sierro Félix
+        </p>
     </div>
     <div>
-        <h3 id="footer-p">Mail</h3>
-        <p id="footer-p">yago.iglesias@eduvaud.ch</p>
-        <p id="footer-p">joel.pittet@eduvaud.ch</p>
-        <p id="footer-p">dmytro.remeniuk1@eduvaud.ch</p>
-        <p id="footer-p">felix.sierro@eduvaud.ch</p>
+        <h3 class="footer-p">Mail</h3>
+        <p class="footer-p">
+            yago.iglesias@eduvaud.ch<br>
+            joel.pittet@eduvaud.ch<br>
+            dmytro.remeniuk1@eduvaud.ch<br>
+            felix.sierro@eduvaud.ch
+        </p>
     </div>
 </div>
-<div id="footer-year">
-    <p id="footer-p">PassionLecture 2024 ©</p>
+<div class="footer-year">
+    <p class="footer-p">PassionLecture 2024 - 2025 ©</p>
 </div>

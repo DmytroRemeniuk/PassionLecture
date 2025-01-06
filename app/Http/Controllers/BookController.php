@@ -10,33 +10,31 @@ use App\Models\Categorie;
 
 class BookController extends Controller
 {
-    public function showLastFiveBooks(){
-
+    public function showLastFiveBooks()
+    {
         //Récupère les 5 derniers ouvrage depuis la table t_ouvrage
         $lastFiveBooks = Ouvrage::getLastFiveBooks()->load('fkAuteur', 'fkUtilisateur');
 
         return view('index', compact('lastFiveBooks'));
     }
 
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function getBooksByUser($idUser)
     {
-        // Récupérer tous les livres
-        $books = Ouvrage::all();
-
-        // Passer les livres à la vue 'index'
-        return view('index', ['books' => $books]);
+        // Récupérer les livres de l'utilisateur via la méthode `getBooksByUser`
+        $books = Ouvrage::getBooksByUser($idUser);
+    
+        // Passer la variable `$books` à la vue `profil.blade.php`
+        return view('profil', compact('books'));
     }
+    
 
     /**
      * Store a newly created resource in storage.
      */
     public static function store($bookData)
     {
-        Ouvrage::create(['titre' => $bookData['title'],
+        Ouvrage::create([
+            'titre' => $bookData['title'],
             'extrait' => $bookData['excerpt_link'],
             'resume' => $bookData['summary'],
             'annee' => $bookData['year'],
@@ -62,7 +60,8 @@ class BookController extends Controller
      */
     public static function update($bookData, $id)
     {
-        Ouvrage::where('ouvrage_id', $id)->update(['titre' => $bookData['title'],
+        Ouvrage::where('ouvrage_id', $id)->update([
+            'titre' => $bookData['title'],
             'extrait' => $bookData['excerpt_link'],
             'resume' => $bookData['summary'],
             'annee' => $bookData['year'],
@@ -78,7 +77,7 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($idOuvrage):RedirectResponse
+    public function destroy($idOuvrage): RedirectResponse
     {
         //Récupère le livre selon son id
         $book = Ouvrage::find($idOuvrage);
@@ -94,7 +93,19 @@ class BookController extends Controller
 
         //Redirige sur la page d'accueil
         return redirect()->route('all-books');
+    }
 
+    public function indexDetails(Request $request)
+    {
+        $id = $request->query("idOuvrage");
+        $ouvrage = Ouvrage::with('fkAuteur')->find($id);
+        return view('details', compact('ouvrage'));
+    }
+
+    public static function indexEdit($id)
+    {
+        $ouvrage = Ouvrage::with('fkAuteur')->with('fkCategorie')->find($id);
+        return $ouvrage;
     }
 
     public function allBooks(Request $request)
@@ -105,31 +116,74 @@ class BookController extends Controller
         // Récupérer l'ID de la catégorie sélectionnée (si spécifié dans la requête)
         $category_id = $request->query('category_id');
     
-        // Si une catégorie est sélectionnée, récupérer les ouvrages associés à cette catégorie
-        if ($category_id) {
-            $ouvrages = Ouvrage::where('categorie_fk', $category_id)->with('fkAuteur')->paginate(10);
-            // Récupérer la catégorie pour afficher son nom
-            $selectedCategory = Categorie::find($category_id);
-        } else {
-            // Si aucune catégorie n'est sélectionnée, afficher tous les ouvrages
-            $ouvrages = Ouvrage::with('fkAuteur')->paginate(10);
-            $selectedCategory = null;  // Pas de catégorie sélectionnée
-        }
-
-        //dd(session()->all());
+        // Récupérer la valeur de la recherche (s'il y en a)
+        $search = $request->query('searchbox');
     
-        // Retourner la vue avec les ouvrages, les catégories et la catégorie sélectionnée
-        return view('allBooks', compact('ouvrages', 'categories', 'selectedCategory'));
-    }
-
-    public function indexDetails(Request $request){
-        $id = $request->query("idOuvrage");
-        $ouvrage = Ouvrage::with('fkAuteur')->find($id);
-        return view('details', compact('ouvrage'));
-    }
-
-    public static function indexEdit($id){
-        $ouvrage = Ouvrage::with('fkAuteur')->with('fkCategorie')->find($id);
-        return $ouvrage;
-    }
+        // Initialiser la requête sur la table Ouvrage
+        $query = Ouvrage::with('fkAuteur'); // Charger également les auteurs (assurez-vous que la relation est correcte)
+    
+        // Appliquer le filtre par catégorie si une catégorie est sélectionnée
+        if ($category_id) {
+            $query->where('categorie_fk', $category_id);
+        }
+    
+        // Appliquer le filtre de recherche si un terme de recherche est fourni
+        if ($search) {
+            $filter = $request->query('filter'); // Récupérer le critère de filtre (title, author, etc.)
+            
+            switch ($filter) {
+                case 'title':
+                    $query->where('titre', 'like', '%' . $search . '%'); // Rechercher dans le titre
+                    break;
+    
+                case 'author':
+                    $query->whereHas('fkAuteur', function ($q) use ($search) {
+                        $q->where('nom', 'like', '%' . $search . '%')
+                          ->orWhere('prenom', 'like', '%' . $search . '%'); // Rechercher par auteur (nom ou prénom)
+                    });
+                    break;
+    
+                case 'editor':
+                    $query->whereHas('fkEditeur', function ($q) use ($search) {
+                        $q->where('nom', 'like', '%' . $search . '%'); // Assurez-vous que la relation fkEditeur existe
+                    });
+                    break;
+    
+                case 'year':
+                    if (!is_numeric($search)) {
+                        // Si l'année n'est pas un nombre valide, rediriger avec un message d'erreur
+                        return redirect()->back()->withErrors(['searchbox' => 'Veuillez entrer une année valide.']);
+                    }
+                    $query->whereBetween('annee', [$search - 10, $search + 10]); // Rechercher par intervalle d'années
+                    break;
+    
+                case 'pages':
+                    if (!is_numeric($search)) {
+                        // Si le nombre de pages n'est pas un nombre valide, rediriger avec un message d'erreur
+                        return redirect()->back()->withErrors(['searchbox' => 'Veuillez entrer un nombre de pages valide.']);
+                    }
+                    $query->whereBetween('nbPages', [$search - 20, $search + 20]); // Rechercher par intervalle de pages
+                    break;
+    
+                default:
+                    // Si aucun critère n'est spécifié, effectuer une recherche par titre par défaut
+                    $query->where('titre', 'like', '%' . $search . '%');
+                    break;
+            }
+        }
+    
+        // Récupérer les résultats avec pagination
+        $ouvrages = $query->paginate(10);
+    
+        // Récupérer la catégorie sélectionnée pour l'affichage dans la vue
+        $selectedCategory = $category_id ? Categorie::find($category_id) : null;
+    
+        // Retourner la vue avec les ouvrages, les catégories, la catégorie sélectionnée, et la requête
+        return view('allBooks', [
+            'ouvrages' => $ouvrages,
+            'categories' => $categories,
+            'selectedCategory' => $selectedCategory,
+            'request' => $request
+        ]);
+    }    
 }
