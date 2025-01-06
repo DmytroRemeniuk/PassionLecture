@@ -10,6 +10,7 @@ use App\Models\Categorie;
 
 class BookController extends Controller
 {
+    //Retourner les 5 derniers ouvrages
     public function showLastFiveBooks()
     {
         //Récupère les 5 derniers ouvrage depuis la table t_ouvrage
@@ -18,6 +19,7 @@ class BookController extends Controller
         return view('index', compact('lastFiveBooks'));
     }
 
+    //Retourner les ouvrages ajoutés par l'utilisateur courant
     public function getBooksByUser($idUser)
     {
         // Récupérer les livres de l'utilisateur via la méthode `getBooksByUser`
@@ -67,7 +69,7 @@ class BookController extends Controller
             'annee' => $bookData['year'],
             'image' => $bookData['image'],
             'nbPages' => $bookData['pages'],
-            'utilisateur_fk' => 1,
+            'utilisateur_fk' => $bookData['utilisateur_fk'],
             'categorie_fk' => $bookData['categorie_fk'],
             'editeur_fk' => $bookData['editeur_fk'],
             'auteur_fk' => $bookData['auteur_fk']
@@ -95,6 +97,7 @@ class BookController extends Controller
         return redirect()->route('all-books');
     }
 
+    //Retourner un ouvrage avec son auteur
     public function indexDetails(Request $request)
     {
         $id = $request->query("idOuvrage");
@@ -102,12 +105,14 @@ class BookController extends Controller
         return view('details', compact('ouvrage'));
     }
 
+    //Retourner un livre avec son auteur et catégorie
     public static function indexEdit($id)
     {
         $ouvrage = Ouvrage::with('fkAuteur')->with('fkCategorie')->find($id);
         return $ouvrage;
     }
 
+    //Afficher les livres
     public function allBooks(Request $request)
     {
         // Récupérer toutes les catégories

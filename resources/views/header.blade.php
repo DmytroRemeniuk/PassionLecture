@@ -12,10 +12,10 @@
             <!-- vérifier les infos de l'utilisateur -->
             @if(Auth::user())
             <div class="icone">
-            <a class="header-right" href="{{ route('profil', ['idUser' => Auth::user()->id]) }}">
+            <a class="header-right" href="{{ route('profil')}}">
                 <img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="20px">
             </a>
-                <a class="header-right" href="{{ route('profil', ['idUser' => Auth::user()->id]) }}">{{Auth::user()->name}}</a>
+                <a class="header-right" href="{{ route('profil')}}">{{Auth::user()->name}}</a>
             </div>
             <div class="icone">
             <a class="header-right" href="{{ route('book.add') }}">

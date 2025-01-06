@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LogicController extends Controller
 {
+    //Ajouter un livre
     public function addBook(Request $request):RedirectResponse
     {
         // Stocker l'auteur
@@ -43,6 +44,7 @@ class LogicController extends Controller
         return Redirect::to('/');
     }
 
+    //Modifier un ouvrage
     public function editBook(Request $request):RedirectResponse
     {
         // Récupérer l'ouvrage
@@ -89,6 +91,7 @@ class LogicController extends Controller
         return redirect(route('all-books'));
     }
 
+    //Retourner l'ouvrage dans la vue de modification
     public function editBookShow(Request $request)
     {
         // Rechercher les détails du livre dans la base de données
