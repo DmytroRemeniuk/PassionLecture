@@ -18,6 +18,7 @@
         <h2>Se connecter</h2>
         <!-- Formulaire de connexion -->
         <form action="{{ route('user.login') }}" method="POST" id="login-form">
+        @csrf <!-- Protection CSRF -->
             <div class="form-group">
                 <label for="email">Nom d'utilisateur :</label>
                 <input type="text" name="email" id="email" required>
