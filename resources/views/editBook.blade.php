@@ -13,7 +13,7 @@
         @include('header')
     </header>
 
-    <div id="main">
+    <div class="main">
         <h2>Modifier un ouvrage</h2>
 
         <!-- Formulaire d'ajout -->
@@ -31,16 +31,9 @@
                     <label for="author_last_name">Nom de l'auteur :</label>
                     <input type="text" name="author_last_name" id="author_last_name" value="{{$ouvrage->fkAuteur->nom}}" required>
 
-<<<<<<< HEAD
-                    <label for="category">Catégorie :</label>
-                    <select name="category" id="category">
-                        <option value="">Catégorie</option>
-                        @foreach($categories as $category)
-=======
                 <label for="category">Catégorie :</label>
                 <select name="category" id="category">
                     @foreach($categories as $category)
->>>>>>> a3cb97e4a6c3c9b4c0bbfe1d1ee6c7542653b115
                         <option value="{{$category->categorie_id}}"
                             @if ($category->categorie_id == $ouvrage->fkCategorie->categorie_id)
                             selected

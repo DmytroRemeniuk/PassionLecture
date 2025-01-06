@@ -33,7 +33,7 @@ class AuteurSeeder extends Seeder
             ['auteur_id' => 16, 'nom' => 'Süskind', 'prenom' => 'Patrick'],
             ['auteur_id' => 17, 'nom' => 'Gijoan', 'prenom' => 'René'],
             ['auteur_id' => 18, 'nom' => 'Stoker', 'prenom' => 'Bram'],
-            ['auteur_id' => 19, 'nom' => 'Golden', 'prenom' => 'Arthur'],
+            ['auteur_id' => 19, 'nom' => 'Dostoïevski', 'prenom' => 'Fiodor']
         ]);
 
         //Auteur::factory(10)->create();

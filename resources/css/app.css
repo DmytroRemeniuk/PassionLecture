@@ -1,15 +1,15 @@
 /* Réinitialisation de base */
 body {
     margin: 0 15%;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(235, 235, 235);
 }
 
 /* Typographie et style global */
 * {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: fangsong;
     font-style: normal;
     text-decoration: none;
-    color: black;
+    color: #000;
 }
 
 /* Liens */
@@ -19,11 +19,15 @@ a {
 }
 
 a.header:hover {
-    color: rgb(196, 162, 112);;
+    color: rgb(196, 162, 112);
 }
 
-a.header-right{
-    color: white;
+a.header-right {
+    color: #fff;
+    font-size: smaller;
+    line-height: 1em;
+    text-align: center;
+    box-shadow: 0 0 #0000;
 }
 
 a.active {
@@ -36,16 +40,16 @@ a.filter:hover {
 
 /* Conteneurs principaux */
 header {
-    height: 4em;
+    height: 5em;
     background-color: #fff;
     display: flex;
-    padding: 1em 0 0em 5%;
+    padding-left: 5%;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 4px 8px #0000001a;
 }
 
-.links{
+.links {
     height: 100%;
     width: 100%;
     display: flex;
@@ -70,40 +74,38 @@ footer {
     gap: 1em;
 }
 
-#footer-align {
+.footer-align {
     display: flex;
     justify-content: flex-start;
     gap: 2em;
 }
 
-#footer-p {
+.footer-p {
     color: #f0f0f0;
     font-size: small;
     margin: 5px 0;
 }
 
-#footer-year {
-    color: #f0f0f0;
-    font-size: small;
-    margin: 5px 0;
+.footer-year {
     display: flex;
     justify-content: center;
 }
 
-#main {
+div.main {
     padding: 2% 5%;
     background-color: white;
     min-height: 50em;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#main-index {
+div.main-index {
     padding: 2% 5%;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    min-height: 50em;
+    box-shadow: 0 4px 8px #0000001a;
 }
 
-#header-left {
+.header-left {
     font-size: large;
     display: flex;
     width: 100%;
@@ -113,25 +115,30 @@ footer {
     justify-content: space-between;
 }
 
-#header-right {
+.header-right {
     background-color: #a39277;
-    font-size: large;
     display: flex;
-    gap: .5em;
-    height: 2em;
-    padding: 2em 0 .5em;
-    margin: 0 0 2em;
+    height: 5em;
     width: 40%;
-    justify-content: center;
-    flex-wrap: nowrap;
-    align-items: center;
     box-shadow: inset 5px 0 8px #0000001a;
-    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-#icon-align{
+.icone {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    height: 4em;
+    gap: 5%;
+}
+
+.icon-align {
+    display: flex;
+    height: 6em;
+    gap: 10%;
+    width: -webkit-fill-available;
+    justify-content: center;
     align-items: center;
 }
 
@@ -139,48 +146,40 @@ footer {
 nav {
     display: flex;
     justify-content: center;
-    /* Centre le contenu */
     width: 100%;
-    /* Prend toute la largeur disponible */
 }
 
 /* Section des livres */
-#books {
+.books {
     display: flex;
     align-items: flex-start;
-    padding: 1em 0;
-    gap: 0.5em;
-    flex-wrap: nowrap;
-    justify-content: center;
+    padding: 2em 0;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .book-item-index {
     flex: 0 0 auto;
-    /* Les livres ont une largeur fixe, pas de flex-grow ni de flex-shrink */
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Centre le contenu du livre */
     text-align: center;
-    padding: 0 1em;
-    /* Ajoute de l'espace autour du livre */
     box-sizing: border-box;
-    /* Inclut la marge dans la largeur */
-    width: 20%;
-    /* Ajuste la largeur des livres */
+    width: 12em;
+    padding-bottom: 1em;
 }
 
 .book-item-index strong {
     margin-top: 1em;
-    /* Espace entre l'image et le titre */
 }
 
-#book-format {
+.book-format {
     height: 20em;
-    width: auto;
+    max-width: 13em;
 }
 
-#book-format:hover{
+.book-format:hover {
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -191,6 +190,10 @@ nav {
     height: auto;
     display: flex;
     flex-direction: column;
+}
+
+.purpose p {
+    line-height: 1.5em;
 }
 
 /* Formulaire d'ajout */
@@ -251,7 +254,7 @@ nav {
 
 .form-right button {
     padding: 1em;
-    background-color:  #a39277;
+    background-color: #a39277;
     color: white;
     border: none;
     border-radius: 4px;
@@ -259,24 +262,21 @@ nav {
 }
 
 .form-right button:hover {
-    background-color:  #80725e;
+    background-color: #80725e;
 }
 
 /* Formulaire de connexion - centré avec boîte */
-#login-container {
-    width: 100%;
+.login-container {
     max-width: 400px;
-    /* Largeur maximale du formulaire */
-    margin: 7em auto;
-    /* Centrer horizontalement */
+    margin: 5em auto 10em auto;
     background-color: #f9f9f9;
     padding: 2em;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px #0000001a;
     text-align: center;
 }
 
-#login-container h2 {
+.login-container h2 {
     font-size: 1.8rem;
     margin-bottom: 1.5em;
 }
@@ -302,7 +302,7 @@ nav {
 
 .submit-btn {
     padding: 1em;
-    background-color:  #a39277;
+    background-color: #a39277;
     color: white;
     border: none;
     border-radius: 4px;
@@ -336,7 +336,7 @@ p a:hover {
 }
 
 /* Filtre en haut de la page */
-#filter {
+.filter {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -344,22 +344,22 @@ p a:hover {
 }
 
 /* Liste des catégories */
-#filter ul {
+.filter ul {
     list-style: none;
     display: flex;
     gap: 1em;
 }
 
-#filter ul li {
+.filter ul li {
     font-size: 1.2rem;
 }
 
-#filter ul li a {
+.filter ul li a {
     text-decoration: none;
     color: black;
 }
 
-#filter input {
+.filter input {
     padding: 0.5em;
     font-size: 1rem;
     width: 200px;
@@ -367,21 +367,27 @@ p a:hover {
     border: 1px solid #ccc;
 }
 
-/* Liste des livres */
-#books-list {
+.filter-options {
     display: flex;
-    gap: 0.5em;
-    /* Espace entre les éléments */
-    flex-direction: column;
-    /* Affiche les livres verticalement */
-    align-items: flex-start;
-    /* Aligne les éléments au début du conteneur */
+    gap: .5em;
+    flex-wrap: wrap;
+    width: 50%;
+    justify-content: flex-start;
+    text-align: center;
 }
 
-#books-link {
+/* Liste des livres */
+.books-list {
+    display: flex;
+    gap: 0.5em;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.books-link {
     display: flex;
     text-decoration: none;
-    width: 85%;
+    width: 100%;
     color: #000;
     align-items: center;
 }
@@ -389,41 +395,33 @@ p a:hover {
 /* Élément de chaque livre */
 .book-item {
     cursor: pointer;
+    display: flex;
     background-color: #f9f9f9;
-    padding: 1em;
+    padding: .5em;
     border-radius: 8px;
     box-shadow: 0 4px 8px #0000001a;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
     width: -webkit-fill-available;
     transition: transform .3s ease;
-    margin: 0;
 }
 
 .book-item:hover {
     transform: scale(1.01);
-    /* Agrandit l'élément au survol */
 }
 
 /* Image du livre */
 .book-image {
     width: 10em;
-    /* Ajustez la largeur selon vos besoins */
     height: 15em;
     background-size: cover;
     background-position: center;
     border-radius: 8px;
     margin-right: 1em;
-    /* Espace entre l'image et les détails */
 }
 
 /* Détails du livre */
 .book-details {
     text-align: left;
     flex: 1;
-    /* Permet à la section des détails de s'étendre */
 }
 
 .book-details h3 {
@@ -438,7 +436,7 @@ p a:hover {
 
 .book-link {
     display: inline-block;
-    background-color:  #a39277;
+    background-color: #a39277;
     color: white;
     padding: 0.5em 1em;
     border-radius: 4px;
@@ -490,24 +488,21 @@ hr:last-of-type {
 .pagination a:hover,
 .pagination .active {
     background-color: #f0f0f0;
-    /* Changement de couleur au survol */
     color: #333;
-    /* Changement de couleur du texte */
 }
 
 /*Page details*/
 .detail-container {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     gap: 1em;
+    flex-wrap: wrap;
 }
 
-img{
-    max-width: 15em;
+img {
+    max-width: 13em;
 }
 
-img.search{
+img.search {
     height: 10px;
     border: none;
     background-color: none;
@@ -517,14 +512,12 @@ img.search{
 .detail-image {
     display: flex;
     justify-content: flex-start;
-    /* Centre l'image horizontalement */
 }
 
 .detail-image img {
     max-width: 100%;
-    /* S'assure que l'image ne dépasse pas la largeur de son conteneur */
     height: 32em;
-    /* Garde les proportions de l'image */
+    box-shadow: 0 0 8px #0000001a;
 }
 
 .detail-info {
@@ -535,11 +528,14 @@ img.search{
 }
 
 .MD {
-    height: 15em;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 /* Conteneur du filtre */
-#filter {
+.filter {
     margin: 20px 0;
     font-family: Arial, sans-serif;
     display: flex;
@@ -549,13 +545,13 @@ img.search{
 }
 
 /* Label pour la liste déroulante */
-#filter label {
+.filter label {
     font-size: 14px;
     color: #555;
 }
 
 /* Liste déroulante */
-#category-select {
+.category-select {
     padding: 8px;
     font-size: 14px;
     border: 1px solid #ccc;
@@ -567,7 +563,7 @@ img.search{
 }
 
 /* Style pour la liste déroulante en focus */
-#category-select:focus {
+.category-select:focus {
     outline: none;
     border-color: #a39277;
     background-color: #fff;
@@ -575,10 +571,11 @@ img.search{
 
 /* Radio buttons styling */
 input[type="radio"].filter {
-    display: none; /* Cache l'entrée par défaut */
+    display: none;
+    /* Cache l'entrée par défaut */
 }
 
-input[type="radio"].filter + label {
+input[type="radio"].filter+label {
     border: 1px solid #ccc;
     padding: 5px 10px;
     border-radius: 4px;
@@ -588,26 +585,26 @@ input[type="radio"].filter + label {
     transition: all 0.2s ease-in-out;
 }
 
-input[type="radio"].filter:hover + label {
+input[type="radio"].filter:hover+label {
     border-color: black;
     background-color: #a39277;
     color: white;
 }
 
-input[type="radio"].filter:checked + label {
+input[type="radio"].filter:checked+label {
     border-color: black;
     background-color: #a39277;
     color: white;
 }
 
 .stars {
-    display: flex; /* Align buttons in a row */
-    gap: 0; /* Remove any space between buttons */
+    display: flex;
+    justify-content: flex-end;
 }
 
 .star {
-    font-size: 24px; /* Adjust size as needed */
-    color: gray; /* Default color */
+    font-size: 40pt;
+    color: gray;
     border: none;
     background: none;
     cursor: pointer;
@@ -616,5 +613,152 @@ input[type="radio"].filter:checked + label {
 }
 
 .star.highlight {
-    color: gold; /* Highlight stars */
+    color: gold;
+    /* Highlight stars */
+}
+
+.rate {
+    display: flex;
+    height: 3.5em;
+    width: 2.5em;
+    font-size: 40pt;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+/* Média pour les téléphones */
+@media (max-width: 800px) {
+    div.main {
+        display: block;
+        /* Affichage en colonne */
+        padding: 5% 2%;
+        /* Plus de padding horizontal pour mieux s'adapter à l'écran */
+    }
+
+    .books {
+        display: flex;
+        align-items: center;
+        padding: 1em 0;
+        gap: .5em;
+        flex-wrap: nowrap;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .book-item-index {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 1em;
+        width: 100%;
+    }
+
+    .book-item-index strong {
+        margin-top: 0;
+    }
+
+    header {
+        height: 13em;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        padding: 2em 0 0 0;
+        box-shadow: 0 4px 8px #0000001a;
+        flex-direction: column;
+    }
+
+    .header-right {
+        background-color: #a39277;
+        display: flex;
+        height: 10em;
+        width: -webkit-fill-available;
+        box-shadow: inset 5px 0 8px #0000001a;
+        justify-content: space-around;
+        align-items: flex-start;
+        padding: 1em 0 0 0;
+    }
+
+    .header-left {
+        display: flex;
+        width: -webkit-fill-available;
+        align-items: center;
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .book-item {
+        background-color: #f9f9f9;
+        padding: 1em;
+        box-shadow: 0 4px 8px #0000001a;
+        display: flex;
+        flex-direction: column;
+        width: -webkit-fill-available;
+        transition: transform .3s ease;
+        margin: 0;
+        align-items: center;
+    }
+
+    .book-item:hover {
+        transform: scale(1.01);
+    }
+
+    /* Image du livre */
+    .book-image {
+        width: -webkit-fill-available;
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+    }
+
+    /* Liste des livres */
+    .books-list {
+        display: flex;
+        gap: 0.5em;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .books-link {
+        display: flex;
+        text-decoration: none;
+        width: 100%;
+        color: #000;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .icon-align {
+        display: flex;
+        height: 6em;
+        gap: 10%;
+        width: -webkit-fill-available;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .MD {
+        display: flex;
+        height: 1em;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .filter-options {
+        display: flex;
+        gap: .5em;
+        flex-wrap: wrap;
+        width: auto;
+        justify-content: flex-start;
+    }
+
+    .filter-options label {
+        width: 20%;
+        height: 2em;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

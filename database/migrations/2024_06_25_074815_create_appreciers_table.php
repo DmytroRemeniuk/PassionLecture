@@ -20,9 +20,6 @@ return new class extends Migration
             $table->foreign('utilisateur_fk')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('ouvrage_fk')->references('ouvrage_id')->on('t_ouvrage')->onDelete('cascade');
 
-            //Clef primaire composite
-            $table->primary(['utilisateur_fk', 'ouvrage_fk']);
-
             $table->tinyInteger('note');
             
         });

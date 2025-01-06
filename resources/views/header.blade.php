@@ -1,4 +1,4 @@
-<div id="header-left">
+<div class="header-left">
     <a href="{{ route('homepage') }}">
         <img src="{{ asset('logo.png') }}" alt="logo de PassionLecture" height="50em">
     </a>
@@ -7,19 +7,36 @@
         <a class="{{ request()->routeIs('all-books') ? 'header-active' : 'header' }}" href="{{ route('all-books') }}">Tous les ouvrages</a>
     </div>
 </div>
-<div id="header-right">
-    <div id="icon-align">
-    <img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="30px">
-    <div id="header">
-        <!-- vérifier les infos de l'utilisateur -->
-        @if(Auth::user())
-        <a class="header-right" href="{{ route('profil') }}">{{Auth::user()->name}}</a>
-        <img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="30px">
-        <a class="header-right" href="{{ route('book.add') }}">Ajouter un livre</a>
-        <a class="header-right" href="{{ route('user.deconnexion') }}">Deconnexion</a>
-        @else
-        <a class="header-right" href="{{ route('login') }}">Se connecter</a>
-        @endif
-    </div>
+<div class="header-right">
+    <div class="icon-align">
+            <!-- vérifier les infos de l'utilisateur -->
+            @if(Auth::user())
+            <div class="icone">
+            <a class="header-right" href="{{ route('profil') }}">
+                <img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="30px">
+            </a>
+                <a class="header-right" href="{{ route('profil') }}">{{Auth::user()->name}}</a>
+            </div>
+            <div class="icone">
+            <a class="header-right" href="{{ route('book.add') }}">
+                <img src="{{ asset('plus.png') }}" alt="icone d'utilisateur" height="30px">
+            </a>
+                <a class="header-right" href="{{ route('book.add') }}">Ajouter<br>un livre</a>
+            </div>    
+            <div class="icone">
+            <a class="header-right" href="{{ route('user.deconnexion') }}">
+                <img src="{{ asset('logout.png') }}" alt="icone de deconnexion" height="30px">
+            </a>
+                <a class="header-right" href="{{ route('user.deconnexion') }}">Logout</a>
+            </div>
+                @else
+            <div class="icone">
+                <a class="header-right" href="{{ route('login') }}">
+                    <img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="30px">
+                </a>   
+                <a class="header-right" href="{{ route('login') }}">Se connecter</a>
+            </div>
+            @endif
+
     </div>
 </div>

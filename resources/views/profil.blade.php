@@ -11,7 +11,7 @@
         @include('header')
     </header>
     <hr>
-    <div id="main">
+    <div class="main">
         <h2>Bienvenue {{session('name')}}</h2>        
     </div>
 

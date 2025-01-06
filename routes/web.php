@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\LogicController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ApprecierController;
 use Illuminate\Auth\Events\Login;
 
@@ -27,6 +28,17 @@ Route::post('user.login', [LoginController::class, 'checkin'])->name('user.login
 
 Route::get('user.deconnexion', [LoginController::class, 'deconnexion'])->name('user.deconnexion');
 
+Route::get('user.deconnexion', [LoginController::class, 'deconnexion'])->name('user.deconnexion');
+
+Route::get('user.deconnexion', [LoginController::class, 'deconnexion'])->name('user.deconnexion');
+
+//Page d'inscription
+Route::get('/register', function () {
+    return view('register');
+})->name('register');
+
+Route::post('user.register', [RegisterController::class, 'register'])->name('user.register');
+
 Route::get('/books/detail/{idOuvrage}/{vote?}', function ($idOuvrage, $vote = null) {
     // Recherchez les détails du livre dans la base de données (optionnel)
     $ouvrage = \App\Models\Ouvrage::findOrFail($idOuvrage);
@@ -43,11 +55,9 @@ Route::get('/books/detail/{idOuvrage}/{vote?}', function ($idOuvrage, $vote = nu
 
 Route::get('/books/add', [CategorieController::class, 'indexAdd'])->name('book.add');
 
-
 Route::get('/books/add', [CategorieController::class, 'indexAdd'])->name('book.add');
 
 Route::post('/books/add', [LogicController::class, 'addBook'])->name('logic.addBook');
-
 
 Route::get('/books/edit/{idOuvrage}', [LogicController::class, 'editBookShow'])->name('book.edit');
 
