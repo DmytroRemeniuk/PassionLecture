@@ -20,15 +20,17 @@ class BookController extends Controller
     }
 
     //Retourner les ouvrages ajoutés par l'utilisateur
-    public function getBooksByUser($idUser)
+    public static function getBooksByUser($idUser)
     {
         // Récupérer les livres de l'utilisateur via la méthode `getBooksByUser`
-        $books = Ouvrage::getBooksByUser($idUser);
-
-        // Passer la variable `$books` à la vue `profil.blade.php`
-        return view('profil', compact('books'));
+        return Ouvrage::getBooksByUser($idUser);
     }
 
+    //Nombre d'ouvrages proposés par l'utilisateur
+    public static function booksNumber($idUser)
+    {
+        return Ouvrage::where('utilisateur_fk', $idUser)->count();
+    }
 
     /**
      * Store a newly created resource in storage.

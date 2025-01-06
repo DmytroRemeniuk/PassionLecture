@@ -26,10 +26,16 @@ class ApprecierController extends Controller
         return Apprecier::where('ouvrage_fk', $idOuvrage)->where('utilisateur_fk', $idUser)->update(['note' => $vote]);
     }
 
-    //Nombre de notes
-    public static function count($id)
+    //Nombre de notes par ouvrage
+    public static function countBook($id)
     {
         return Apprecier::where('ouvrage_fk', $id)->count();
+    }
+
+    //Nombre de notes par utilisateur
+    public static function countUser($id)
+    {
+        return Apprecier::where('utilisateur_fk', $id)->count();
     }
 
     //Moyenne des notes

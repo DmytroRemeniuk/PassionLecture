@@ -7,6 +7,7 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ApprecierController;
+use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\Login;
 
 //Page d'accueil
@@ -21,13 +22,16 @@ Route::get('/login', function(){
 })->name('login');
 
 //Page de profil
-Route::get('/profil', function () {
-    return app(BookController::class)->getBooksByUser(Auth::id());
-})->name('monprofil');
+Route::get('/profil/{idUser}', function($idUser){
+    $books = BookController::getBooksByUser($idUser);
+    $nbBooks = BookController::booksNumber($idUser);
+    $nbVotes = ApprecierController::countUser($idUser);
+    $user = UserController::show($idUser);
 
-Route::get('/profil/{idUser}', [BookController::class, 'getBooksByUser'])->name('profil');
+    return view('profil', ['books' => $books, 'nbBooks' => $nbBooks, 'nbVotes' => $nbVotes, 'user' => $user]);
+})->name('profil');
 
-//Vérification du éogin
+//Vérification du login
 Route::post('user.login', [LoginController::class, 'checkin'])->name('user.login');
 
 //Déconnexion
@@ -54,7 +58,7 @@ Route::get('/books/detail/{idOuvrage}/{vote?}', function ($idOuvrage, $vote = nu
     $userVote = ApprecierController::getUserVote($idOuvrage, Auth::id());
 
     // Nombre et moyenne d'appreciations
-    $nbAppreciations = ApprecierController::count($idOuvrage);
+    $nbAppreciations = ApprecierController::countBook($idOuvrage);
     $avgAppreciation = ApprecierController::avg($idOuvrage);
 
 

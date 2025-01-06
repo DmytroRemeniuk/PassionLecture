@@ -12,8 +12,11 @@
     </header>
     <hr>
     <div class="main">
-        <h1>Bienvenue {{Auth::user()->name}}</h1>
-        <h2>Voici la liste des livres que vous avez ajouté :</h2>
+        <h1>{{$user->name}}</h1>
+        <strong>Date d'entrée : </strong>{{$user->dateEntree}}<br>
+        <strong>Ouvrages proposés : </strong>{{$nbBooks}}<br>
+        <strong>Appréciations faites : </strong>{{$nbVotes}}<br>
+        <h2>Voici la liste des livres ajoutés :</h2>
         <div class="books">
             @if ($books->isEmpty())
                 <p>Aucun livre publié pour le moment.</p>
