@@ -42,16 +42,21 @@ Route::get('/register', function () {
 Route::post('user.register', [RegisterController::class, 'register'])->name('user.register');
 
 Route::get('/books/detail/{idOuvrage}/{vote?}', function ($idOuvrage, $vote = null) {
-    // Recherchez les détails du livre dans la base de données (optionnel)
-    $ouvrage = \App\Models\Ouvrage::findOrFail($idOuvrage);
-
-    if($vote != null)
+    if($vote != null && $vote > 0 && $vote < 6 && Auth::check())
     {
         ApprecierController::store($idOuvrage, Auth::user()->id, $vote);
     }
 
+    // Recherchez les détails du livre dans la base de données (optionnel)
+    $ouvrage = \App\Models\Ouvrage::findOrFail($idOuvrage);
+    $userVote = ApprecierController::getUserVote($idOuvrage, Auth::id());
+
+    $nbAppreciations = ApprecierController::count($idOuvrage);
+    $avgAppreciation = ApprecierController::avg($idOuvrage);
+
+
     // Passez l'ouvrage aux vues
-    return view('details', ['ouvrage' => $ouvrage]);
+    return view('details', ['ouvrage' => $ouvrage, 'nbAppreciations' => $nbAppreciations, 'avgAppreciation' => $avgAppreciation, 'userVote' => $userVote]);
 
 })->name('details');
 
