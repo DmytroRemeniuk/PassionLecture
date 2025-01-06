@@ -23,7 +23,9 @@ Route::get('/login', function(){
 //Page de profil
 Route::get('/profil', function () {
     return app(BookController::class)->getBooksByUser(Auth::id());
-})->name('profil');
+})->name('monprofil');
+
+Route::get('/profil/{idUser}', [BookController::class, 'getBooksByUser'])->name('profil');
 
 //Vérification du éogin
 Route::post('user.login', [LoginController::class, 'checkin'])->name('user.login');

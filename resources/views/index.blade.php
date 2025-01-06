@@ -28,12 +28,12 @@
                 <a href="{{ route('details', ['idOuvrage' => $book->ouvrage_id]) }}">
             @else
                 <a href="">
-            @endif    
+            @endif
                     <img class="book-format" src="{{ asset('img/' . $book->image)}}" alt="{{ asset('Couverture du livre' . ' ' . $book->titre)}}">
                 </a>
                 <strong>Titre: {{ $book->titre }}</strong>
                 Auteur: {{ $book->fkAuteur->prenom}} {{ $book->fkAuteur->nom}}<br>
-                Pseudo: {{ $book->fkUtilisateur->name}}
+                Pseudo: <a href="{{ route('profil', ['idUser' => $book->fkUtilisateur->id])}}">{{ $book->fkUtilisateur ? $book->fkUtilisateur->name : 'Pseudo non défini' }}</a>
             </div>
             @endforeach
         </div>

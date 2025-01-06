@@ -12,17 +12,17 @@
             <!-- vérifier les infos de l'utilisateur -->
             @if(Auth::user())
             <div class="icone">
-            <a class="header-right" href="{{ route('profil')}}">
+            <a class="header-right" href="{{ route('monprofil')}}">
                 <img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="20px">
             </a>
-                <a class="header-right" href="{{ route('profil')}}">{{Auth::user()->name}}</a>
+                <a class="header-right" href="{{ route('monprofil')}}">{{Auth::user()->name}}</a>
             </div>
             <div class="icone">
             <a class="header-right" href="{{ route('book.add') }}">
                 <img src="{{ asset('plus.png') }}" alt="icone d'utilisateur" height="20px">
             </a>
                 <a class="header-right" href="{{ route('book.add') }}">Ajouter<br>un livre</a>
-            </div>    
+            </div>
             <div class="icone">
             <a class="header-right" href="{{ route('user.deconnexion') }}">
                 <img src="{{ asset('logout.png') }}" alt="icone de deconnexion" height="20px">
@@ -33,7 +33,7 @@
             <div class="icone">
                 <a class="header-right" href="{{ route('login') }}">
                     <img src="{{ asset('login.png') }}" alt="icone d'utilisateur" height="30px">
-                </a>   
+                </a>
                 <a class="header-right" href="{{ route('login') }}">Se connecter</a>
             </div>
             @endif
