@@ -29,6 +29,15 @@ class Ouvrage extends Model
         return self::orderBy('ouvrage_id', 'desc')->take(5)->get();
     }
 
+    //Récupère les livres selon qui les a publié
+    public static function getBooksByUser($idUser)
+    {
+        return self::where('utilisateur_fk', $idUser)
+                   ->with(['fkAuteur', 'fkUtilisateur']) // Précharge les relations
+                   ->orderBy('ouvrage_id', 'desc')
+                   ->get();
+    }    
+
     protected $guarded = [];
 
     public function fkUtilisateur()
