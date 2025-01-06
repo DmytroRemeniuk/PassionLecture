@@ -2,7 +2,7 @@
     <div>
         <h3 class="footer-p">Auteurs</h3>
         <p class="footer-p">
-            Iglesias Rodrigez Yago<br>
+            Iglesias Rodriguez Yago<br>
             Pittet Joël<br>
             Remeniuk Dmytro<br>
             Sierro Félix
@@ -19,5 +19,5 @@
     </div>
 </div>
 <div class="footer-year">
-    <p class="footer-p">PassionLecture 2024 ©</p>
+    <p class="footer-p">PassionLecture 2024 - 2025 ©</p>
 </div>
