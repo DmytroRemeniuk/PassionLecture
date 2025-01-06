@@ -16,15 +16,21 @@ class RegisterController extends Controller
     {
         // Valider les données envoyées par le formulaire
         $validatedData = $request->validate([
-            'name' => ['required', 'string', 'max:255'], // Ajout du champ 'name'
+            'name' => ['required', 'string', 'max:255', 'unique:users,name'], // Ajout du champ 'name'
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
 
         // Vérifier si un utilisateur avec cet email existe déjà (ignorer la casse)
-        $existingUser = User::whereRaw('LOWER(email) = ?', [strtolower($validatedData['email'])])->first();
-        if ($existingUser) {
+        $existingEmail = User::whereRaw('LOWER(email) = ?', [strtolower($validatedData['email'])])->first();
+        if ($existingEmail) {
             return back()->withErrors(['email' => 'Cet email est déjà utilisé.'])->withInput();
+        }
+
+        // Vérifier si un utilisateur avec ce pseudo existe déjà (ignorer la casse)
+        $existingUser = User::whereRaw('LOWER(name) = ?', [strtolower($validatedData['name'])])->first();
+        if ($existingUser) {
+            return back()->withErrors(['name' => 'Cet utilisateur existe déjà.'])->withInput();
         }
 
         // Créer le nouvel utilisateur
@@ -32,7 +38,7 @@ class RegisterController extends Controller
             'name' => $validatedData['name'],
             'email' => strtolower($validatedData['email']),
             'password' => Hash::make($validatedData['password']),
-            'dateEntree' => Carbon::now(),
+            'dateEntree' => now()->toDateString()
         ]);
 
         // Connecter l'utilisateur automatiquement après inscription
