@@ -20,12 +20,12 @@ class LoginController extends Controller
         /// Si la validation échoue, Laravel redirige automatiquement l'utilisateur vers la page précédente avec les messages d'erreur générés.
         /// Si la validation passe, le code continue normalement.
         $credentials = request()->validate([
-            'email' => ['required', 'string'],
+            'name' => ['required', 'string'],
             'password' => ['required', 'string'],
         ]);
         
         $result = Auth::attempt([
-            'name' => $credentials["email"],
+            'name' => $credentials["name"],
             'password' => $credentials["password"],
             
         ]);
@@ -41,7 +41,7 @@ class LoginController extends Controller
         // Si pas de connexion redirection d'erreures
         else {
             return back()->withErrors([
-                'email' => 'Le pseudo ou le mot de passe que vous avez entré est incorrect.',
+                'error' => 'Le pseudo ou le mot de passe que vous avez entré est incorrect.',
             ]);
         }
     }
