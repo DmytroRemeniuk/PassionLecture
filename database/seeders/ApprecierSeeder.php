@@ -13,7 +13,7 @@ class ApprecierSeeder extends Seeder
      */
     public function run(): void
     {
-        // Insertion des etoiles 
+        // Insertion des appreciation des utilisateurs 
         DB::table('apprecier')->insert([
             ['utilisateur_fk' => 1, 'ouvrage_fk' => 1, 'note' => 5],
             ['utilisateur_fk' => 3, 'ouvrage_fk' => 3, 'note' => 5],
