@@ -20,16 +20,17 @@
         <form action="{{ route('user.login') }}" method="POST" id="login-form">
         @csrf <!-- Protection CSRF -->
             <div class="form-group">
-                <label for="name">Nom d'utilisateur :</label>
-                <input type="text" name="name" id="name" required>
+                <label for="nickName">Nom d'utilisateur :</label>
+                <input type="text" name="nickName" id="nickName" required>
 
             </div>
             <div class="form-group">
                 <label for="password">Mot de passe :</label>
                 <input type="password" name="password" id="password" required>
-                @error('error')
-                    <span class="text-danger">{{ $message }}</span>
+                @error('failed')
+                    <strong> {{ $message }}</strong>
                 @enderror
+                
             </div>
             <button type="submit" class="submit-btn">Se connecter</button>
         </form>

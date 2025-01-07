@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             CategorieSeeder::class,
             EditeurSeeder::class,
             UsersSeeder::class,
-            OuvrageSeeder::class
+            OuvrageSeeder::class,
+            ApprecierSeeder::class
 
         ]);
     }
