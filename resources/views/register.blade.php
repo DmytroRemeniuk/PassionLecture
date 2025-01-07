@@ -19,7 +19,7 @@
         <form action="{{ route('user.register') }}" method="POST" id="login-form">
         @csrf <!-- Protection CSRF -->
             <div class="form-group">
-                <label for="name">Nom :</label>
+                <label for="name">Nom d'utilisateur :</label>
                 <input type="text" name="name" id="name" required>
                 @error('name')
                     <span class="text-danger">{{ $message }}</span>
