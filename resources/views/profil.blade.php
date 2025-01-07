@@ -23,9 +23,15 @@
             @else
                 @foreach ($books as $book)
                 <div class="book-item-index">
+                @if (isset(Auth::user()->name))
                     <a href="{{ route('details', ['idOuvrage' => $book->ouvrage_id]) }}">
                         <img class="book-format" src="{{ asset('img/' . $book->image)}}" alt="{{ asset('Couverture du livre' . ' ' . $book->titre)}}">
                     </a>
+                @else
+                    <a href="" class="books-link">
+                    <img class="book-format" src="{{ asset('img/' . $book->image)}}" alt="{{ asset('Couverture du livre' . ' ' . $book->titre)}}">
+                    </a>
+                @endif
                     <strong>Titre: {{ $book->titre }}</strong>
                     Auteur: {{ $book->fkAuteur->prenom}} {{ $book->fkAuteur->nom}}<br>
                     Pseudo: {{ $book->fkUtilisateur->name}}
