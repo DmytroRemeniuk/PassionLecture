@@ -52,8 +52,8 @@ Route::get('/books/detail/{idOuvrage}/{vote?}', function ($idOuvrage, $vote = nu
         ApprecierController::store($idOuvrage, Auth::user()->id, $vote);
     }
 
-    // Rechercher les détails du livre dans la base de données (optionnel)
-    $ouvrage = \App\Models\Ouvrage::findOrFail($idOuvrage);
+    // Rechercher les détails du livre dans la base de données
+    $ouvrage = BookController::findOrFail($idOuvrage);
     // Rechercher une note d'utilisateur
     $userVote = ApprecierController::getUserVote($idOuvrage, Auth::id());
 

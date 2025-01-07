@@ -59,6 +59,12 @@ class BookController extends Controller
         return Ouvrage::with('fkUtilisateur')->find($id);
     }
 
+    //Retourner le livre si existe
+    public static function findOrFail($id)
+    {
+        return Ouvrage::findOrFail($id);
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -110,7 +116,7 @@ class BookController extends Controller
     //Retourner un livre avec son auteur et catégorie
     public static function indexEdit($id)
     {
-        $ouvrage = Ouvrage::with('fkAuteur')->with('fkCategorie')->find($id);
+        $ouvrage = Ouvrage::with('fkAuteur')->with('fkCategorie')->with('fkEditeur')->find($id);
         return $ouvrage;
     }
 
