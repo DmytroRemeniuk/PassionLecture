@@ -13,9 +13,9 @@
     <hr>
     <div class="main">
         <h1>{{$user->name}}</h1>
-        <strong>Date d'entrée : </strong>{{$user->dateEntree}}<br>
-        <strong>Ouvrages proposés : </strong>{{$nbBooks}}<br>
-        <strong>Appréciations faites : </strong>{{$nbVotes}}<br>
+        <p><strong>Date d'entrée : </strong>{{$user->dateEntree}}</p>
+        <p><strong>Ouvrages proposés : </strong>{{$nbBooks}}</p>
+        <p><strong>Appréciations faites : </strong>{{$nbVotes}}</p>
         <h2>Voici la liste des livres ajoutés :</h2>
         <div class="books">
             @if ($books->isEmpty())
