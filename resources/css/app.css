@@ -517,6 +517,11 @@ img.search {
     display: flex;
     flex-direction: column;
     height: 32em;
+    gap: 1em;
+}
+
+.detail-info p {
+    margin: 0;
 }
 
 .MD {
