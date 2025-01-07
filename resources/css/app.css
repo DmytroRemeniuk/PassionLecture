@@ -384,14 +384,13 @@ p a:hover {
 .books-link {
     display: flex;
     text-decoration: none;
-    width: 100%;
+    width: fit-content;
     color: #000;
     align-items: center;
 }
 
 /* Élément de chaque livre */
 .book-item {
-    cursor: pointer;
     display: flex;
     background-color: #f9f9f9;
     padding: .5em;
@@ -399,10 +398,6 @@ p a:hover {
     box-shadow: 0 4px 8px #0000001a;
     width: -webkit-fill-available;
     transition: transform .3s ease;
-}
-
-.book-item:hover {
-    transform: scale(1.01);
 }
 
 /* Image du livre */
@@ -525,10 +520,21 @@ img.search {
 }
 
 .MD {
-    display: flex;
+    display: inline-block;
     gap: 5px;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    flex-wrap: wrap
+}
+
+.MD a {
+    height: fit-content;
+}
+
+.MD a:hover {
+    text-decoration: underline;
+}
+
+.book-details a:hover {
+    text-decoration: underline;
 }
 
 /* Conteneur du filtre */
@@ -616,11 +622,11 @@ input[type="radio"].filter:checked+label {
 
 .rate {
     display: flex;
-    height: 3.5em;
+    height: 4em;
     width: 2.5em;
     font-size: 40pt;
     align-items: flex-end;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 /* Média pour les téléphones */

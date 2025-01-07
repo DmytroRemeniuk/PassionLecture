@@ -10,7 +10,6 @@ class CategorieController extends Controller
     /**
      * Display a listing of the resource.
      */
-
     public function indexAdd()
     {
         // Récupérer toutes les catégories    
@@ -18,11 +17,14 @@ class CategorieController extends Controller
         // Passer les catégories à la vue 'addBook'    
         return view('addBook', compact('categories'));
     }
+
+    // Retourner toutes les catégories
     public static function index()
-    {
-        // Retourner toutes les catégories    
+    {    
         return Categorie::all();
     }
+
+    //Retourner les catégories dans la vue d'ajout
     public function allBooksIndex()
     {
         // Récupérer toutes les catégories    

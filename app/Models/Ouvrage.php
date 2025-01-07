@@ -38,6 +38,7 @@ class Ouvrage extends Model
                    ->get();
     }    
 
+    //Enlever la protection des champs
     protected $guarded = [];
 
     public function fkUtilisateur()
